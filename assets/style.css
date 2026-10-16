@@ -1,12 +1,12 @@
 /* 레이아웃: 한 줄 기둥(본문 폭 44rem) 위에 호 → 묶음 → 항목. 수업 질문은 형광펜 밑줄로 강조 */
 :root {
-  --paper: #f7f3e8;      /* 옅은 크림색 신문지 */
-  --surface: #fffdf8;
+  --paper: #f5f6f3;      /* 연한 회록빛 종이 */
+  --surface: #ffffff;
   --ink: #1c2421;        /* 먹색 */
   --muted: #5b6662;
-  --rule: #e1dccb;
+  --rule: #d9ded9;
   --accent: #23614f;     /* 짙은 청록 — 교과서 단원 색 */
-  --accent-soft: #e8ede3;
+  --accent-soft: #e3eee9;
   --mark: #f2df74;       /* 형광펜 */
   --mark-ink: #1c2421;
   --font-display: "Gowun Batang", "Nanum Myeongjo", "AppleMyungjo", serif;
