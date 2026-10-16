@@ -5,7 +5,8 @@ author: 박재형
 author_role: 윤리 교과서·청소년 인문서 편집자
 email: drumset@nate.com
 kakao_channel: https://pf.kakao.com/_PVHxjn
-openchat: https://open.kakao.com/o/gpEWbKSi   # 윤리로 읽는 뉴스 오픈채팅방
+openchat: https://open.kakao.com/o/gpEWbKSi   # 윤리로 읽는 뉴스 오픈채팅방(단체)
+openchat_dm: https://open.kakao.com/o/s0BhfKSi   # 운영자 1:1 오픈채팅
 description: 최근 뉴스에서 도덕·윤리 수업에 바로 쓸 소재를 골라 교과 연계와 수업 질문까지 정리합니다.
 lang: ko
 baseurl: ""            # 저장소 이름이 아이디.github.io가 아니면 "/저장소이름" 으로
