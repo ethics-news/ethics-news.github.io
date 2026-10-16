@@ -1,0 +1,51 @@
+# 윤리로 읽는 뉴스 — GitHub Pages 사이트
+
+「윤리로 읽는 뉴스 — 수업에 바로 쓰는 시사 윤리」 사이트입니다. 발행 주기는 정하지 않았습니다(격주·휴간 가능). GitHub가 Jekyll로 자동 빌드하므로 따로 설치할 것이 없습니다. 비용은 들지 않습니다.
+
+## 처음 한 번: 사이트 열기
+
+1. github.com에 가입합니다. 아이디가 주소가 됩니다 (`아이디.github.io`).
+2. 오른쪽 위 **+ → New repository**. 이름을 정확히 `아이디.github.io`로, **Public**으로 만듭니다.
+3. 저장소 화면에서 **Add file → Upload files**. 이 폴더 안의 파일과 폴더를 통째로 끌어다 놓고 **Commit changes**. (`_site` 폴더는 올리지 않습니다.)
+   - 숨김 파일(`.gitignore`)은 없어도 됩니다.
+   - 꾸준히 쓰려면 GitHub Desktop 앱을 권합니다. 이 폴더를 저장소로 연결해 두면 저장 → Commit → Push 세 번 클릭으로 발행됩니다.
+4. 저장소 **Settings → Pages → Build and deployment**에서 Source를 **Deploy from a branch**, Branch를 **main / (root)**로 두고 Save.
+5. 1~3분 뒤 `https://아이디.github.io`에 사이트가 열립니다.
+
+> 저장소 이름을 `아이디.github.io`가 아닌 다른 이름(예: `ethics`)으로 만들었다면 `_config.yml`의 `baseurl`을 `"/ethics"`로 바꿔야 합니다.
+
+## 처음 한 번: 내 정보 고치기
+
+`_config.yml` 맨 위의 `author`(표시 이름), `author_role`, `email`만 고치면 전체 페이지에 반영됩니다.
+
+## 새 호 발행
+
+1. `_issues/` 에 `_templates/새-호.md`를 복사해 `2026-10-23.md`처럼 날짜 이름으로 저장하고 앞부분(`issue_id`, `num`, `date`, `title`, `lead`)을 채웁니다.
+2. `_items/2026-10-23/` 폴더를 만들고 `_templates/새-항목.md`를 `1.md`, `2.md` … 로 복사해 채웁니다.
+   - `issue`는 호 파일의 `issue_id`와 같아야 합니다.
+   - `section`이 같은 항목끼리 한 묶음으로 모입니다.
+   - 본문 소제목은 `#####`로 씁니다.
+3. 올리면(Commit) 몇 분 뒤 홈의 최신호와 지난 호 목록이 자동으로 바뀝니다.
+
+## 활동지 파일 올리기 (직접 만든 것만)
+
+`files/` 폴더에 PDF·HWP를 넣고 항목 앞부분에 적습니다.
+
+```
+downloads:
+  - name: 수업 활동지 (PDF)
+    file: /files/2026-10-23-1-활동지.pdf
+```
+
+
+## 주소 구조
+
+| 페이지 | 주소 |
+|---|---|
+| 홈(최신호 + 지난 호) | `/` |
+| 호 | `/weekly/2026-10-16/` |
+| 항목 하나 | `/weekly/2026-10-16/1/` |
+| 소개 | `/about/` |
+
+## 확인할 것
+

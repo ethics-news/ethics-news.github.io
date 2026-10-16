@@ -1,0 +1,42 @@
+{% assign it = include.item %}
+{% capture plain %}{{ it.content | strip_html }}{% endcapture %}
+{% assign words = plain | size %}
+{% assign mins = words | divided_by: 500 | plus: 1 %}
+<article class="item" id="item-{{ it.num }}">
+  <header class="item-head">
+    <p class="item-kicker"><span class="item-no">{{ it.num }}</span>{{ it.kicker }}</p>
+    <h3 class="item-title"><a href="{{ it.url | relative_url }}">{{ it.title }}</a></h3>
+  </header>
+  <div class="item-boxes">
+    <div class="box box-q">
+      <p class="box-label">수업에서 던질 질문</p>
+      <p class="box-q-text">{{ it.question }}</p>
+    </div>
+    <div class="box box-c">
+      <p class="box-label">{{ it.caution_label | default: "다룰 때 주의할 점" }}</p>
+      <p>{{ it.caution }}</p>
+    </div>
+  </div>
+  <dl class="item-tags">
+    {% if it.subjects %}<div><dt>교과 연계</dt><dd>{% for s in it.subjects %}<span class="chip">{{ s }}</span>{% endfor %}</dd></div>{% endif %}
+    {% if it.lenses %}<div><dt>사상가 렌즈</dt><dd>{% for l in it.lenses %}<span class="chip chip-lens">{{ l }}</span>{% endfor %}</dd></div>{% endif %}
+  </dl>
+  {% if include.full %}
+    <div class="item-body prose">{{ it.content }}</div>
+  {% else %}
+    <details class="item-more">
+      <summary><span class="sum-open">본문 펼치기</span><span class="sum-close">본문 접기</span> <span class="mono">약 {{ mins }}분</span></summary>
+      <div class="item-body prose">{{ it.content | markdownify }}</div>
+    </details>
+  {% endif %}
+  {% if it.downloads %}
+  <div class="item-dl">
+    <p class="box-label">활동지 내려받기</p>
+    <div class="dl-row">{% for d in it.downloads %}<a class="dl" href="{{ d.file | relative_url }}" download>{{ d.name }}</a>{% endfor %}</div>
+  </div>
+  {% endif %}
+  <footer class="item-links">
+    {% unless include.full %}<a class="link-detail" href="{{ it.url | relative_url }}">이 항목만 보기</a>{% endunless %}
+    {% for s in it.sources %}<a class="link-src" href="{{ s.url }}" target="_blank" rel="noopener">{{ s.name }} ↗</a>{% endfor %}
+  </footer>
+</article>

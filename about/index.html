@@ -1,0 +1,60 @@
+---
+layout: default
+title: 소개
+---
+<section class="about-hero">
+  <p class="latest-label mono">소개</p>
+  <h1 class="issue-title">{{ site.title }}</h1>
+  <p class="issue-lead">{{ site.tagline }}</p>
+  <div class="prose">
+    <p><strong>{{ site.title }}</strong>는 (주)도서출판 길벗에서 윤리 교과서와 청소년 인문교양 단행본을 만드는 편집자 {{ site.author }}이 직접 운영합니다. 최근 뉴스에서 도덕·윤리 수업에 바로 쓸 소재를 골라 수업에서 던질 질문, 다룰 때 주의할 점, 연계 교과, 사상가 렌즈를 붙여 정리합니다. 윤리 주제에 관심 있는 독자와 도덕·윤리 선생님 모두를 위해 씁니다.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">만드는 사람</h2>
+  <div class="person">
+    <p class="person-name">{{ site.author }}</p>
+    <p class="person-role">길벗 윤리 교과서·청소년 인문교양 단행본 편집자</p>
+    <div class="prose">
+      <p>대학과 대학원에서 철학과 윤리교육을 전공했다. 2007 개정부터 네 차례의 교육과정 동안 여러 교과서 출판사에서 중학교 도덕, 고등학교 통합사회, 고등학교 윤리 교과서와 지도서, 문제집, 수능 학습서를 책임 편집했다. 콘텐츠를 기획하고 쓰고 편집하는 모든 일을 한다.</p>
+    </div>
+    <p class="person-contact">연락 <a class="mono mail" href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">만든 책</h2>
+  <div class="books">
+    {% for b in site.data.books %}
+    <article class="book">
+      <p class="book-kind">{{ b.kind }}</p>
+      <h3 class="book-title">{{ b.title }}</h3>
+      <p class="book-meta mono">{{ b.meta }}</p>
+      <p class="book-authors">지은이 {{ b.authors }}</p>
+      <p class="book-desc">{{ b.desc }}</p>
+      {% if b.links.size > 0 %}<p class="book-links">{% for l in b.links %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.name }} ↗</a>{% endfor %}</p>{% endif %}
+      <div class="book-buy"><span class="box-label">구매</span>{% for l in b.buy %}<a class="dl" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.name }}</a>{% endfor %}</div>
+    </article>
+    {% endfor %}
+  </div>
+  <p class="note">교과서와 지도서는 길벗 교과서 사이트의 구매 안내에 따라 길벗출판사 공식 스토어에서 살 수 있습니다. 견본 도서 신청과 선생님 자료실은 각 교과서 소개 페이지에 있습니다.</p>
+</section>
+
+<section class="section">
+  <h2 class="section-title">도덕·윤리 선생님을 위한 길벗 도덕·윤리 카카오 채널</h2>
+  <div class="channel">
+    <div class="prose">
+      <p>도덕·윤리 선생님의 수업 준비를 돕는 길벗의 카카오톡 채널입니다. 박재형과 도덕·윤리 교사들이 함께 쓰는 수업 자료와 카드 뉴스를 발행합니다.</p>
+      <ul>
+        <li><strong>우리의 오늘과 윤리적 삶</strong> 박재형이 기획하고 윤리 교사와 함께 쓰는 코너로, 시의성 있는 소재 하나를 카드 뉴스와 수업 활동지로 깊게 풀어냅니다.</li>
+        <li><strong>윤리 사상가, 나는 누구인가요</strong> 일화와 단서로 윤리 사상가를 소개하는 카드 뉴스입니다.</li>
+        <li><strong>명화로 보는 윤리 사상</strong> 지혜인 선생님(현 이화여대, 전 중동고, 민족사관고 교사)이 쓰는 코너로, 명화 한 점에서 출발해 윤리 사상의 핵심 질문을 읽습니다.</li>
+        <li><strong>특별 기획</strong> '월드컵으로 윤리 수업하기'처럼 큰 행사나 사건을 여러 회의 윤리 수업으로 엮습니다.</li>
+        <li><strong>수능·내신 수업 자료</strong> 수능·평가원·교육청 기출 원전 자료집, 기출 선지 OX 문항, 고전 읽기 활동지를 제공합니다.</li>
+        <li><strong>교육과정·강연 소식</strong> 2022 개정 교육과정과 입시 안내, 길벗 클래스 교사 강연 소식을 전합니다.</li>
+      </ul>
+    </div>
+    <a class="btn" href="{{ site.kakao_channel }}" target="_blank" rel="noopener">채널 친구 추가하기</a>
+  </div>
+</section>

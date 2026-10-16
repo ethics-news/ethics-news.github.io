@@ -1,0 +1,31 @@
+# 소개 페이지 「박재형이 만든 책」 목록. 순서대로 표시됩니다.
+- title: 고등학교 인문학과 윤리
+  kind: 교과서·지도서
+  meta: 2022 개정 · 길벗 · 2026년 3월 · 215쪽 · 교과서 정가 15,900원
+  authors: 최훈, 전호근, 김시천, 안광복, 이종우
+  desc: 동서양 고전과 원전을 읽으며 나와 타인, 사회와 삶의 의미를 성찰하는 진로 선택 과목 교과서입니다. 학자와 현장 교사가 함께 집필했습니다.
+  links:
+    - { name: 교과서 소개, url: "https://textbook.gilbut.co.kr/textbooks/2022-high-school-humanities-ethics" }
+    - { name: 교과서 미리보기, url: "https://storage.googleapis.com/gilbut-homepage/preview/high/2022_humanitiesethics_textbook/index.html" }
+  buy:
+    - { name: 길벗출판사 공식 스토어, url: "https://smartstore.naver.com/gilbutbooks" }
+- title: 고등학교 윤리문제 탐구
+  kind: 교과서·지도서
+  meta: 2022 개정 · 길벗 · 2026년 3월 · 213쪽 · 교과서 정가 14,900원
+  authors: 김선욱, 최훈, 김시천, 한혜정, 지혜인
+  desc: 윤리 문제를 탐구하는 방법을 익히고 사회 문제, 디지털과 인공지능 기술 같은 현대의 쟁점을 직접 탐구하는 융합 선택 과목 교과서입니다.
+  links:
+    - { name: 교과서 소개, url: "https://textbook.gilbut.co.kr/textbooks/2022-high-school-ethics-inquiry" }
+    - { name: 교과서 미리보기, url: "https://storage.googleapis.com/gilbut-homepage/preview/high/2022_ethicsinquiry_textbook/index.html" }
+  buy:
+    - { name: 길벗출판사 공식 스토어, url: "https://smartstore.naver.com/gilbutbooks" }
+- title: 윤리 사상가로 읽는 통합사회
+  kind: 단행본
+  meta: 길벗 · 2026년 7월 · 정가 19,800원
+  authors: 신호재, 문종길, 이수빈
+  desc: 2022 개정 통합사회의 여덟 주제(행복, 자연환경과 인간, 시민 불복종, 사회 정의, 교정적 정의, 자본주의, 평화, 해외 원조)를 윤리 사상가의 원전과 함께 읽습니다. 통합사회 교과서 8종에 등장하는 사상가를 정리했고, 현직 교사 10명이 추천했습니다.
+  links: []
+  buy:
+    - { name: 예스24, url: "https://www.yes24.com/product/goods/192877944" }
+    - { name: 알라딘, url: "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=397031504" }
+    - { name: 교보문고, url: "https://product.kyobobook.co.kr/detail/S000220363378" }

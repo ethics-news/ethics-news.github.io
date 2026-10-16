@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{% assign issues = site.issues | sort: "date" | reverse %}
+{% assign latest = issues[0] %}
+{% assign items = site.items | where: "issue", latest.issue_id | sort: "num" %}
+<section class="home-hero">
+  <p class="home-tag">{{ site.tagline }}</p>
+  <p class="home-by">길벗 윤리 교과서 편집자 {{ site.author }}이 운영합니다 · <a href="{{ '/about/' | relative_url }}">소개</a></p>
+  <p class="home-desc">{{ site.description }}</p>
+</section>
+
+<section class="latest">
+  <p class="latest-label mono">최신호 · {{ latest.num }}호 · {{ latest.date | date: "%Y. %-m. %-d." }}</p>
+  <h1 class="issue-title"><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h1>
+  <p class="issue-lead">{{ latest.lead }}</p>
+  <ol class="latest-list">
+    {% for it in items %}<li><a href="{{ latest.url | relative_url }}#item-{{ it.num }}"><span class="toc-sec">{{ it.section }}</span>{{ it.title }}</a></li>{% endfor %}
+  </ol>
+  <a class="btn" href="{{ latest.url | relative_url }}">{{ latest.num }}호 읽기</a>
+</section>
+
+<section class="archive" id="archive">
+  <h2 class="section-title">지난 호</h2>
+  <ul class="archive-list">
+    {% for is in issues %}<li><a href="{{ is.url | relative_url }}"><span class="mono">{{ is.num }}호 · {{ is.date | date: "%Y. %-m. %-d." }}</span><span>{{ is.title }}</span></a></li>{% endfor %}
+  </ul>
+</section>
