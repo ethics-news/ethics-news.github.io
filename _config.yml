@@ -6,7 +6,7 @@ author_role: 윤리 교과서·청소년 인문서 편집자
 email: drumset@nate.com
 kakao_channel: https://pf.kakao.com/_PVHxjn
 openchat: https://open.kakao.com/o/gpEWbKSi   # 윤리로 읽는 뉴스 오픈채팅방(단체)
-feedback_form:    # 구글 설문 의견 양식 주소(링크를 넣으면 단추가 나타남)
+feedback_form: https://docs.google.com/forms/d/e/1FAIpQLSdBr9QADsJoWDGdwNvb2YjAbvMsLUCaf3djEGdQ3xKnRGY7Uw/viewform   # 구글 설문 의견 양식
 description: 최근 뉴스에서 도덕·윤리 수업에 바로 쓸 소재를 골라 교과 연계와 수업 질문까지 정리합니다.
 lang: ko
 baseurl: ""            # 저장소 이름이 아이디.github.io가 아니면 "/저장소이름" 으로
