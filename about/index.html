@@ -28,6 +28,8 @@ title: 소개
   <div class="books">
     {% for b in site.data.books %}
     <article class="book">
+      {% if b.cover %}<a class="book-cover" href="{{ b.buy[0].url }}" target="_blank" rel="noopener"><img src="{{ b.cover | relative_url }}" alt="{{ b.title }} 표지" loading="lazy"></a>{% endif %}
+      <div class="book-body">
       <p class="book-kind">{{ b.kind }}</p>
       <h3 class="book-title">{{ b.title }}</h3>
       <p class="book-meta mono">{{ b.meta }}</p>
@@ -35,6 +37,7 @@ title: 소개
       <p class="book-desc">{{ b.desc }}</p>
       {% if b.links.size > 0 %}<p class="book-links">{% for l in b.links %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.name }} ↗</a>{% endfor %}</p>{% endif %}
       <div class="book-buy"><span class="box-label">구매</span>{% for l in b.buy %}<a class="dl" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.name }}</a>{% endfor %}</div>
+      </div>
     </article>
     {% endfor %}
   </div>

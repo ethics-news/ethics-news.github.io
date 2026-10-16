@@ -1,5 +1,6 @@
 # 소개 페이지 「박재형이 만든 책」 목록. 순서대로 표시됩니다.
 - title: 고등학교 인문학과 윤리
+  cover: /assets/covers/humanities-ethics.jpg
   kind: 교과서·지도서
   meta: 2022 개정 · 길벗 · 2026년 3월 · 215쪽 · 교과서 정가 15,900원
   authors: 최훈, 전호근, 김시천, 안광복, 이종우
@@ -10,6 +11,7 @@
   buy:
     - { name: 길벗출판사 공식 스토어, url: "https://smartstore.naver.com/gilbutbooks" }
 - title: 고등학교 윤리문제 탐구
+  cover: /assets/covers/ethics-inquiry.jpg
   kind: 교과서·지도서
   meta: 2022 개정 · 길벗 · 2026년 3월 · 213쪽 · 교과서 정가 14,900원
   authors: 김선욱, 최훈, 김시천, 한혜정, 지혜인
@@ -20,6 +22,7 @@
   buy:
     - { name: 길벗출판사 공식 스토어, url: "https://smartstore.naver.com/gilbutbooks" }
 - title: 윤리 사상가로 읽는 통합사회
+  cover: /assets/covers/ethics-thinkers.jpg
   kind: 단행본
   meta: 길벗 · 2026년 7월 · 정가 19,800원
   authors: 신호재, 문종길, 이수빈
