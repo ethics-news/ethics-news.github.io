@@ -242,3 +242,9 @@ html { scroll-behavior: smooth; }
 .book-cover img { display: block; width: 100%; height: auto; border-radius: 3px; box-shadow: 0 1px 2px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.12); }
 .book-body { min-width: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 0.45rem; align-self: stretch; }
 @media (max-width: 30rem) { .book-cover { flex-basis: 100px; max-width: 100px; } }
+/* 오픈채팅 */
+.openchat { display: inline-flex; align-items: center; gap: 0.45rem; background: #fee500; color: #191600 !important; text-decoration: none; font-weight: 600; font-size: var(--step--1); padding: 0.45rem 0.9rem; border-radius: 6px; }
+.openchat::before { content: ""; width: 1.05em; height: 1.05em; background: currentColor; -webkit-mask: radial-gradient(ellipse 50% 42% at 50% 45%, #000 98%, transparent 100%); mask: radial-gradient(ellipse 50% 42% at 50% 45%, #000 98%, transparent 100%); }
+.openchat:hover { filter: brightness(0.96); }
+.talk { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1rem; padding: 0.9rem 1rem; border: 1px dashed var(--rule); border-radius: 6px; }
+.talk p { margin: 0; font-size: 0.9375rem; color: var(--muted); }
