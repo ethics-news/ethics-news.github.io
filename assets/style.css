@@ -237,8 +237,8 @@ html { scroll-behavior: smooth; }
 .footer .rights { color: var(--ink); }
 .mail { color: var(--accent); text-underline-offset: 3px; }
 /* 책 표지 */
-.book { flex-direction: row; gap: 1.1rem; align-items: flex-start; }
-.book-cover { flex: 0 0 4cm; max-width: 4cm; }
+.book { flex-direction: row; gap: 1rem; align-items: flex-start; }
+.book-cover { flex: 0 0 72px; max-width: 72px; }
 .book-cover img { display: block; width: 100%; height: auto; border-radius: 3px; box-shadow: 0 1px 2px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.12); }
 .book-body { min-width: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 0.45rem; align-self: stretch; }
-@media (max-width: 30rem) { .book-cover { flex-basis: 3.2cm; max-width: 3.2cm; } }
+@media (max-width: 30rem) { .book-cover { flex-basis: 60px; max-width: 60px; } }
