@@ -36,7 +36,7 @@
   </div>
   {% endif %}
   <footer class="item-links">
-    {% unless include.full %}<a class="link-detail" href="{{ it.url | relative_url }}">이 항목만 보기</a>{% endunless %}
+    {% unless include.full %}<a class="link-detail" href="{{ it.url | relative_url }}">이 글만 보기</a>{% endunless %}
     {% for s in it.sources %}<a class="link-src" href="{{ s.url }}" target="_blank" rel="noopener">{{ s.name }} ↗</a>{% endfor %}
   </footer>
 </article>
