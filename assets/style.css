@@ -247,7 +247,7 @@ html { scroll-behavior: smooth; }
 .openchat::before { content: ""; width: 1.05em; height: 1.05em; background: currentColor; -webkit-mask: radial-gradient(ellipse 50% 42% at 50% 45%, #000 98%, transparent 100%); mask: radial-gradient(ellipse 50% 42% at 50% 45%, #000 98%, transparent 100%); }
 .openchat:hover { filter: brightness(0.96); }
 .chat-btns { display: inline-flex; flex-wrap: wrap; gap: 0.5rem; }
-.openchat.dm { background: transparent; color: var(--ink) !important; border: 1.5px solid #e0c800; padding: calc(0.45rem - 1.5px) calc(0.9rem - 1.5px); }
-.openchat.dm::before { background: #c9b400; }
+.openchat.form { background: transparent; color: var(--ink) !important; border: 1.5px solid #e0c800; padding: calc(0.45rem - 1.5px) calc(0.9rem - 1.5px); }
+.openchat.form::before { background: var(--accent); -webkit-mask: none; mask: none; border-radius: 2px; }
 .talk { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1rem; padding: 0.9rem 1rem; border: 1px dashed var(--rule); border-radius: 6px; }
 .talk p { margin: 0; font-size: 0.9375rem; color: var(--muted); }
