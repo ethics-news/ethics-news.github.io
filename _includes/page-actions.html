@@ -41,7 +41,7 @@
       var on=has(a,b.getAttribute('data-id'))>=0;
       b.classList.toggle('on',on); b.setAttribute('aria-pressed',on?'true':'false');
       b.querySelector('.save-ico').textContent=on?'★':'☆';
-      b.querySelector('.save-txt').textContent=on?'찜함':'찜하기';
+      b.querySelector('.save-txt').textContent='찜';
     });
     document.querySelectorAll('.js-saved-count').forEach(function(c){c.textContent=a.length?' '+a.length:'';});
   }
