@@ -223,6 +223,7 @@ html { scroll-behavior: smooth; }
 .like-n:empty { display: none; }
 .like:disabled { cursor: progress; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .like { color: #f4a27a; border-color: #8a4a2a; } :root:not([data-theme="light"]) .like:hover, :root:not([data-theme="light"]) .like.on { background: #3a2418; } }
+.card-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .tool-btns { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; }
 .toast { position: fixed; left: 50%; bottom: 1.5rem; transform: translateX(-50%) translateY(1rem); background: var(--ink); color: var(--paper); font-size: var(--step--1); padding: 0.55rem 1rem; border-radius: 6px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; max-width: calc(100% - 32px); word-break: break-all; margin: 0; }
 .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }

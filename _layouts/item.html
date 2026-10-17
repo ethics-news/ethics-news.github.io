@@ -4,7 +4,7 @@ layout: default
 {% assign issue = site.issues | where: "issue_id", page.issue %}{% assign issue = issue[0] %}
 <div class="item-tools no-print">
   <p class="crumb mono"><a href="{{ issue.url | relative_url }}">← {{ issue.num }}호 · {{ issue.date | date: "%Y. %-m. %-d." }}</a> · {{ page.section }}</p>
-  <span class="tool-btns">{% include like-btn.html %}<button type="button" class="btn-print js-share">링크 공유</button><button type="button" class="btn-print" onclick="window.print()">인쇄 · PDF로 저장</button></span>
+  <span class="tool-btns">{% include like-btn.html id=page.url %}{% include share-btn.html url=page.url title=page.title %}<button type="button" class="btn-print" onclick="window.print()">인쇄 · PDF로 저장</button></span>
 </div>
 <p class="print-only print-head">{{ site.title }} · {{ issue.num }}호 · {{ issue.date | date: "%Y. %-m. %-d." }}</p>
 {% include item-card.html item=page full=true %}

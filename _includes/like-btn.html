@@ -1,1 +1,1 @@
-{% if site.likes_api %}<button type="button" class="like js-like" aria-pressed="false" aria-label="좋아요"><span class="like-ico" aria-hidden="true">♡</span><span class="like-txt">좋아요</span> <span class="like-n mono"></span></button>{% endif %}
+{% if site.likes_api %}<button type="button" class="like js-like" data-id="{{ include.id }}" aria-pressed="false" aria-label="좋아요"><span class="like-ico" aria-hidden="true">♡</span><span class="like-txt">좋아요</span> <span class="like-n mono"></span></button>{% endif %}

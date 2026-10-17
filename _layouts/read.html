@@ -3,7 +3,7 @@ layout: default
 ---
 <div class="item-tools no-print">
   <p class="crumb mono"><a href="{{ '/reading/' | relative_url }}">← 윤리로 읽는 책</a> · {{ page.date | date: "%Y. %-m. %-d." }}</p>
-  <span class="tool-btns">{% include like-btn.html %}<button type="button" class="btn-print js-share">링크 공유</button><button type="button" class="btn-print" onclick="window.print()">인쇄 · PDF로 저장</button></span>
+  <span class="tool-btns">{% include like-btn.html id=page.url %}{% include share-btn.html url=page.url title=page.title %}<button type="button" class="btn-print" onclick="window.print()">인쇄 · PDF로 저장</button></span>
 </div>
 <p class="print-only print-head">{{ site.title }} · 윤리로 읽는 책 · {{ page.date | date: "%Y. %-m. %-d." }}</p>
 <article class="item read">
@@ -47,7 +47,7 @@ layout: default
 
   <div class="item-body prose">{{ content }}</div>
 
-  <div class="talk no-print"><p>이 글에 대한 의견이나 수업에 써 본 후기를 들려주세요.</p><span class="chat-btns">{% include like-btn.html %}<button type="button" class="btn-print js-share">링크 공유</button><a class="openchat" href="{{ site.openchat }}" target="_blank" rel="noopener">오픈채팅방에서 함께 이야기하기</a>{% if site.feedback_form %}<a class="openchat form" href="{{ site.feedback_form }}" target="_blank" rel="noopener">운영자에게 의견 보내기</a>{% endif %}</span></div>
+  <div class="talk no-print"><p>이 글에 대한 의견이나 수업에 써 본 후기를 들려주세요.</p><span class="chat-btns">{% include like-btn.html id=page.url %}{% include share-btn.html url=page.url title=page.title %}<a class="openchat" href="{{ site.openchat }}" target="_blank" rel="noopener">오픈채팅방에서 함께 이야기하기</a>{% if site.feedback_form %}<a class="openchat form" href="{{ site.feedback_form }}" target="_blank" rel="noopener">운영자에게 의견 보내기</a>{% endif %}</span></div>
 </article>
 <p class="print-only print-foot">출처: {{ site.title }}({{ site.tagline }}) · 윤리로 읽는 책 · 글 {{ site.author }} · <span class="js-url"></span><br>본 사이트 저작물의 권리는 운영자에게 있으며, 수업과 비상업적 정보 공유에는 자유롭게 쓸 수 있으나, 상업적 용도로는 사용할 수 없습니다. 밑줄 친 문장의 권리는 원저작자에게 있습니다. © {{ site.time | date: "%Y" }} {{ site.author }}</p>
 {% include page-actions.html %}
