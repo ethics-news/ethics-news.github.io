@@ -21,7 +21,7 @@ lead: 도덕·윤리 선생님을 위한 길벗 도덕·윤리 카카오 채널�
   <p class="ch-about">{{ g.about }}</p>
   {% if g.series %}
     {% for s in g.series %}
-    <h3 class="ch-series">'{{ s.name }}'</h3>
+    <h3 class="ch-series">'{{ s.name }}'</h3>{% if s.sub %}<p class="ch-series-sub">- {{ s.sub }}</p>{% endif %}
     {% include ch-list.html items=s.items shown=6 %}
     {% endfor %}
   {% else %}
