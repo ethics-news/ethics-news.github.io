@@ -3,7 +3,7 @@ layout: default
 title: 윤리로 읽는 책
 lead: 읽은 책 중 도덕·윤리 수업과 관련된 대목을 바탕으로 책을 안내하는 글을 씁니다.
 ---
-{% assign reads = site.reads | sort: "date" | reverse %}
+{% assign reads = site.reads | where_exp: "r", "r.date <= site.time" | sort: "date" | reverse %}
 <section class="issue-hero">
   <p class="issue-meta mono"><span>코너</span><span>{{ reads.size }}편</span></p>
   <h1 class="issue-title">윤리로 읽는 책</h1>

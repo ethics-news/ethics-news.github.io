@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{% assign issues = site.issues | sort: "date" | reverse %}
+{% assign issues = site.issues | where_exp: "i", "i.date <= site.time" | sort: "date" | reverse %}
 {% assign latest = issues[0] %}
 {% assign items = site.items | where: "issue", latest.issue_id | sort: "num" %}
 <section class="home-hero">

@@ -34,4 +34,4 @@ defaults:
     values: { layout: read }
 
 markdown: kramdown
-exclude: [README.md, _templates, Gemfile, Gemfile.lock]
+exclude: [README.md, _templates, _tools, Gemfile, Gemfile.lock]
