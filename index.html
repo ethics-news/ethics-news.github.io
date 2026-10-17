@@ -6,7 +6,6 @@ layout: default
 {% assign items = site.items | where: "issue", latest.issue_id | sort: "num" %}
 <section class="home-hero">
   <p class="home-tag">{{ site.tagline }}</p>
-  <p class="home-by">길벗 윤리 교과서 편집자 {{ site.author }}이 운영합니다 · <a href="{{ '/about/' | relative_url }}">소개</a></p>
   <p class="home-desc">{{ site.description }}</p>
 </section>
 
