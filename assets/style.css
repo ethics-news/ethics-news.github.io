@@ -216,6 +216,10 @@ html { scroll-behavior: smooth; }
 .item-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; }
 .btn-print { font: inherit; font-size: var(--step--1); font-weight: 600; color: var(--accent); background: transparent; border: 1px solid var(--accent); border-radius: 4px; padding: 0.35rem 0.8rem; cursor: pointer; }
 .btn-print:hover { background: var(--accent-soft); }
+.tool-btns { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; }
+.toast { position: fixed; left: 50%; bottom: 1.5rem; transform: translateX(-50%) translateY(1rem); background: var(--ink); color: var(--paper); font-size: var(--step--1); padding: 0.55rem 1rem; border-radius: 6px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; max-width: calc(100% - 32px); word-break: break-all; margin: 0; }
+.toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+@media print { .toast { display: none; } }
 .print-only { display: none; }
 
 /* 인쇄 · PDF 저장 */
