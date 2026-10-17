@@ -216,6 +216,13 @@ html { scroll-behavior: smooth; }
 .item-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; }
 .btn-print { font: inherit; font-size: var(--step--1); font-weight: 600; color: var(--accent); background: transparent; border: 1px solid var(--accent); border-radius: 4px; padding: 0.35rem 0.8rem; cursor: pointer; }
 .btn-print:hover { background: var(--accent-soft); }
+.like { font: inherit; font-size: var(--step--1); font-weight: 600; color: #c2410c; background: transparent; border: 1px solid #e8a37f; border-radius: 4px; padding: 0.35rem 0.8rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem; }
+.like:hover { background: #fdf0e8; }
+.like.on { background: #fdf0e8; border-color: #c2410c; }
+.like-ico { font-size: 1.05em; line-height: 1; }
+.like-n:empty { display: none; }
+.like:disabled { cursor: progress; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .like { color: #f4a27a; border-color: #8a4a2a; } :root:not([data-theme="light"]) .like:hover, :root:not([data-theme="light"]) .like.on { background: #3a2418; } }
 .tool-btns { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; }
 .toast { position: fixed; left: 50%; bottom: 1.5rem; transform: translateX(-50%) translateY(1rem); background: var(--ink); color: var(--paper); font-size: var(--step--1); padding: 0.55rem 1rem; border-radius: 6px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; max-width: calc(100% - 32px); word-break: break-all; margin: 0; }
 .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
