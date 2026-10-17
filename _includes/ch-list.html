@@ -1,0 +1,5 @@
+{% assign list = include.items %}{% assign shown = include.shown | default: 5 %}
+<ul class="ch-list">{% for i in list limit: shown %}{% include ch-item.html i=i %}{% endfor %}</ul>
+{% if list.size > shown %}{% assign rest = list.size | minus: shown %}
+<details class="ch-more"><summary><span class="sum-open">더 보기 {{ rest }}편</span><span class="sum-close">접기</span></summary>
+<ul class="ch-list">{% for i in list offset: shown %}{% include ch-item.html i=i %}{% endfor %}</ul></details>{% endif %}

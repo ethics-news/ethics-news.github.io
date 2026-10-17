@@ -1,0 +1,586 @@
+- id: today
+  name: 우리의 오늘과 윤리적 삶
+  about: 시의성 있는 소재 하나를 카드 뉴스와 수업 활동지로 깊게 풀어내는 코너입니다.
+  items:
+  - title: 농담일까, 차별 표현일까
+    desc: 웃자고 한 말이 누군가에게는 차별이 되는 순간을 짚고, 표현의 경계를 함께 정해 봅니다.
+    url: https://pf.kakao.com/_PVHxjn/114015859
+    date: 2026. 7.
+    tags:
+    - 활동지
+  - title: FOMO와 행복의 철학
+    desc: 남들보다 뒤처질까 두려운 마음을 행복에 관한 철학의 물음으로 바꿔 생각해 봅니다.
+    url: https://pf.kakao.com/_PVHxjn/113662914
+    date: 2026. 6.
+    tags:
+    - 활동지
+  - title: 위험하지만 불가피한 AI 실험
+    desc: 위험을 알면서도 멈추기 어려운 AI 개발을 두고 누가 어디까지 책임져야 하는지 묻습니다.
+    url: https://pf.kakao.com/_PVHxjn/113383566
+    date: 2026. 5.
+    tags:
+    - 활동지
+  - title: 늑구 사건으로 본 동물 윤리
+    desc: 늑구 사건을 계기로 동물을 대하는 우리의 태도와 동물 윤리의 쟁점을 살핍니다.
+    url: https://pf.kakao.com/_PVHxjn/113171781
+    date: 2026. 4.
+    tags:
+    - 활동지
+  - title: AI는 양심을 가질 수 있을까
+    desc: 양심이 무엇인지부터 따져 보며 AI에게 도덕적 판단을 맡길 수 있는지 토론합니다.
+    url: https://pf.kakao.com/_PVHxjn/112960813
+    date: 2026. 4.
+    tags:
+    - 활동지
+  - title: AI 시대, 인간은 무엇을 해야 하는가
+    desc: AI가 많은 일을 대신하는 시대에 인간이 맡아야 할 몫이 무엇인지 생각해 봅니다.
+    url: https://pf.kakao.com/_PVHxjn/112808750
+    date: 2026. 3.
+    tags:
+    - 활동지
+  - title: AI 기업은 왜 200만 권의 책을 파쇄했을까
+    desc: AI 학습을 위해 책을 대량으로 파쇄한 일을 통해 저작권과 지식의 가치를 묻습니다.
+    url: https://pf.kakao.com/_PVHxjn/112516848
+    date: 2026. 2.
+    tags:
+    - 활동지
+  - title: 2026년 한국 사회의 트렌드와 윤리적 삶
+    desc: 새해 한국 사회의 흐름을 살피고, 그 속에서 어떤 삶이 윤리적인지 학생과 함께 정리합니다.
+    url: https://pf.kakao.com/_PVHxjn/111986081
+    date: 2026. 1.
+    tags:
+    - 활동지
+  - title: AI 시대, 나의 미래를 위해 문해력을 키우는 법
+    desc: AI가 글을 대신 써 주는 시대에 문해력이 왜 더 중요해지는지, 어떻게 키울지 다룹니다.
+    url: https://pf.kakao.com/_PVHxjn/111979543
+    date: 2025. 12.
+    tags:
+    - 활동지
+  - title: 2025년, 나는 어떤 사람이었나요
+    desc: 한 해를 돌아보며 스스로를 성찰하는 학년 말 수업 활동입니다.
+    url: https://pf.kakao.com/_PVHxjn/111916369
+    date: 2025. 12.
+    tags:
+    - 활동지
+  - title: 2025년 올해의 단어
+    desc: 한 해를 대표하는 단어를 고르고 그 단어에 담긴 사회의 모습과 가치를 읽어 봅니다.
+    url: https://pf.kakao.com/_PVHxjn/111845008
+    date: 2025. 12.
+    tags:
+    - 활동지
+  - title: 소리 지르기 클럽, 행복과 뇌과학
+    desc: 소리 지르기 클럽이라는 현상을 소재로 행복과 감정의 문제를 뇌과학과 함께 살핍니다.
+    url: https://pf.kakao.com/_PVHxjn/110973880
+    date: 2025. 10.
+    tags:
+    - 활동지
+  - title: 뱅크시의 런던 법원 벽화와 표현의 자유
+    desc: 뱅크시가 런던 법원에 남긴 벽화를 두고 예술, 표현의 자유, 법의 관계를 따져 봅니다.
+    url: https://pf.kakao.com/_PVHxjn/110808336
+    date: 2025. 9.
+    tags:
+    - 활동지
+  - title: '지구는 쓰레기장이 아니다: 요나스의 책임의 윤리'
+    desc: 쓰레기 문제를 요나스의 책임 윤리로 읽고, 미래 세대에 대한 책임을 생각해 봅니다.
+    url: https://pf.kakao.com/_PVHxjn/110576460
+    date: 2025. 8.
+    tags:
+    - 활동지
+  - title: 게으른 하루가 필요한 이유, 행복과 뇌과학
+    desc: 쉬는 시간이 왜 필요한지 뇌과학으로 살피고 행복한 삶의 조건을 묻습니다.
+    url: https://pf.kakao.com/_PVHxjn/110438099
+    date: 2025. 8.
+    tags:
+    - 활동지
+  - title: SNS 검열 정책과 표현의 자유
+    desc: SNS 플랫폼의 검열 정책을 두고 표현의 자유와 보호의 경계를 토론합니다.
+    url: https://pf.kakao.com/_PVHxjn/110357273
+    date: 2025. 8.
+    tags:
+    - 활동지
+  - title: 가짜가 진짜를 이기는 시뮬라크르 시대, 디지털 네이티브들과의 성찰 수업
+    desc: 가짜가 진짜보다 힘을 얻는 시대를 디지털 세대와 함께 성찰합니다. 안광복 선생님의 강의 자료가 함께 있습니다.
+    url: https://pf.kakao.com/_PVHxjn/110101313
+    date: 2025. 7.
+    tags:
+    - 강의 자료
+  - title: 'AI가 변화시킨 우리 삶의 모습: AI로 그림 그려 보기, AI와 저작권'
+    desc: 기말 시험 뒤 수업에 쓰기 좋은 활동으로, AI 그림 그리기와 AI 저작권 문제를 다룹니다.
+    url: https://pf.kakao.com/_PVHxjn/110001790
+    date: 2025. 7.
+    tags:
+    - 활동지
+  - title: 모바일 디톡스와 윤리적으로 건강한 삶
+    desc: 스마트폰과 거리를 두는 모바일 디톡스를 윤리적으로 건강한 삶과 연결해 봅니다.
+    url: https://pf.kakao.com/_PVHxjn/109714176
+    date: 2025. 6.
+    tags:
+    - 활동지
+- id: thinkers
+  name: 윤리 사상가, 나는 누구인가요
+  about: 사상가의 삶에서 한 장면을 골라 그 사람이 누구인지 맞혀 보며 사상으로 들어가는 코너입니다.
+  items:
+  - title: 진흙 속을 택한 철학자(장자)
+    desc: 높은 벼슬 대신 자유로운 삶을 고른 장자의 사상을 이야기로 만납니다.
+    url: https://pf.kakao.com/_PVHxjn/114084377
+    date: 2026. 7.
+  - title: 독배를 마신 철학자(소크라테스)
+    desc: 독배 앞에서도 신념을 지킨 소크라테스의 삶과 질문하는 철학을 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/113433175
+    date: 2026. 5.
+  - title: 베일 뒤에서 정의를 설계한 철학자(롤스)
+    desc: 무지의 베일이라는 사고 실험으로 정의의 원칙을 세운 롤스를 만납니다.
+    url: https://pf.kakao.com/_PVHxjn/113098194
+    date: 2026. 4.
+  - title: 말이 세상을 바꿀 수 있다고 믿은 철학자(하버마스)
+    desc: 대화와 합의로 사회를 바꿀 수 있다고 본 하버마스의 의사소통 이론을 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/112740108
+    date: 2026. 3.
+  - title: 별을 사랑하다 인간을 사랑해 버린 사람(칼 세이건)
+    desc: 교과서 속 인물 편으로, 우주를 통해 인간을 바라본 칼 세이건을 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/112669549
+    date: 2026. 3.
+  - title: 아홉 번 하늘이 인정한 사람(이이)
+    desc: 아홉 번 장원에 오른 이이의 삶과 성리학 사상을 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/112564497
+    date: 2026. 3.
+  - title: 잘 사는 삶을 탐구한 철학자(아리스토텔레스)
+    desc: 잘 사는 삶, 곧 행복이 무엇인지 탐구한 아리스토텔레스의 덕 윤리를 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/111521757
+    date: 2025. 12.
+  - title: 자유를 가르친 노예 철학자(에픽테토스)
+    desc: 노예 출신으로 내면의 자유를 가르친 스토아 철학자 에픽테토스를 만납니다.
+    url: https://pf.kakao.com/_PVHxjn/111486232
+    date: 2025. 11.
+  - title: 행복을 계산한 철학자(벤담)
+    desc: 쾌락과 고통을 계산해 옳고 그름을 판단하려 한 벤담의 공리주의를 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/111149381
+    date: 2025. 10.
+  - title: 방탕한 생활에서 벗어나 신에게 귀의한 철학자(아우구스티누스)
+    desc: 방황 끝에 신앙에 이른 아우구스티누스의 삶과 사상을 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/110845324
+    date: 2025. 9.
+  - title: 스스로 외톨이가 된 철학자(스피노자)
+    desc: 공동체에서 파문당하고도 자신의 철학을 지킨 스피노자를 만납니다.
+    url: https://pf.kakao.com/_PVHxjn/110514296
+    date: 2025. 8.
+  - title: 어느 철학자의 18년(정약용)
+    desc: 18년 유배 동안 학문을 완성한 정약용의 삶과 사상을 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/110306590
+    date: 2025. 8.
+  - title: 시골 농부 같은 철학자(하이데거)
+    desc: 시골 오두막에서 사유한 하이데거의 존재 물음을 쉽게 풀어 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/110218298
+    date: 2025. 7.
+  - title: 달걀을 파는 철학자(듀이)
+    desc: 경험과 실천을 중시한 듀이의 실용주의와 교육 철학을 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/109922421
+    date: 2025. 7.
+  - title: 매일 산책하는 철학자(칸트)
+    desc: 규칙적인 산책으로 유명한 칸트의 삶과 의무론 윤리를 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/109800266
+    date: 2025. 6.
+  - title: 3천 명의 제자를 둔 사람(공자)
+    desc: 수많은 제자를 길러 낸 공자의 삶과 인(仁) 사상을 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/109692584
+    date: 2025. 6.
+- id: paintings
+  name: 명화로 보는 윤리 사상
+  about: 지혜인 선생님(현 이화여대, 전 중동고·민족사관고 교사)이 명화 한 점으로 윤리 사상을 풀어내는 코너입니다.
+  items:
+  - title: 노동, 일에 대한 윤리적 성찰
+    desc: 일하는 사람을 그린 명화를 실마리로 노동과 일의 의미를 성찰합니다.
+    url: https://pf.kakao.com/_PVHxjn/113028807
+    date: 2026. 4.
+  - title: 관계와 우정에 대한 윤리적 성찰
+    desc: 명화에 담긴 관계의 장면을 통해 우정과 좋은 관계의 조건을 생각합니다.
+    url: https://pf.kakao.com/_PVHxjn/112402180
+    date: 2026. 2.
+  - title: 자유에 관한 윤리적 성찰
+    desc: 명화로 자유의 여러 얼굴을 살피고 사상가들의 자유론을 비교합니다.
+    url: https://pf.kakao.com/_PVHxjn/112118514
+    date: 2026. 1.
+  - title: 전쟁과 평화에 관한 윤리적 성찰
+    desc: 전쟁을 그린 명화를 통해 전쟁과 평화에 관한 윤리적 물음을 다룹니다.
+    url: https://pf.kakao.com/_PVHxjn/111777177
+    date: 2025. 12.
+  - title: 사랑에 관한 윤리적 성찰
+    desc: 사랑을 그린 명화와 함께 사랑의 의미와 윤리를 성찰합니다.
+    url: https://pf.kakao.com/_PVHxjn/111149439
+    date: 2025. 11.
+  - title: 죽음에 대한 여러 사상가들의 관점과 성찰
+    desc: 죽음을 다룬 명화로 여러 사상가의 죽음관을 비교합니다.
+    url: https://pf.kakao.com/_PVHxjn/111033613
+    date: 2025. 10.
+  - title: 자연을 바라보는 관점과 사상
+    desc: 자연을 그린 명화에서 출발해 자연을 바라보는 여러 사상의 관점을 살핍니다.
+    url: https://pf.kakao.com/_PVHxjn/110452018
+    date: 2025. 8.
+  - title: '칸트의 윤리형이상학 정초: 도덕의 최상 원칙을 찾아서'
+    desc: 명화와 함께 칸트가 『윤리형이상학 정초』에서 찾은 도덕의 최상 원칙을 살핍니다.
+    url: https://pf.kakao.com/_PVHxjn/109766739
+    date: 2025. 6.
+  - title: 아리스토텔레스의 행복한 삶
+    desc: 명화로 아리스토텔레스가 말한 행복한 삶의 의미를 풀어 봅니다.
+    url: https://pf.kakao.com/_PVHxjn/109549970
+    date: 2025. 5.
+  - title: '에피쿠로스의 쾌락: 진정한 행복이란 무엇일까'
+    desc: 명화로 에피쿠로스가 말한 쾌락과 진정한 행복의 의미를 살핍니다.
+    url: https://pf.kakao.com/_PVHxjn/109387578
+    date: 2025. 5.
+  - title: '안티고네: 정의롭지 않다고 생각하는 규칙을 어기는 것은 옳은 일일까'
+    desc: 안티고네 이야기로 부당하다고 여기는 법을 어기는 것이 옳은지 묻습니다.
+    url: https://pf.kakao.com/_PVHxjn/109157217
+    date: 2025. 4.
+- id: special
+  name: 특별 기획
+  about: 하나의 주제를 여러 편에 걸쳐 이어 가는 기획 연재입니다.
+  series:
+  - name: 웹툰으로 보는 인문학과 윤리
+    items:
+    - title: 1-1단원 이이·세이건
+      desc: 「인문학과 윤리」 1-1단원에 나오는 이이와 칼 세이건을 웹툰으로 만납니다.
+      url: https://pf.kakao.com/_PVHxjn/114861169
+      date: 2026. 10.
+  - name: 교과서 한 줄, 원전 한 쪽
+    items:
+    - title: 평화
+      desc: 교과서의 평화 서술 한 줄을 사상가의 원전 한 쪽과 나란히 읽습니다.
+      url: https://pf.kakao.com/_PVHxjn/114777838
+      date: 2026. 10.
+    - title: 자본주의
+      desc: 자본주의에 관한 교과서 서술을 원전과 함께 읽으며 그 뜻을 넓힙니다.
+      url: https://pf.kakao.com/_PVHxjn/114581106
+      date: 2026. 9.
+    - title: 교정적 정의
+      desc: 잘못에 대한 처벌과 보상, 곧 교정적 정의를 원전으로 확인합니다.
+      url: https://pf.kakao.com/_PVHxjn/114513801
+      date: 2026. 9.
+    - title: '사회 정의 2: 공동체주의'
+      desc: 공동체주의의 정의관을 교과서 한 줄과 원전 한 쪽으로 정리합니다.
+      url: https://pf.kakao.com/_PVHxjn/114352555
+      date: 2026. 8.
+    - title: '사회 정의 1: 자유주의'
+      desc: 자유주의의 정의관을 교과서 한 줄과 원전 한 쪽으로 정리합니다.
+      url: https://pf.kakao.com/_PVHxjn/114245478
+      date: 2026. 8.
+    - title: 시민 불복종
+      desc: 시민 불복종에 관한 교과서 서술을 사상가의 원전과 함께 읽습니다.
+      url: https://pf.kakao.com/_PVHxjn/114158951
+      date: 2026. 8.
+  - name: 고전이 건네는 말
+    items:
+    - title: 채점되지 않는 일을 하시는 선생님들께 보내는 편지
+      desc: 채점되지 않는 일을 하는 선생님들께 고전의 문장을 건네는 편지입니다.
+      url: https://pf.kakao.com/_PVHxjn/114671202
+      date: 2026. 9.
+      tags:
+      - 활동지
+  - name: 월드컵으로 윤리 수업하기
+    items:
+    - title: 6. 우리 편과 혐오 사이
+      desc: 응원이 혐오로 바뀌는 순간을 짚고 공동체와 배제의 문제를 다룹니다.
+      url: https://pf.kakao.com/_PVHxjn/113975871
+      date: 2026. 7.
+    - title: 5. 승리만이 전부일까
+      desc: 승리 지상주의를 넘어 스포츠에서 지켜야 할 가치를 생각합니다.
+      url: https://pf.kakao.com/_PVHxjn/113905121
+      date: 2026. 7.
+    - title: 4. 지구가 치르는 비용
+      desc: 대형 스포츠 행사가 환경에 남기는 비용과 책임을 따져 봅니다.
+      url: https://pf.kakao.com/_PVHxjn/113830619
+      date: 2026. 7.
+    - title: 3. 기계가 휘슬을 불 때
+      desc: 판정 기술의 확대를 두고 기계의 판단과 인간의 판단을 비교합니다.
+      url: https://pf.kakao.com/_PVHxjn/113797522
+      date: 2026. 6.
+    - title: 2. 국가대표는 누구인가
+      desc: 국가대표의 자격을 따지며 국가와 소속의 의미를 묻습니다.
+      url: https://pf.kakao.com/_PVHxjn/113752539
+      date: 2026. 6.
+    - title: 1. 왜 월드컵은 세계 최강 48개국만 뽑지 않을까
+      desc: 실력만으로 본선 국가를 뽑지 않는 까닭을 공정과 기회의 문제로 읽습니다.
+      url: https://pf.kakao.com/_PVHxjn/113734137
+      date: 2026. 6.
+- id: class22
+  name: 수업·평가 자료(2022 개정)
+  about: 「인문학과 윤리」, 「윤리문제 탐구」 수업과 평가에 바로 쓰는 자료입니다.
+  items:
+  - title: '한 학기 한 책 읽기 자료집: 독서 활동지(기본편, 심화편)'
+    desc: 고등학교 윤리 교육과정과 연결한 한 학기 한 책 읽기 독서 활동지입니다.
+    url: https://pf.kakao.com/_PVHxjn/114654666
+    date: 2026. 9.
+  - title: 길벗이 윤리 선생님들께 드리는 특별 자료 모음
+    desc: 윤리 선생님께 드리는 수업 자료를 한곳에 모았습니다.
+    url: https://pf.kakao.com/_PVHxjn/114557429
+    date: 2026. 9.
+  - title: '한 학기 한 책 읽기 자료집: 고등학교 윤리 교육과정'
+    desc: 고등학교 윤리 교육과정에 맞춘 한 학기 한 책 읽기 자료집입니다.
+    url: https://pf.kakao.com/_PVHxjn/114424355
+    date: 2026. 9.
+  - title: 인문학과 윤리, 윤리문제 탐구 중단원별 3종 학습지
+    desc: 두 과목의 중단원마다 쓸 수 있는 학습지 세 가지입니다.
+    url: https://pf.kakao.com/_PVHxjn/114243804
+    date: 2026. 8.
+  - title: 인문학과 윤리, 윤리문제 탐구 중단원별 수행평가 자료집
+    desc: 두 과목의 중단원별 수행평가 자료집입니다.
+    url: https://pf.kakao.com/_PVHxjn/114227766
+    date: 2026. 8.
+  - title: 2차 정기 시험 출제를 위한 예비 문항(HWP)
+    desc: 2차 정기 시험 출제에 참고할 두 과목의 예비 문항입니다.
+    url: https://pf.kakao.com/_PVHxjn/113525847
+    date: 2026. 6.
+  - title: 2025-2026 통합사회 기출문제 분석 및 윤리 영역 문제(HWP)
+    desc: 통합사회 기출문제를 분석하고 윤리 영역 문제를 모았습니다.
+    url: https://pf.kakao.com/_PVHxjn/112917440
+    date: 2026. 4.
+  - title: 중간고사 출제를 위한 예비 문항(HWP)
+    desc: 중간고사 출제에 참고할 두 과목의 예비 문항입니다.
+    url: https://pf.kakao.com/_PVHxjn/112880182
+    date: 2026. 3.
+- id: exam
+  name: 수능·모의고사 기출 자료
+  about: 생활과 윤리, 윤리와 사상 기출문제를 한글 파일, 클립아트, 원전 자료집, OX 문제로 정리했습니다.
+  items:
+  - title: 7월 전국연합 기출 한글 파일 및 클립아트
+    desc: 7월 전국연합 생활과 윤리, 윤리와 사상 시험지를 한글 파일과 클립아트로 제공합니다.
+    url: https://pf.kakao.com/_PVHxjn/113945813
+    date: 2026. 7.
+  - title: 6월 평가원 생윤·윤사 기출 한글 파일 및 클립아트
+    desc: 6월 평가원 모의평가 두 과목 시험지를 한글 파일과 클립아트로 제공합니다.
+    url: https://pf.kakao.com/_PVHxjn/113554372
+    date: 2026. 6.
+  - title: 5월 전국연합 생윤·윤사 기출 한글 파일 및 클립아트
+    desc: 5월 전국연합 두 과목 시험지를 한글 파일과 클립아트로 제공합니다.
+    url: https://pf.kakao.com/_PVHxjn/113312552
+    date: 2026. 5.
+  - title: 3월 전국연합 생윤·윤사 기출 한글 파일 및 클립아트
+    desc: 3월 전국연합 두 과목 시험지를 한글 파일과 클립아트로 제공합니다.
+    url: https://pf.kakao.com/_PVHxjn/112831225
+    date: 2026. 3.
+  - title: 통합사회 윤리 주제로 분류한 생윤·윤사 기출 원문 자료집
+    desc: 생활과 윤리, 윤리와 사상 기출 원문을 통합사회 윤리 주제에 맞춰 다시 분류했습니다.
+    url: https://pf.kakao.com/_PVHxjn/112250543
+    date: 2026. 1.
+  - title: '[2026학년도 수능 반영] 2022-2025년 생윤·윤사 기출 선지 OX 문제 및 원전 자료'
+    desc: 2026학년도 수능까지 반영한 기출 선지 OX 문제(시험별, 주제별)와 원전 자료입니다.
+    url: https://pf.kakao.com/_PVHxjn/112183832
+    date: 2026. 1.
+  - title: 2026학년도 수능 생활과 윤리, 윤리와 사상 시험지 한글 파일, 클립아트
+    desc: 2026학년도 수능 두 과목 시험지를 한글 파일과 클립아트로 제공합니다.
+    url: https://pf.kakao.com/_PVHxjn/111395455
+    date: 2025. 11.
+  - title: 2022-2025년 기출 선지 OX 생활과 윤리 2099제, 윤리와 사상 2495제(주제별 분류)
+    desc: 2025년 시행 기출까지 반영한 OX 문제를 주제별로 나눴습니다.
+    url: https://pf.kakao.com/_PVHxjn/111149403
+    date: 2025. 10.
+  - title: 2022-2025년 기출 선지 OX 생활과 윤리 2099제, 윤리와 사상 2495제(업데이트)
+    desc: 2025년 시행 기출까지 반영해 OX 문제를 업데이트했습니다.
+    url: https://pf.kakao.com/_PVHxjn/111149351
+    date: 2025. 10.
+  - title: 2025학년도 10월 전국연합 생활과 윤리, 윤리와 사상 시험지 한글 파일, 클립아트
+    desc: 10월 전국연합 두 과목 시험지를 한글 파일과 클립아트로 제공합니다.
+    url: https://pf.kakao.com/_PVHxjn/111077548
+    date: 2025. 10.
+  - title: '[더 편리해진 클립아트] 사상가 삽화, 벤다이어그램, 순서도 등 종류별 JPG·HWP'
+    desc: 기출에 자주 나오는 사상가 삽화와 도식을 종류별로 나눠 쓰기 쉽게 정리했습니다.
+    url: https://pf.kakao.com/_PVHxjn/110740543
+    date: 2025. 9.
+  - title: 2026학년도 9월 평가원 생활과 윤리, 윤리와 사상 시험지 한글 파일, 클립아트
+    desc: 9월 평가원 모의평가 두 과목 시험지를 한글 파일과 클립아트로 제공합니다.
+    url: https://pf.kakao.com/_PVHxjn/110681858
+    date: 2025. 9.
+  - title: 2026학년도 7월 전국연합 윤리 기출문제 한글 파일, 클립아트, 기출 원전 자료집
+    desc: 7월 전국연합 시험지와 함께 기출 원전 자료집을 업데이트했습니다.
+    url: https://pf.kakao.com/_PVHxjn/110029116
+    date: 2025. 7.
+  - title: 2025년 6월 모평(생윤·윤사) 한글 파일과 클립아트, 기출 원전 자료집
+    desc: 6월 모의평가 시험지와 6월까지 반영한 기출 원전 자료집, 클립아트입니다.
+    url: https://pf.kakao.com/_PVHxjn/109637714
+    date: 2025. 6.
+  - title: 2024-2025 고등 윤리 기출 클립아트 이미지 266개, 클립아트 한글 112개
+    desc: 2025년 3, 5월 전국연합까지 반영한 기출 클립아트 묶음입니다.
+    url: https://pf.kakao.com/_PVHxjn/109503211
+    date: 2025. 5.
+  - title: 2022-2025 생윤·윤사 기출 원전 자료집(2025년 3, 5월 전국연합 반영)
+    desc: 2025년 3, 5월 전국연합까지 반영한 기출 원전 자료집입니다.
+    url: https://pf.kakao.com/_PVHxjn/109463593
+    date: 2025. 5.
+  - title: 2023-2025년 기출 선지 OX 생활과 윤리 1245제, 윤리와 사상 1464제
+    desc: 2025년 5월 전국연합까지 반영한 기출 선지 OX 문제입니다.
+    url: https://pf.kakao.com/_PVHxjn/109414616
+    date: 2025. 5.
+  - title: 2025년 시행 3, 5월 전국연합 생활과 윤리, 윤리와 사상 문제지 한글 파일과 클립아트
+    desc: 3, 5월 전국연합 두 과목 시험지를 한글 파일과 클립아트로 제공합니다.
+    url: https://pf.kakao.com/_PVHxjn/109324080
+    date: 2025. 5.
+  - title: 2024-2025년 윤리와 사상 기출 선지 활용 OX 730제
+    desc: 수능, 평가원, 전국연합 윤리와 사상 기출 선지로 만든 OX 문제입니다.
+    url: https://pf.kakao.com/_PVHxjn/109272839
+    date: 2025. 5.
+  - title: 2024-2025년 생활과 윤리 기출 선지 활용 OX 611제
+    desc: 수능, 평가원, 전국연합 생활과 윤리 기출 선지로 만든 OX 문제입니다.
+    url: https://pf.kakao.com/_PVHxjn/109178533
+    date: 2025. 4.
+  - title: 2022-2025 윤리와 사상 기출 원전 자료집(103쪽)
+    desc: 수능, 평가원, 교육청 윤리와 사상 기출에 나온 원전을 모았습니다.
+    url: https://pf.kakao.com/_PVHxjn/109107225
+    date: 2025. 4.
+  - title: 2022-2025 생활과 윤리 기출 원전 자료집(108쪽)
+    desc: 수능, 평가원, 교육청 생활과 윤리 기출에 나온 원전을 모았습니다.
+    url: https://pf.kakao.com/_PVHxjn/109030669
+    date: 2025. 4.
+  - title: 2024-2025 윤리 기출 클립아트
+    desc: 수능, 평가원, 교육청 윤리 기출의 그림 자료를 클립아트로 제공합니다.
+    url: https://pf.kakao.com/_PVHxjn/109005267
+    date: 2025. 4.
+- id: classics
+  name: 고전과 윤리 수업 자료(2015 개정)
+  about: 2015 개정 「고전과 윤리」 수업에 쓰는 원전 자료와 활동지입니다.
+  items:
+  - title: 「신약」, 「꾸란」 수업 활동지
+    desc: 「신약」과 「꾸란」을 읽고 생각을 나누는 활동지입니다.
+    url: https://pf.kakao.com/_PVHxjn/110877193
+    date: 2025. 9.
+  - title: 「노자」, 「장자」 수업 활동지
+    desc: 「노자」와 「장자」의 핵심 구절로 수업하는 활동지입니다.
+    url: https://pf.kakao.com/_PVHxjn/110733277
+    date: 2025. 9.
+  - title: 「공리주의」, 「동물해방」 수업 활동지
+    desc: 밀의 「공리주의」와 싱어의 「동물해방」을 함께 읽는 활동지입니다.
+    url: https://pf.kakao.com/_PVHxjn/110653873
+    date: 2025. 9.
+  - title: 「정의론」 수업 활동지
+    desc: 롤스의 「정의론」을 읽고 토론하는 활동지입니다.
+    url: https://pf.kakao.com/_PVHxjn/109950007
+    date: 2025. 7.
+  - title: 「목민심서」 수업 활동지
+    desc: 정약용의 「목민심서」로 공직자의 윤리를 생각하는 활동지입니다.
+    url: https://pf.kakao.com/_PVHxjn/109839302
+    date: 2025. 6.
+  - title: '세부특기사항 작성용 독서 연계 활동지: 철학하는 10대가 세상을 바꾼다(롤스의 「정의론」) 외'
+    desc: 독서 활동을 세부특기사항 기록으로 잇는 활동지입니다.
+    url: https://pf.kakao.com/_PVHxjn/109621264
+    date: 2025. 6.
+  - title: 「금강경」, 「국가」 수업 활동지
+    desc: 「금강경」과 플라톤의 「국가」로 수업하는 활동지입니다.
+    url: https://pf.kakao.com/_PVHxjn/109242464
+    date: 2025. 5.
+  - title: 「니코마코스 윤리학」, 「논어」 수업 활동지
+    desc: 「니코마코스 윤리학」과 「논어」로 수업하는 활동지입니다.
+    url: https://pf.kakao.com/_PVHxjn/108951191
+    date: 2025. 4.
+  - title: 고전과 윤리 원전 자료집, 수행 평가
+    desc: 「고전과 윤리」 원전 자료집과 수행 평가 자료입니다.
+    url: https://pf.kakao.com/_PVHxjn/108926717
+    date: 2025. 4.
+- id: textbook
+  name: 교과서·교육과정 안내
+  about: 길벗 「인문학과 윤리」, 「윤리문제 탐구」 교과서와 2022 개정 교육과정 안내입니다.
+  items:
+  - title: 윤리 선택 교과 교육과정 박람회 자료
+    desc: 교육과정 박람회에서 윤리 선택 과목을 안내할 때 쓰는 자료입니다.
+    url: https://pf.kakao.com/_PVHxjn/113213886
+    date: 2026. 5.
+  - title: 인문학과 윤리, 원문 듣기 서비스 안내
+    desc: 「인문학과 윤리」 교과서의 원문 듣기 서비스를 안내합니다.
+    url: https://pf.kakao.com/_PVHxjn/112629002
+    date: 2026. 3.
+  - title: 신학기 길벗 윤리 교수학습자료 안내
+    desc: 새 학기에 쓸 수 있는 길벗 윤리 교수학습 자료를 정리했습니다.
+    url: https://pf.kakao.com/_PVHxjn/112558237
+    date: 2026. 2.
+  - title: 길벗이 윤리 선생님들을 위해 준비하는 교수학습 자료
+    desc: 길벗이 준비하고 있는 윤리 교수학습 자료를 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/110833901
+    date: 2025. 9.
+  - title: 윤리문제 탐구, 인문학과 윤리 교과서 선정 추천 및 심의 의견서 외
+    desc: 교과서 선정에 필요한 추천서와 심의 의견서 양식입니다.
+    url: https://pf.kakao.com/_PVHxjn/110802264
+    date: 2025. 9.
+  - title: 가치 교육으로서의 교과목, 윤리문제 탐구
+    desc: 「윤리문제 탐구」를 가치 교육의 관점에서 소개합니다. 김선욱 숭실대 교수의 발표 자료가 함께 있습니다.
+    url: https://pf.kakao.com/_PVHxjn/110762606
+    date: 2025. 9.
+    tags:
+    - 발표 자료
+  - title: 윤리문제 탐구, 인문학과 윤리 홍보관 소개
+    desc: 두 교과서를 한눈에 볼 수 있는 홍보관을 소개합니다.
+    url: https://pf.kakao.com/_PVHxjn/110601228
+    date: 2025. 9.
+  - title: 인공지능 시대, 인문학에 주목하는 이유
+    desc: 인공지능 시대에 인문학이 왜 다시 중요해지는지 카드 뉴스로 정리했습니다.
+    url: https://pf.kakao.com/_PVHxjn/110502765
+    date: 2025. 8.
+  - title: '[교과서 공부하기] 인공지능의 발전 단계와 인공지능 윤리'
+    desc: 「윤리문제 탐구」 교과서로 인공지능의 발전 단계와 윤리 문제를 공부합니다.
+    url: https://pf.kakao.com/_PVHxjn/110389800
+    date: 2025. 8.
+  - title: 길벗 인문학과 윤리, 윤리문제 탐구 교과서를 소개합니다
+    desc: 두 교과서를 소개하고, 교육박람회 준비에 쓸 교과 추천 PPT를 함께 드립니다.
+    url: https://pf.kakao.com/_PVHxjn/110076077
+    date: 2025. 7.
+    tags:
+    - PPT
+  - title: 윤리문제 탐구, 인문학과 윤리, 이런 학생에게 추천해요
+    desc: 과목 선택을 앞둔 학생에게 두 과목을 안내하는 PPT입니다.
+    url: https://pf.kakao.com/_PVHxjn/109577100
+    date: 2025. 6.
+    tags:
+    - PPT
+  - title: 2026학년도 서울대 입학전형 안내, 2026학년도 수능 학습 방법
+    desc: 평가원이 제공한 입시와 수능 학습 안내를 정리했습니다.
+    url: https://pf.kakao.com/_PVHxjn/109052859
+    date: 2025. 4.
+  - title: 2022 개정 도덕·윤리 교육과정 자료, 고교학점제 자료
+    desc: 2022 개정 도덕·윤리 교육과정과 고교학점제 자료를 내려받을 수 있습니다.
+    url: https://pf.kakao.com/_PVHxjn/108870649
+    date: 2025. 3.
+- id: lectures
+  name: 길벗 클래스 강연 자료
+  about: 길벗 클래스 온라인 강연의 발표 자료와 녹화본입니다.
+  items:
+  - title: 인문학과 윤리의 종교 고전들, 어떻게 읽을 것인가
+    desc: 「인문학과 윤리」에 나오는 종교 고전 읽기 강연의 자료와 녹화본입니다.
+    url: https://pf.kakao.com/_PVHxjn/114712743
+    date: 2026. 9.
+    tags:
+    - 강연 영상
+  - title: 노자와 장자, 어떻게 읽을 것인가?
+    desc: 김시천 숭실대 교수의 노자·장자 읽기 강연 녹화본입니다.
+    url: https://pf.kakao.com/_PVHxjn/114243966
+    date: 2026. 8.
+    tags:
+    - 강연 영상
+  - title: 윤리문제 탐구, 이렇게 수업하면 어떨까요?
+    desc: 지혜인 선생님의 「윤리문제 탐구」 수업 강연 자료와 영상입니다.
+    url: https://pf.kakao.com/_PVHxjn/112327245
+    date: 2026. 2.
+    tags:
+    - 강연 영상
+  - title: 인문학과 윤리, 이렇게 가르치면 어떨까요?
+    desc: 안광복 선생님의 「인문학과 윤리」 수업 강연 PPT와 영상입니다.
+    url: https://pf.kakao.com/_PVHxjn/111325936
+    date: 2025. 11.
+    tags:
+    - 강연 영상
+  - title: 행복과 윤리적 삶
+    desc: 김선욱 교수의 행복과 윤리적 삶 강연 PPT와 영상입니다.
+    url: https://pf.kakao.com/_PVHxjn/111103496
+    date: 2025. 10.
+    tags:
+    - 강연 영상
+  - title: 동물권과 동물 윤리
+    desc: 최훈 교수의 동물권과 동물 윤리 강연 PPT와 영상입니다.
+    url: https://pf.kakao.com/_PVHxjn/110941102
+    date: 2025. 9.
+    tags:
+    - 강연 영상
+  - title: '[인공지능 강연 복습하기] 인공지능을 어떻게 활용하고 창의성을 어떻게 기를까'
+    desc: 인공지능 강연의 핵심을 다시 정리했습니다.
+    url: https://pf.kakao.com/_PVHxjn/110275964
+    date: 2025. 7.
+  - title: 인문 고전 읽기의 기술
+    desc: 인문 고전을 읽는 방법을 카드 뉴스로 정리했습니다.
+    url: https://pf.kakao.com/_PVHxjn/109866224
+    date: 2025. 6.

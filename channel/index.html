@@ -1,0 +1,32 @@
+---
+layout: default
+title: 길벗 채널 모아 보기
+lead: 도덕·윤리 선생님을 위한 길벗 도덕·윤리 카카오 채널의 콘텐츠를 코너별로 모았습니다.
+---
+{% assign total = 0 %}{% for g in site.data.channel %}{% assign total = total | plus: g.items.size %}{% for s in g.series %}{% assign total = total | plus: s.items.size %}{% endfor %}{% endfor %}
+<section class="issue-hero">
+  <p class="issue-meta mono"><span>길벗 도덕·윤리 카카오 채널</span><span>{{ total }}편</span></p>
+  <h1 class="issue-title">길벗 채널 모아 보기</h1>
+  <p class="issue-lead">{{ page.lead }} 제목을 누르면 카카오 채널 글이 새 창으로 열립니다. 코너마다 최근 글이 먼저 나옵니다.</p>
+  <p><a class="openchat" href="{{ site.kakao_channel }}" target="_blank" rel="noopener">채널 친구 추가하기</a></p>
+</section>
+
+<nav class="ch-nav" aria-label="코너 바로 가기">
+  {% for g in site.data.channel %}<a href="#{{ g.id }}">{{ g.name }}</a>{% endfor %}
+</nav>
+
+{% for g in site.data.channel %}
+<section class="ch-group" id="{{ g.id }}">
+  <h2 class="section-title">{{ g.name }}</h2>
+  <p class="ch-about">{{ g.about }}</p>
+  {% if g.series %}
+    {% for s in g.series %}
+    <h3 class="ch-series">'{{ s.name }}'</h3>
+    {% include ch-list.html items=s.items shown=6 %}
+    {% endfor %}
+  {% else %}
+    {% include ch-list.html items=g.items %}
+  {% endif %}
+</section>
+{% endfor %}
+<p class="ch-note">이 페이지는 채널 글의 제목과 링크를 모은 목록입니다. 본문은 길벗 도덕·윤리 카카오 채널에서 볼 수 있고, 한 줄 소개는 운영자가 새로 썼습니다.</p>

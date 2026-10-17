@@ -300,3 +300,27 @@ html { scroll-behavior: smooth; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .underline p { background-image: linear-gradient(transparent 62%, rgba(242,223,116,0.28) 62%); } }
 :root[data-theme="dark"] .underline p { background-image: linear-gradient(transparent 62%, rgba(242,223,116,0.28) 62%); }
 @media print { .underline { break-inside: avoid; } }
+
+/* 길벗 채널 모아 보기 */
+.ch-nav { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0 0.5rem; }
+.ch-nav a { font-size: var(--step--1); text-decoration: none; color: var(--accent); border: 1px solid var(--rule); background: var(--surface); border-radius: 999px; padding: 0.3rem 0.8rem; }
+.ch-nav a:hover { border-color: var(--accent); background: var(--accent-soft); }
+.ch-group { display: flex; flex-direction: column; gap: 0.6rem; scroll-margin-top: 1rem; }
+.ch-about { margin: 0; color: var(--muted); font-size: 0.9375rem; text-align: left; }
+.ch-series { margin: 0.9rem 0 0; font-family: var(--font-display); font-size: var(--step-1); }
+.ch-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.ch-link { display: flex; flex-direction: column; gap: 0.2rem; padding: 0.75rem 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
+.ch-link:hover .ch-title { color: var(--accent); }
+.ch-title { font-family: var(--font-display); font-size: var(--step-1); line-height: 1.45; }
+.ch-title::after { content: " ↗"; font-family: var(--font-body); font-size: 0.8em; color: var(--muted); }
+.ch-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; color: var(--accent); }
+.ch-tag { font-family: var(--font-body); font-size: 0.75rem; color: var(--muted); border: 1px solid var(--rule); border-radius: 999px; padding: 0 0.5rem; }
+.ch-desc { color: var(--muted); font-size: 0.9375rem; line-height: 1.65; text-align: left; }
+.ch-more summary { cursor: pointer; list-style: none; padding: 0.7rem 0; color: var(--accent); font-weight: 600; font-size: var(--step--1); }
+.ch-more summary::-webkit-details-marker { display: none; }
+.ch-more summary::before { content: "+ "; }
+.ch-more[open] summary::before { content: "− "; }
+.ch-more .sum-close { display: none; }
+.ch-more[open] .sum-open { display: none; }
+.ch-more[open] .sum-close { display: inline; }
+.ch-note { color: var(--muted); font-size: var(--step--1); border-top: 1px solid var(--rule); padding-top: 1rem; margin: 0; text-align: left; }
