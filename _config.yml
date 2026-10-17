@@ -4,6 +4,7 @@ tagline: 수업에 바로 쓰는 시사 윤리
 author: 박재형
 author_role: 윤리 교과서·청소년 인문서 편집자
 email: drumset@nate.com
+kakao_js_key: 0a95acfd573ca6aea3e90bbaba19a78f   # 카카오 개발자 앱 「윤리로 읽는 뉴스」(ID 1612012) JavaScript 키 — 공개용 키
 kakao_channel: https://pf.kakao.com/_PVHxjn
 openchat: https://open.kakao.com/o/gpEWbKSi   # 윤리로 읽는 뉴스 오픈채팅방(단체)
 likes_api: https://script.google.com/macros/s/AKfycbwTojtcr0qFjuk_4_NQOYjYAXSPMz8lo90nyYHcAkapkCEqkj1EvF9LkRhtX6BkCMBR/exec   # 좋아요 카운터(구글 Apps Script 웹 앱)

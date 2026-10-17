@@ -24,10 +24,28 @@
   document.addEventListener('click',close);
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
   document.querySelectorAll('.js-copy').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-url'));close();});});
-  document.querySelectorAll('.js-kakao').forEach(function(b){b.addEventListener('click',function(){
-    var d={title:b.getAttribute('data-title')||document.title,url:b.getAttribute('data-url')}; close();
+  var KKEY={{ site.kakao_js_key | jsonify }};
+  function kakaoReady(){return window.Kakao&&Kakao.isInitialized&&Kakao.isInitialized();}
+  if(KKEY&&document.querySelector('.js-kakao')){
+    var sc=document.createElement('script');
+    sc.src='https://t1.kakaocdn.net/kakao_js_sdk/2.8.2/kakao.min.js';
+    sc.integrity='sha384-zt/G7/KfaRQ9dT/QIkS0ujMtzouJqzuSJcXVQu50x0rl/+mD1dc70AeOejVbMD9E';
+    sc.crossOrigin='anonymous';
+    sc.onload=function(){try{if(!Kakao.isInitialized())Kakao.init(KKEY);}catch(e){}};
+    document.head.appendChild(sc);
+  }
+  function fallbackShare(d){
     if(navigator.share){navigator.share(d).catch(function(){});}
     else{copy(d.url,'링크를 복사했습니다. 카카오톡 대화창에 붙여 넣어 주세요.');}
+  }
+  document.querySelectorAll('.js-kakao').forEach(function(b){b.addEventListener('click',function(){
+    var d={title:b.getAttribute('data-title')||document.title,url:b.getAttribute('data-url')}; close();
+    if(!kakaoReady()){fallbackShare(d);return;}
+    try{Kakao.Share.sendScrap({requestUrl:d.url});}
+    catch(e1){
+      try{Kakao.Share.sendDefault({objectType:'feed',content:{title:d.title,description:{{ site.title | jsonify }}+' · '+{{ site.tagline | jsonify }},imageUrl:b.getAttribute('data-image'),link:{mobileWebUrl:d.url,webUrl:d.url}},buttons:[{title:'글 읽기',link:{mobileWebUrl:d.url,webUrl:d.url}}]});}
+      catch(e2){fallbackShare(d);}
+    }
   });});
 
   /* 찜하기 (이 브라우저에만 저장) */
