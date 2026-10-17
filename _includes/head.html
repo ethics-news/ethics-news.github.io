@@ -5,11 +5,11 @@
 <meta name="description" content="{{ page.lead | default: site.description | strip_html | truncate: 150 }}">
 <meta property="og:title" content="{{ page.title | default: site.title }}">
 <meta property="og:description" content="{{ page.lead | default: site.description | strip_html | truncate: 150 }}">
-<meta property="og:type" content="{% if page.layout == 'issue' or page.layout == 'item' %}article{% else %}website{% endif %}">
+<meta property="og:type" content="{% if page.layout == 'issue' or page.layout == 'item' or page.layout == 'read' %}article{% else %}website{% endif %}">
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:locale" content="ko_KR">
 {% assign og_img = "/assets/og/site.jpg" %}
-{% if page.og_image %}{% assign og_img = page.og_image %}{% elsif page.layout == "issue" %}{% assign og_img = "/assets/og/" | append: page.issue_id | append: ".jpg" %}{% elsif page.layout == "item" %}{% assign og_img = "/assets/og/" | append: page.issue | append: ".jpg" %}{% elsif page.url == "/about/" %}{% assign og_img = "/assets/og/about.jpg" %}{% endif %}
+{% if page.og_image %}{% assign og_img = page.og_image %}{% elsif page.layout == "issue" %}{% assign og_img = "/assets/og/" | append: page.issue_id | append: ".jpg" %}{% elsif page.layout == "item" %}{% assign og_img = "/assets/og/" | append: page.issue | append: ".jpg" %}{% elsif page.url == "/about/" %}{% assign og_img = "/assets/og/about.jpg" %}{% elsif page.url == "/reading/" or page.layout == "read" %}{% assign og_img = "/assets/og/reading.jpg" %}{% endif %}
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:image" content="{{ og_img | absolute_url }}">
 <meta property="og:image:width" content="1200">
