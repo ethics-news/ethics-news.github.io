@@ -2,14 +2,74 @@
 <script>
 (function(){
   var t=document.getElementById('toast');
-  function toast(m){t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on');},2200);}
-  document.querySelectorAll('.js-share').forEach(function(b){b.addEventListener('click',function(){
-    var d={title:b.getAttribute('data-title')||document.title,url:b.getAttribute('data-url')||location.href.split('#')[0]};
-    if(navigator.share){navigator.share(d).catch(function(){});return;}
-    if(navigator.clipboard){navigator.clipboard.writeText(d.url).then(function(){toast('글 주소를 복사했습니다.');},function(){toast(d.url);});}
-    else{toast(d.url);}
+  function toast(m){if(!t)return;t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on');},2600);}
+  function copy(url,msg){
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(url).then(function(){toast(msg||'링크를 복사했습니다.');},function(){toast(url);});}
+    else{var a=document.createElement('textarea');a.value=url;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast(msg||'링크를 복사했습니다.');}catch(e){toast(url);}a.remove();}
+  }
+
+  /* 공유 메뉴 */
+  var openMenu=null;
+  function close(){if(!openMenu)return;openMenu.menu.hidden=true;openMenu.btn.setAttribute('aria-expanded','false');openMenu=null;}
+  document.querySelectorAll('.js-share').forEach(function(w){
+    var btn=w.querySelector('.share-toggle'), menu=w.querySelector('.share-menu');
+    btn.addEventListener('click',function(e){
+      e.stopPropagation(); var was=openMenu&&openMenu.menu===menu; close(); if(was) return;
+      menu.hidden=false; btn.setAttribute('aria-expanded','true'); openMenu={btn:btn,menu:menu};
+      menu.style.left='';menu.style.right='';
+      var r=menu.getBoundingClientRect(); if(r.right>window.innerWidth-8){menu.style.left='auto';menu.style.right='0';}
+    });
+    menu.addEventListener('click',function(e){e.stopPropagation(); if(e.target.closest('a')) close();});
+  });
+  document.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  document.querySelectorAll('.js-copy').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-url'));close();});});
+  document.querySelectorAll('.js-kakao').forEach(function(b){b.addEventListener('click',function(){
+    var d={title:b.getAttribute('data-title')||document.title,url:b.getAttribute('data-url')}; close();
+    if(navigator.share){navigator.share(d).catch(function(){});}
+    else{copy(d.url,'링크를 복사했습니다. 카카오톡 대화창에 붙여 넣어 주세요.');}
   });});
 
+  /* 찜하기 (이 브라우저에만 저장) */
+  var KEY='saved-posts';
+  function load(){try{return JSON.parse(localStorage.getItem(KEY))||[];}catch(e){return [];}}
+  function store(a){try{localStorage.setItem(KEY,JSON.stringify(a));return true;}catch(e){return false;}}
+  function has(a,id){for(var i=0;i<a.length;i++){if(a[i].id===id)return i;}return -1;}
+  function paintSaves(){
+    var a=load();
+    document.querySelectorAll('.js-save').forEach(function(b){
+      var on=has(a,b.getAttribute('data-id'))>=0;
+      b.classList.toggle('on',on); b.setAttribute('aria-pressed',on?'true':'false');
+      b.querySelector('.save-ico').textContent=on?'★':'☆';
+      b.querySelector('.save-txt').textContent=on?'찜함':'찜하기';
+    });
+    document.querySelectorAll('.js-saved-count').forEach(function(c){c.textContent=a.length?' '+a.length:'';});
+  }
+  document.querySelectorAll('.js-save').forEach(function(b){b.addEventListener('click',function(){
+    var a=load(), id=b.getAttribute('data-id'), i=has(a,id);
+    if(i>=0){a.splice(i,1); if(store(a)) toast('찜한 글에서 뺐습니다.');}
+    else{a.unshift({id:id,url:b.getAttribute('data-url'),title:b.getAttribute('data-title'),at:Date.now()});
+      if(store(a)) toast('찜했습니다. 위쪽 메뉴 「찜한 글」에서 모아 볼 수 있습니다.'); else toast('이 브라우저에서는 찜한 글을 저장할 수 없습니다.');}
+    paintSaves(); renderSaved();
+  });});
+  function renderSaved(){
+    var list=document.querySelector('.js-saved-list'); if(!list) return;
+    var a=load(), empty=document.querySelector('.js-saved-empty'), tot=document.querySelector('.js-saved-total');
+    list.innerHTML=''; if(tot) tot.textContent=a.length+'편'; if(empty) empty.hidden=a.length>0;
+    a.forEach(function(p){
+      var li=document.createElement('li'), link=document.createElement('a'), d=new Date(p.at);
+      link.href=p.url; link.className='saved-link';
+      var m=document.createElement('span'); m.className='mono'; m.textContent=d.getFullYear()+'. '+(d.getMonth()+1)+'. '+d.getDate()+'. 찜';
+      var ti=document.createElement('span'); ti.textContent=p.title;
+      link.appendChild(m); link.appendChild(ti);
+      var rm=document.createElement('button'); rm.type='button'; rm.className='saved-remove'; rm.textContent='빼기'; rm.setAttribute('aria-label',p.title+' 찜 빼기');
+      rm.addEventListener('click',function(){var b=load(),i=has(b,p.id); if(i>=0){b.splice(i,1);store(b);} paintSaves(); renderSaved(); toast('찜한 글에서 뺐습니다.');});
+      li.appendChild(link); li.appendChild(rm); list.appendChild(li);
+    });
+  }
+  paintSaves(); renderSaved();
+
+  /* 좋아요 */
   var api={{ site.likes_api | jsonify }}; if(!api) return;
   var groups={};
   document.querySelectorAll('.js-like').forEach(function(b){

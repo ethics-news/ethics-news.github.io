@@ -1,1 +1,10 @@
-<button type="button" class="btn-print js-share" data-url="{{ include.url | absolute_url }}" data-title="{{ include.title | escape }}">링크 공유</button>
+{% assign s_url = include.url | absolute_url %}{% assign s_url_q = s_url | url_encode %}{% assign s_title_q = include.title | url_encode | replace: "+", "%20" %}<span class="share js-share">
+<button type="button" class="btn-print share-toggle" aria-haspopup="true" aria-expanded="false">공유하기</button>
+<span class="share-menu" role="menu" hidden>
+<button type="button" class="share-item js-kakao" role="menuitem" data-url="{{ s_url }}" data-title="{{ include.title | escape }}">카카오톡</button>
+<a class="share-item" role="menuitem" href="https://www.facebook.com/sharer/sharer.php?u={{ s_url_q }}" target="_blank" rel="noopener">Facebook</a>
+<a class="share-item" role="menuitem" href="https://twitter.com/intent/tweet?url={{ s_url_q }}&amp;text={{ s_title_q }}" target="_blank" rel="noopener">X</a>
+<a class="share-item" role="menuitem" href="https://www.threads.net/intent/post?text={{ s_title_q }}%20{{ s_url_q }}" target="_blank" rel="noopener">Threads</a>
+<button type="button" class="share-item share-copy js-copy" role="menuitem" data-url="{{ s_url }}" aria-label="링크 복사" title="링크 복사"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg></button>
+</span>
+</span>

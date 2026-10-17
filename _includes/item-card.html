@@ -35,8 +35,8 @@
     <div class="dl-row">{% for d in it.downloads %}<a class="dl" href="{{ d.file | relative_url }}" download>{{ d.name }}</a>{% endfor %}</div>
   </div>
   {% endif %}
-  {% if include.full %}<div class="talk no-print"><p>이 글에 대한 의견이나 수업에 써 본 후기를 들려주세요.</p><span class="chat-btns">{% include like-btn.html id=it.url %}{% include share-btn.html url=it.url title=it.title %}<a class="openchat" href="{{ site.openchat }}" target="_blank" rel="noopener">오픈채팅방에서 함께 이야기하기</a>{% if site.feedback_form %}<a class="openchat form" href="{{ site.feedback_form }}" target="_blank" rel="noopener">운영자에게 의견 보내기</a>{% endif %}</span></div>{% endif %}
-  {% unless include.full %}<div class="card-actions no-print">{% include like-btn.html id=it.url %}{% include share-btn.html url=it.url title=it.title %}</div>{% endunless %}
+  {% if include.full %}<div class="talk no-print"><p>이 글에 대한 의견이나 수업에 써 본 후기를 들려주세요.</p><span class="chat-btns">{% include like-btn.html id=it.url %}{% include save-btn.html url=it.url title=it.title %}{% include share-btn.html url=it.url title=it.title %}<a class="openchat" href="{{ site.openchat }}" target="_blank" rel="noopener">오픈채팅방에서 함께 이야기하기</a>{% if site.feedback_form %}<a class="openchat form" href="{{ site.feedback_form }}" target="_blank" rel="noopener">운영자에게 의견 보내기</a>{% endif %}</span></div>{% endif %}
+  {% unless include.full %}<div class="card-actions no-print">{% include like-btn.html id=it.url %}{% include save-btn.html url=it.url title=it.title %}{% include share-btn.html url=it.url title=it.title %}</div>{% endunless %}
   <footer class="item-links">
     {% unless include.full %}<a class="link-detail" href="{{ it.url | relative_url }}">이 글만 보기</a>{% endunless %}
     {% for s in it.sources %}<a class="link-src" href="{{ s.url }}" target="_blank" rel="noopener">{{ s.name }} ↗</a>{% endfor %}
