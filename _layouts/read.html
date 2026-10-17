@@ -1,0 +1,53 @@
+---
+layout: default
+---
+<div class="item-tools no-print">
+  <p class="crumb mono"><a href="{{ '/reading/' | relative_url }}">← 윤리로 읽는 책</a> · {{ page.date | date: "%Y. %-m. %-d." }}</p>
+  <span class="tool-btns">{% include like-btn.html %}<button type="button" class="btn-print js-share">링크 공유</button><button type="button" class="btn-print" onclick="window.print()">인쇄 · PDF로 저장</button></span>
+</div>
+<p class="print-only print-head">{{ site.title }} · 윤리로 읽는 책 · {{ page.date | date: "%Y. %-m. %-d." }}</p>
+<article class="item read">
+  <header class="item-head">
+    <p class="item-kicker">윤리로 읽는 책{% if page.kicker %} · {{ page.kicker }}{% endif %}</p>
+    <h1 class="item-title">{{ page.title }}</h1>
+  </header>
+
+  <section class="book read-book">
+    {% if page.cover %}<span class="book-cover">{% if page.buy %}<a href="{{ page.buy }}" target="_blank" rel="noopener">{% endif %}<img src="{{ page.cover | relative_url }}" alt="{{ page.book }} 표지" loading="lazy">{% if page.buy %}</a>{% endif %}</span>{% endif %}
+    <div class="book-body">
+      <p class="book-kind">이번에 읽은 책</p>
+      <h2 class="book-title">{{ page.book }}</h2>
+      <p class="book-authors">{{ page.writer }}{% if page.translator %} 지음 · {{ page.translator }} 옮김{% else %} 지음{% endif %}{% if page.publisher %} · {{ page.publisher }}{% endif %}</p>
+      {% if page.buy %}<p class="book-links"><a href="{{ page.buy }}" target="_blank" rel="noopener">책 정보 보기 ↗</a></p>{% endif %}
+    </div>
+  </section>
+
+  {% if page.underlines %}
+  <section class="underlines" aria-label="밑줄 친 문장">
+    <p class="box-label">밑줄 친 문장</p>
+    {% for u in page.underlines %}
+    <blockquote class="underline"><p>{{ u.text }}</p>{% if u.page %}<cite class="mono">{{ u.page }}쪽</cite>{% endif %}</blockquote>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if page.question %}
+  <div class="item-boxes read-boxes">
+    <div class="box box-q">
+      <p class="box-label">수업에서 던질 질문</p>
+      <p class="box-q-text">{{ page.question }}</p>
+    </div>
+  </div>
+  {% endif %}
+
+  <dl class="item-tags">
+    {% if page.subjects %}<div><dt>교과 연계</dt><dd>{% for s in page.subjects %}<span class="chip">{{ s }}</span>{% endfor %}</dd></div>{% endif %}
+    {% if page.lenses %}<div><dt>사상가 렌즈</dt><dd>{% for l in page.lenses %}<span class="chip chip-lens">{{ l }}</span>{% endfor %}</dd></div>{% endif %}
+  </dl>
+
+  <div class="item-body prose">{{ content }}</div>
+
+  <div class="talk no-print"><p>이 글에 대한 의견이나 수업에 써 본 후기를 들려주세요.</p><span class="chat-btns">{% include like-btn.html %}<button type="button" class="btn-print js-share">링크 공유</button><a class="openchat" href="{{ site.openchat }}" target="_blank" rel="noopener">오픈채팅방에서 함께 이야기하기</a>{% if site.feedback_form %}<a class="openchat form" href="{{ site.feedback_form }}" target="_blank" rel="noopener">운영자에게 의견 보내기</a>{% endif %}</span></div>
+</article>
+<p class="print-only print-foot">출처: {{ site.title }}({{ site.tagline }}) · 윤리로 읽는 책 · 글 {{ site.author }} · <span class="js-url"></span><br>본 사이트 저작물의 권리는 운영자에게 있으며, 수업과 비상업적 정보 공유에는 자유롭게 쓸 수 있으나, 상업적 용도로는 사용할 수 없습니다. 밑줄 친 문장의 권리는 원저작자에게 있습니다. © {{ site.time | date: "%Y" }} {{ site.author }}</p>
+{% include page-actions.html %}

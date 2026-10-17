@@ -4,37 +4,9 @@ layout: default
 {% assign issue = site.issues | where: "issue_id", page.issue %}{% assign issue = issue[0] %}
 <div class="item-tools no-print">
   <p class="crumb mono"><a href="{{ issue.url | relative_url }}">← {{ issue.num }}호 · {{ issue.date | date: "%Y. %-m. %-d." }}</a> · {{ page.section }}</p>
-  <span class="tool-btns">{% if site.likes_api %}<button type="button" class="like js-like" aria-pressed="false" aria-label="좋아요"><span class="like-ico" aria-hidden="true">♡</span><span class="like-txt">좋아요</span> <span class="like-n mono"></span></button>{% endif %}<button type="button" class="btn-print js-share">링크 공유</button><button type="button" class="btn-print" onclick="window.print()">인쇄 · PDF로 저장</button></span>
+  <span class="tool-btns">{% include like-btn.html %}<button type="button" class="btn-print js-share">링크 공유</button><button type="button" class="btn-print" onclick="window.print()">인쇄 · PDF로 저장</button></span>
 </div>
 <p class="print-only print-head">{{ site.title }} · {{ issue.num }}호 · {{ issue.date | date: "%Y. %-m. %-d." }}</p>
 {% include item-card.html item=page full=true %}
 <p class="print-only print-foot">출처: {{ site.title }}({{ site.tagline }}) · 글 {{ site.author }} · <span class="js-url"></span><br>본 사이트 저작물의 권리는 운영자에게 있으며, 수업과 비상업적 정보 공유에는 자유롭게 쓸 수 있으나, 상업적 용도로는 사용할 수 없습니다. © {{ site.time | date: "%Y" }} {{ site.author }}</p>
-<p class="toast" id="toast" role="status" aria-live="polite"></p>
-<script>
-document.querySelectorAll('.js-share').forEach(function(b){b.addEventListener('click',function(){
-  var d={title:document.title,url:location.href.split('#')[0]};
-  if(navigator.share){navigator.share(d).catch(function(){});return;}
-  var t=document.getElementById('toast');
-  function done(m){t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on');},2200);}
-  if(navigator.clipboard){navigator.clipboard.writeText(d.url).then(function(){done('글 주소를 복사했습니다.');},function(){done(d.url);});}
-  else{done(d.url);}
-});});
-(function(){
-  var api={{ site.likes_api | jsonify }}; if(!api) return;
-  var id=location.pathname, key='liked:'+id, liked=false;
-  try{liked=localStorage.getItem(key)==='1';}catch(e){}
-  var btns=document.querySelectorAll('.js-like'), n=null;
-  function paint(){btns.forEach(function(b){
-    b.setAttribute('aria-pressed',liked?'true':'false'); b.classList.toggle('on',liked);
-    b.querySelector('.like-ico').textContent=liked?'♥':'♡';
-    b.querySelector('.like-n').textContent=n===null?'':n;});}
-  function call(act){return fetch(api+'?act='+act+'&id='+encodeURIComponent(id)).then(function(r){return r.json();}).then(function(d){if(d&&d.ok){n=d.count;paint();}}).catch(function(){});}
-  paint(); call('get');
-  btns.forEach(function(b){b.addEventListener('click',function(){
-    if(b.disabled) return; liked=!liked; if(n!==null) n=Math.max(0,n+(liked?1:-1)); paint();
-    try{liked?localStorage.setItem(key,'1'):localStorage.removeItem(key);}catch(e){}
-    btns.forEach(function(x){x.disabled=true;});
-    call(liked?'like':'unlike').then(function(){btns.forEach(function(x){x.disabled=false;});});
-  });});
-})();
-document.querySelectorAll('.js-url').forEach(function(el){el.textContent=location.href;});</script>
+{% include page-actions.html %}

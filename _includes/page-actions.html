@@ -1,0 +1,29 @@
+<p class="toast" id="toast" role="status" aria-live="polite"></p>
+<script>
+document.querySelectorAll('.js-share').forEach(function(b){b.addEventListener('click',function(){
+  var d={title:document.title,url:location.href.split('#')[0]};
+  if(navigator.share){navigator.share(d).catch(function(){});return;}
+  var t=document.getElementById('toast');
+  function done(m){t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on');},2200);}
+  if(navigator.clipboard){navigator.clipboard.writeText(d.url).then(function(){done('글 주소를 복사했습니다.');},function(){done(d.url);});}
+  else{done(d.url);}
+});});
+(function(){
+  var api={{ site.likes_api | jsonify }}; if(!api) return;
+  var id=location.pathname, key='liked:'+id, liked=false;
+  try{liked=localStorage.getItem(key)==='1';}catch(e){}
+  var btns=document.querySelectorAll('.js-like'), n=null;
+  function paint(){btns.forEach(function(b){
+    b.setAttribute('aria-pressed',liked?'true':'false'); b.classList.toggle('on',liked);
+    b.querySelector('.like-ico').textContent=liked?'♥':'♡';
+    b.querySelector('.like-n').textContent=n===null?'':n;});}
+  function call(act){return fetch(api+'?act='+act+'&id='+encodeURIComponent(id)).then(function(r){return r.json();}).then(function(d){if(d&&d.ok){n=d.count;paint();}}).catch(function(){});}
+  paint(); call('get');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    if(b.disabled) return; liked=!liked; if(n!==null) n=Math.max(0,n+(liked?1:-1)); paint();
+    try{liked?localStorage.setItem(key,'1'):localStorage.removeItem(key);}catch(e){}
+    btns.forEach(function(x){x.disabled=true;});
+    call(liked?'like':'unlike').then(function(){btns.forEach(function(x){x.disabled=false;});});
+  });});
+})();
+document.querySelectorAll('.js-url').forEach(function(el){el.textContent=location.href;});</script>

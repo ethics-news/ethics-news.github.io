@@ -20,12 +20,17 @@ collections:
   items:
     output: true
     permalink: /weekly/:path/
+  reads:                      # 「윤리로 읽는 책」 코너
+    output: true
+    permalink: /reading/:name/
 
 defaults:
   - scope: { path: "", type: issues }
     values: { layout: issue }
   - scope: { path: "", type: items }
     values: { layout: item }
+  - scope: { path: "", type: reads }
+    values: { layout: read }
 
 markdown: kramdown
 exclude: [README.md, _templates, Gemfile, Gemfile.lock]
