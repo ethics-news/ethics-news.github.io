@@ -89,6 +89,30 @@
 
   /* 좋아요 */
   var api={{ site.likes_api | jsonify }}; if(!api) return;
+
+  /* 방문 통계: 운영자만 보는 구글 시트에 쌓음. 개인정보 없이 브라우저별 무작위 번호만 씀.
+     ?nostats=1 로 한 번 연 브라우저는 집계에서 빠짐(?nostats=0 이면 다시 셈). */
+  (function(){
+    try{
+      var q=location.search;
+      if(/[?&]nostats=1/.test(q)) localStorage.setItem('stats-off','1');
+      if(/[?&]nostats=0/.test(q)) localStorage.removeItem('stats-off');
+      if(localStorage.getItem('stats-off')==='1'||navigator.webdriver) return;
+      var v=localStorage.getItem('stats-v');
+      var f='';
+      if(!v){v=Math.random().toString(36).slice(2,12)+Date.now().toString(36);localStorage.setItem('stats-v',v);f+='n';}
+      var k=new Date(Date.now()+9*36e5), day=k.toISOString().slice(0,10);
+      var dw=(k.getUTCDay()+6)%7, mon=new Date(k.getTime()-dw*864e5).toISOString().slice(0,10);
+      var keys={d:day,w:mon,m:day.slice(0,7),y:day.slice(0,4)};
+      Object.keys(keys).forEach(function(c){if(localStorage.getItem('stats-'+c)!==keys[c]){localStorage.setItem('stats-'+c,keys[c]);f+=c;}});
+      var r='';
+      try{if(document.referrer){var h=new URL(document.referrer).hostname;if(h!==location.hostname)r=h;}}catch(e){}
+      var path=location.pathname.toLowerCase();
+      var t=(document.querySelector('h1')||{}).textContent||document.title;
+      var u=api+'?act=hit&id='+encodeURIComponent(path)+'&t='+encodeURIComponent(t.trim().slice(0,120))+'&v='+v+'&f='+f+'&r='+encodeURIComponent(r);
+      fetch(u,{mode:'no-cors',keepalive:true}).catch(function(){});
+    }catch(e){}
+  })();
   var groups={};
   document.querySelectorAll('.js-like').forEach(function(b){
     var id=b.getAttribute('data-id')||location.pathname;
