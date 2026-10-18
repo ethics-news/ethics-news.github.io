@@ -108,7 +108,7 @@
       var r='';
       try{if(document.referrer){var h=new URL(document.referrer).hostname;if(h!==location.hostname)r=h;}}catch(e){}
       var path=location.pathname.toLowerCase();
-      var t=(document.querySelector('h1')||{}).textContent||document.title;
+      var t=document.title.replace(/\s*·\s*윤리로 읽는 뉴스$/,'')||document.title;
       var u=api+'?act=hit&id='+encodeURIComponent(path)+'&t='+encodeURIComponent(t.trim().slice(0,120))+'&v='+v+'&f='+f+'&r='+encodeURIComponent(r);
       fetch(u,{mode:'no-cors',keepalive:true}).catch(function(){});
     }catch(e){}
