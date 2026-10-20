@@ -6,7 +6,7 @@ layout: default
 {% assign items = site.items | where: "issue", latest.issue_id | sort: "num" %}
 <section class="home-hero">
   <p class="home-tag">{{ site.news_title }} · {{ site.news_tagline }}</p>
-  <p class="home-desc">{{ site.description }}</p>
+  <p class="home-desc">{{ site.news_description }}</p>
 </section>
 
 <section class="latest">
