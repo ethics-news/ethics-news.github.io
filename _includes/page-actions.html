@@ -105,11 +105,27 @@
       var dw=(k.getUTCDay()+6)%7, mon=new Date(k.getTime()-dw*864e5).toISOString().slice(0,10);
       var keys={d:day,w:mon,m:day.slice(0,7),y:day.slice(0,4)};
       Object.keys(keys).forEach(function(c){if(localStorage.getItem('stats-'+c)!==keys[c]){localStorage.setItem('stats-'+c,keys[c]);f+=c;}});
-      var r='';
-      try{if(document.referrer){var h=new URL(document.referrer).hostname;if(h!==location.hostname)r=h;}}catch(e){}
+      /* 유입: ?from=표시(공유 버튼·직접 붙인 표시) > 앱 안 브라우저 > 이전 사이트 주소 */
+      var fr='',m=q.match(/[?&]from=([a-z0-9\-]{1,20})/i);
+      if(m){fr=m[1].toLowerCase();
+        try{var cl=q.replace(/([?&])from=[^&]*&?/,'$1').replace(/[?&]$/,'');history.replaceState(null,'',location.pathname+cl+location.hash);}catch(e){}}
+      var ua=navigator.userAgent||'', app='';
+      if(/KAKAOTALK/i.test(ua))app='k';else if(/Instagram/i.test(ua))app='i';else if(/FBAN|FBAV/i.test(ua))app='f';
+      else if(/NAVER\(inapp|NAVER\//i.test(ua))app='n';else if(/Barcelona/i.test(ua))app='t';else if(/DaumApps/i.test(ua))app='d';else if(/ Line\//i.test(ua))app='l';
+      var r='',pv='';
+      try{if(document.referrer){var ref=new URL(document.referrer);if(ref.hostname!==location.hostname)r=ref.hostname;else pv=ref.pathname.toLowerCase();}}catch(e){}
       var path=location.pathname.toLowerCase();
+      {% assign pa_iss = site.issues | where_exp: "i", "i.date <= site.time" | sort: "date" %}{% assign pa_latest = pa_iss | last %}var LATEST={{ pa_latest.url | default: "" | jsonify }};
+      var c='기타';
+      if(path==='/')c='홈';
+      else if(path.indexOf('/weekly/')===0)c=(LATEST&&path.indexOf(LATEST)===0)?'윤리로 읽는 뉴스 · 최신호':'윤리로 읽는 뉴스 · 지난 호';
+      else if(path.indexOf('/reading/')===0)c='윤리로 읽는 책';
+      else if(path.indexOf('/channel/')===0)c='윤리 채널';
+      else if(path.indexOf('/about/')===0)c='소개·만든 책';
+      else if(path.indexOf('/saved/')===0)c='찜한 글';
       var t=document.title.replace(/\s*·\s*[^·]+$/,'')||document.title;
-      var u=api+'?act=hit&id='+encodeURIComponent(path)+'&t='+encodeURIComponent(t.trim().slice(0,120))+'&v='+v+'&f='+f+'&r='+encodeURIComponent(r);
+      var u=api+'?act=hit&id='+encodeURIComponent(path)+'&t='+encodeURIComponent(t.trim().slice(0,120))+'&v='+v+'&f='+f+'&r='+encodeURIComponent(r)
+        +'&c='+encodeURIComponent(c)+'&fr='+encodeURIComponent(fr)+'&app='+app+'&pv='+encodeURIComponent(pv.slice(0,100));
       fetch(u,{mode:'no-cors',keepalive:true}).catch(function(){});
     }catch(e){}
   })();
