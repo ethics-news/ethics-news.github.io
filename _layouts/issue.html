@@ -3,7 +3,7 @@ layout: default
 ---
 {% assign items = site.items | where: "issue", page.issue_id | sort: "num" %}
 <section class="issue-hero">
-  <p class="issue-meta mono"><span>{{ page.num }}호</span><span>{{ page.date | date: "%Y. %-m. %-d." }}</span><span>{{ items.size }}건</span></p>
+  <p class="issue-meta mono"><span>{{ site.news_title }}</span><span>{{ page.num }}호</span><span>{{ page.date | date: "%Y. %-m. %-d." }}</span><span>{{ items.size }}건</span></p>
   <h1 class="issue-title">{{ page.title }}</h1>
   <p class="issue-lead">{{ page.lead }}</p>
 </section>
