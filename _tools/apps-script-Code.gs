@@ -1,5 +1,6 @@
 // Ethink(에씽크) · 좋아요 카운터 + 방문 통계
 // 좋아요: ?id=/weekly/2026-10-16/1/&act=get|like|unlike
+// 남기는 글: 목록 ?act=blist / 쓰기·읽기는 POST(JSON) {act:'bpost'|'bread', ...}
 // 방문:   ?act=hit&id=/경로/&t=제목&v=방문자번호&f=dwmyn(첫 방문 표시)&r=유입 사이트&cn=코너&fr=from표시&app=앱&pv=사이트 안 이전 페이지
 // 개인정보(이름, 이메일, IP)는 받지도 저장하지도 않습니다.
 var ID_RULE = /^\/[a-z0-9\-\/]{0,100}$/;
@@ -8,12 +9,13 @@ var TZ = 'Asia/Seoul';
 var LOG = '방문기록';
 var STATS = '통계';
 var POSTS = '글목록';
-var CORNERS = ['홈', '윤리로 읽는 뉴스 · 최신호', '윤리로 읽는 뉴스 · 지난 호', '윤리로 읽는 책', '나와 닮은 사상가', '윤리 채널', '소개·만든 책', '찜한 글', '기타'];
+var CORNERS = ['홈', '윤리로 읽는 뉴스 · 최신호', '윤리로 읽는 뉴스 · 지난 호', '윤리로 읽는 책', '나와 닮은 사상가', '윤리 채널', '소개·만든 책', '남기는 글', '찜한 글', '기타'];
 
 function doGet(e) {
   var p = (e && e.parameter) || {};
   var id = String(p.id || '');
   var act = String(p.act || 'get');
+  if (act === 'blist') return boardList_();
   if (!ID_RULE.test(id)) return out_({ ok: false, error: 'bad id' });
   if (act === 'hit') return hit_(p, id);
   if (id === '/') return out_({ ok: false, error: 'bad id' });
@@ -64,6 +66,7 @@ function section_(id) {
   if (id.indexOf('/thinker/') === 0) return '나와 닮은 사상가';
   if (id.indexOf('/channel/') === 0) return '윤리 채널';
   if (id.indexOf('/about/') === 0) return '소개·만든 책';
+  if (id.indexOf('/board/') === 0) return '남기는 글';
   if (id.indexOf('/saved/') === 0) return '찜한 글';
   return '기타';
 }
@@ -256,4 +259,123 @@ function setupStats() {
 
 function out_(o) {
   return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);
+}
+
+// ───────── 남기는 글(비공개 게시판) ─────────
+// 방문자: 제목·본문·숫자 4자리 비밀번호. 이름·연락처는 받지 않음.
+// 공개: '승인'에 체크하고 '숨김'에 체크하지 않은 글의 제목·날짜·답변 여부만. 본문과 댓글은 비밀번호를 맞힌 글쓴이에게만.
+// 운영: 시트 '남기는 글' 탭에서 승인·숨김 칸 체크, 댓글 칸에 답을 씀. 새 글이 오면 BOARD_MAIL로 알림.
+var BOARD = '남기는 글';
+var BOARD_MAIL = 'drumset@nate.com';
+var BOARD_HEAD = ['번호', '올린 시각', '승인', '숨김', '제목', '본문', '댓글', '비밀번호(변환값)', '소금', '방문자 번호'];
+var B_TITLE = 40, B_BODY = 2000, B_GAP_SEC = 600, B_PER_DAY = 5, B_ALL_DAY = 60, B_FAIL = 5, B_LOCK_SEC = 3600;
+
+function doPost(e) {
+  var d = {};
+  try { d = JSON.parse((e && e.postData && e.postData.contents) || '{}'); } catch (err) { return out_({ ok: false, error: 'bad request' }); }
+  if (d.act === 'bpost') return boardPost_(d);
+  if (d.act === 'bread') return boardRead_(d);
+  return out_({ ok: false, error: 'bad act' });
+}
+
+function boardSheet_() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName(BOARD);
+  if (!sh) {
+    sh = ss.insertSheet(BOARD);
+    sh.getRange(1, 1, 1, BOARD_HEAD.length).setValues([BOARD_HEAD]).setFontWeight('bold');
+    sh.setFrozenRows(1);
+    sh.getRange('B:B').setNumberFormat('yyyy-mm-dd hh:mm');
+    sh.getRange('E:G').setNumberFormat('@').setWrap(true).setVerticalAlignment('top');
+    sh.getRange('C2:D2000').insertCheckboxes();
+    sh.setColumnWidth(1, 50); sh.setColumnWidth(2, 130); sh.setColumnWidth(3, 50); sh.setColumnWidth(4, 50);
+    sh.setColumnWidth(5, 240); sh.setColumnWidth(6, 420); sh.setColumnWidth(7, 320);
+    sh.hideColumns(8, 3);
+  }
+  return sh;
+}
+function clean_(s, max, multi) {
+  s = String(s || '').replace(multi ? /[\u0000-\u0009\u000B\u000C\u000E-\u001F\u007F]/g : /[\u0000-\u001F\u007F]/g, ' ');
+  s = s.replace(/\r\n?/g, '\n').trim();
+  return s.length > max ? '' : s;
+}
+function hash_(salt, pw) {
+  return Utilities.base64Encode(Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, salt + ':' + pw, Utilities.Charset.UTF_8));
+}
+function boardPost_(d) {
+  if (d.hp) return out_({ ok: true, n: 0 }); // 자동 등록 프로그램이 채우는 숨은 칸
+  var t = clean_(d.t, B_TITLE, false), b = clean_(d.b, B_BODY, true), pw = String(d.pw || '');
+  var v = String(d.v || '').replace(/[^a-z0-9]/gi, '').slice(0, 24) || 'none';
+  if (t.length < 2) return out_({ ok: false, error: 'title' });
+  if (b.length < 2) return out_({ ok: false, error: 'body' });
+  if (!/^\d{4}$/.test(pw)) return out_({ ok: false, error: 'pw' });
+  var cache = CacheService.getScriptCache();
+  var day = Utilities.formatDate(new Date(), TZ, 'yyyyMMdd');
+  if (cache.get('bgap:' + v)) return out_({ ok: false, error: 'wait' });
+  var mine = Number(cache.get('bday:' + v + ':' + day) || 0), all = Number(cache.get('ball:' + day) || 0);
+  if (mine >= B_PER_DAY || all >= B_ALL_DAY) return out_({ ok: false, error: 'limit' });
+  var lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  var n;
+  try {
+    var sh = boardSheet_();
+    var last = sh.getLastRow();
+    n = last >= 2 ? (Number(sh.getRange(last, 1).getValue()) || last - 1) + 1 : 1;
+    var salt = Utilities.getUuid();
+    var row = last + 1;
+    sh.getRange(row, 1, 1, BOARD_HEAD.length).setValues([[n, new Date(), false, false, t, b, '', hash_(salt, pw), salt, v]]);
+    sh.getRange(row, 3, 1, 2).insertCheckboxes();
+  } finally {
+    lock.releaseLock();
+  }
+  cache.put('bgap:' + v, '1', B_GAP_SEC);
+  cache.put('bday:' + v + ':' + day, String(mine + 1), 86400);
+  cache.put('ball:' + day, String(all + 1), 86400);
+  try {
+    MailApp.sendEmail(BOARD_MAIL, '[Ethink 남기는 글] 새 글 ' + n + '번: ' + t,
+      '새 글이 올라왔습니다. 시트의 「' + BOARD + '」 탭에서 승인·숨김을 정하고 댓글을 달 수 있습니다.\n\n' +
+      '번호: ' + n + '\n제목: ' + t + '\n\n' + b + '\n\n시트: ' + SpreadsheetApp.getActiveSpreadsheet().getUrl());
+  } catch (err) {}
+  return out_({ ok: true, n: n });
+}
+function boardRows_() {
+  var sh = boardSheet_(), last = sh.getLastRow();
+  return last >= 2 ? sh.getRange(2, 1, last - 1, BOARD_HEAD.length).getValues() : [];
+}
+function boardList_() {
+  var rows = boardRows_(), out = [];
+  for (var i = rows.length - 1; i >= 0 && out.length < 300; i--) {
+    var r = rows[i];
+    if (r[2] === true && r[3] !== true && r[4]) {
+      out.push({ n: r[0], t: String(r[4]), d: Utilities.formatDate(new Date(r[1]), TZ, 'yyyy. M. d.'), a: String(r[6] || '').trim() ? 1 : 0 });
+    }
+  }
+  return out_({ ok: true, list: out });
+}
+function boardRead_(d) {
+  var n = Number(d.n), pw = String(d.pw || '');
+  if (!(n > 0) || !/^\d{4}$/.test(pw)) return out_({ ok: false, error: 'input' });
+  var cache = CacheService.getScriptCache(), key = 'bfail:' + n;
+  var fails = Number(cache.get(key) || 0);
+  if (fails >= B_FAIL) return out_({ ok: false, error: 'locked' });
+  var rows = boardRows_();
+  for (var i = 0; i < rows.length; i++) {
+    var r = rows[i];
+    if (Number(r[0]) !== n) continue;
+    if (hash_(String(r[8]), pw) !== String(r[7])) {
+      cache.put(key, String(fails + 1), B_LOCK_SEC);
+      return out_({ ok: false, error: 'pw', left: B_FAIL - fails - 1 });
+    }
+    if (r[3] === true) return out_({ ok: false, error: 'hidden' });
+    return out_({ ok: true, n: n, t: String(r[4]), b: String(r[5]), c: String(r[6] || ''),
+      d: Utilities.formatDate(new Date(r[1]), TZ, 'yyyy. M. d. HH:mm'), ap: r[2] === true });
+  }
+  cache.put(key, String(fails + 1), B_LOCK_SEC);
+  return out_({ ok: false, error: 'pw', left: B_FAIL - fails - 1 });
+}
+// 편집기에서 한 번 실행: '남기는 글' 탭을 만들고, 메일 보내기 권한을 승인받고, 시험 메일을 한 통 보냅니다.
+function setupBoard() {
+  boardSheet_();
+  MailApp.sendEmail(BOARD_MAIL, '[Ethink 남기는 글] 알림 설정 완료', '새 글이 올라오면 이 주소로 알림이 옵니다.');
+  return '남기는 글 탭 준비 완료';
 }

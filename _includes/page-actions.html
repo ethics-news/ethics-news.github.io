@@ -123,6 +123,7 @@
       else if(path.indexOf('/thinker/')===0)c='나와 닮은 사상가';
       else if(path.indexOf('/channel/')===0)c='윤리 채널';
       else if(path.indexOf('/about/')===0)c='소개·만든 책';
+      else if(path.indexOf('/board/')===0)c='남기는 글';
       else if(path.indexOf('/saved/')===0)c='찜한 글';
       var t=document.title.replace(/\s*·\s*[^·]+$/,'')||document.title;
       var u=api+'?act=hit&id='+encodeURIComponent(path)+'&t='+encodeURIComponent(t.trim().slice(0,120))+'&v='+v+'&f='+f+'&r='+encodeURIComponent(r)

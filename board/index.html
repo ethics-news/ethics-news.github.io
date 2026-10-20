@@ -1,0 +1,182 @@
+---
+layout: default
+title: 남기는 글
+lead: 운영자에게만 보이는 글을 남깁니다. 제목만 공개됩니다.
+---
+<style>
+/* 남기는 글 — 모든 규칙은 #bd 안에서만 */
+#bd{display:flex;flex-direction:column;gap:2.5rem}
+#bd [hidden]{display:none!important}
+#bd h2{font-family:var(--font-display);font-size:var(--step-2);margin:0 0 .75rem}
+#bd .card{background:var(--surface);border:1px solid var(--rule);padding:1.25rem;display:flex;flex-direction:column;gap:1rem}
+#bd .rules{margin:0;padding:.9rem 1rem .9rem 2rem;background:var(--accent-soft);font-size:.9375rem;line-height:1.7}
+#bd .rules li+li{margin-top:.2rem}
+#bd label{display:flex;flex-direction:column;gap:.35rem;font-weight:600;font-size:.9375rem}
+#bd label .sub{font-weight:400;color:var(--muted);font-size:var(--step--1)}
+#bd input,#bd textarea{font:inherit;font-weight:400;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:.6rem .75rem;width:100%;box-sizing:border-box}
+#bd textarea{min-height:12rem;resize:vertical;line-height:1.7}
+#bd input:focus,#bd textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+#bd .pw{max-width:9rem;font-family:var(--font-mono);letter-spacing:.3em}
+#bd .row{display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end}
+#bd .count{font-family:var(--font-mono);font-size:var(--step--1);color:var(--muted);text-align:right}
+#bd .go{font:inherit;font-weight:600;background:var(--ink);color:var(--paper);border:0;border-radius:4px;padding:.65rem 1.3rem;cursor:pointer;align-self:flex-start}
+#bd .go:hover{background:var(--accent)}
+#bd .go:disabled{opacity:.5;cursor:wait}
+#bd .msg{margin:0;font-size:.9375rem}
+#bd .msg.err{color:#b3261e}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) #bd .msg.err{color:#f2b8b5}}
+#bd .done{border-left:4px solid var(--accent);padding:1rem;background:var(--accent-soft);display:flex;flex-direction:column;gap:.4rem}
+#bd .done a{word-break:break-all}
+#bd .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+#bd .list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+#bd .list li{border-bottom:1px solid var(--rule)}
+#bd .list button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:3.2rem 1fr auto;gap:.25rem 1rem;width:100%;padding:.7rem .25rem;cursor:pointer;align-items:baseline}
+#bd .list button:hover .t{text-decoration:underline}
+#bd .list button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#bd .list .n{font-family:var(--font-mono);font-size:var(--step--1);color:var(--accent)}
+#bd .list .d{font-family:var(--font-mono);font-size:var(--step--1);color:var(--muted);white-space:nowrap}
+#bd .lock{font-size:var(--step--1);color:var(--muted)}
+#bd .badge{display:inline-block;margin-left:.4rem;font-size:var(--step--1);font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:0 .5rem;vertical-align:.1em}
+#bd .empty{padding:1rem 0}
+#bd .post{display:flex;flex-direction:column;gap:.75rem}
+#bd .post h3{font-family:var(--font-display);font-size:var(--step-1);margin:0}
+#bd .post .meta{font-family:var(--font-mono);font-size:var(--step--1);color:var(--muted)}
+#bd .post .body{white-space:pre-wrap;line-height:1.8;margin:0}
+#bd .reply{border-top:1px dashed var(--rule);padding-top:.75rem;white-space:pre-wrap;margin:0}
+#bd .reply b{display:block;color:var(--accent);margin-bottom:.25rem}
+@media (max-width:520px){#bd .list button{grid-template-columns:2.6rem 1fr}#bd .list .d{grid-column:2}}
+</style>
+
+<section class="issue-hero">
+  <p class="issue-meta mono"><span>남기는 글</span></p>
+  <h1 class="issue-title">남기는 글</h1>
+  <p class="issue-lead">수업 이야기, 읽은 책, 사이트에 바라는 점까지 무엇이든 남겨 주세요. 본문은 운영자만 읽고, 다른 방문자에게는 운영자가 확인한 글의 제목만 보입니다. 답은 댓글로 드립니다.</p>
+</section>
+
+<div id="bd">
+  <section aria-labelledby="w-h">
+    <h2 id="w-h">글 남기기</h2>
+    <form class="card" id="w-form" novalidate>
+      <ul class="rules">
+        <li><b>제목은 다른 방문자에게도 보입니다.</b> 제목에 욕설, 광고, 실명, 연락처(전화번호·이메일·SNS 계정)를 쓰지 마세요.</li>
+        <li>본문은 운영자만 읽습니다. 그래도 학교 이름이나 연락처처럼 나를 알아볼 수 있는 정보는 쓰지 않는 편이 안전합니다.</li>
+        <li>제목은 운영자가 확인한 뒤 목록에 올라갑니다. 확인 전에도 글쓴이는 비밀번호로 자기 글과 댓글을 볼 수 있습니다.</li>
+        <li>이름·연락처·IP 주소는 받지 않습니다. 비밀번호를 잊으면 다시 찾을 방법이 없습니다.</li>
+      </ul>
+      <label>제목 <span class="sub">2~40자</span>
+        <input id="w-t" maxlength="40" autocomplete="off" required>
+      </label>
+      <label>본문 <span class="sub">2~2,000자 · 운영자만 읽습니다</span>
+        <textarea id="w-b" maxlength="2000" required></textarea>
+      </label>
+      <p class="count" id="w-c">0 / 2,000</p>
+      <div class="row">
+        <label>글 비밀번호 <span class="sub">숫자 4자리 · 내 글과 댓글을 볼 때 씁니다</span>
+          <input class="pw" id="w-p" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" required>
+        </label>
+        <div class="hp" aria-hidden="true"><label>비워 두세요 <input id="w-hp" tabindex="-1" autocomplete="off"></label></div>
+        <button class="go" id="w-go" type="submit">글 남기기</button>
+      </div>
+      <p class="msg" id="w-msg" role="status" aria-live="polite"></p>
+    </form>
+    <div class="done" id="w-done" hidden></div>
+  </section>
+
+  <section aria-labelledby="r-h" id="read">
+    <h2 id="r-h">내 글과 댓글 보기</h2>
+    <form class="card" id="r-form" novalidate>
+      <div class="row">
+        <label>글 번호 <input class="pw" id="r-n" inputmode="numeric" maxlength="6" autocomplete="off" style="letter-spacing:.05em"></label>
+        <label>글 비밀번호 <input class="pw" id="r-p" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off"></label>
+        <button class="go" id="r-go" type="submit">열기</button>
+      </div>
+      <p class="lock">비밀번호를 5번 틀리면 그 글은 1시간 동안 열리지 않습니다.</p>
+      <p class="msg" id="r-msg" role="status" aria-live="polite"></p>
+      <div class="post" id="r-post" hidden></div>
+    </form>
+    <div id="mine" hidden style="margin-top:1rem">
+      <p class="lock" style="margin:0 0 .4rem">이 브라우저에서 남긴 글</p>
+      <ul class="list" id="mine-list"></ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="l-h">
+    <h2 id="l-h">올라온 글</h2>
+    <ul class="list" id="l-list"></ul>
+    <p class="empty" id="l-empty" hidden>아직 목록에 올라온 글이 없습니다.</p>
+    <p class="lock" id="l-load">목록을 불러오는 중입니다…</p>
+  </section>
+</div>
+
+<script>
+(function(){
+  var API={{ site.likes_api | jsonify }};
+  var $=function(id){return document.getElementById(id)};
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function ls(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
+  function vid(){try{var v=localStorage.getItem('stats-v')||localStorage.getItem('board-v');if(!v){v=Math.random().toString(36).slice(2,12)+Date.now().toString(36);localStorage.setItem('board-v',v)}return v}catch(e){return ''}}
+  function post(data){return fetch(API,{method:'POST',body:JSON.stringify(data)}).then(function(r){return r.json()})}
+  var ERR={title:'제목을 2~40자로 써 주세요.',body:'본문을 2~2,000자로 써 주세요.',pw:'비밀번호는 숫자 4자리로 써 주세요.',wait:'글은 10분에 한 번 남길 수 있습니다. 잠시 뒤 다시 남겨 주세요.',limit:'오늘은 더 남길 수 없습니다. 내일 다시 남겨 주세요.'};
+  var base=location.origin+location.pathname;
+
+  /* 글 남기기 */
+  $('w-b').addEventListener('input',function(){$('w-c').textContent=this.value.length.toLocaleString()+' / 2,000'});
+  $('w-p').addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').slice(0,4)});
+  $('w-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var t=$('w-t').value.trim(),b=$('w-b').value.trim(),pw=$('w-p').value,m=$('w-msg');
+    m.className='msg err';
+    if(t.length<2||t.length>40){m.textContent=ERR.title;$('w-t').focus();return}
+    if(b.length<2||b.length>2000){m.textContent=ERR.body;$('w-b').focus();return}
+    if(!/^\d{4}$/.test(pw)){m.textContent=ERR.pw;$('w-p').focus();return}
+    $('w-go').disabled=true;m.className='msg';m.textContent='보내는 중입니다…';
+    post({act:'bpost',t:t,b:b,pw:pw,v:vid(),hp:$('w-hp').value}).then(function(d){
+      $('w-go').disabled=false;
+      if(!d.ok){m.className='msg err';m.textContent=ERR[d.error]||'글을 남기지 못했습니다. 잠시 뒤 다시 시도해 주세요.';return}
+      m.textContent='';
+      var link=base+'?n='+d.n+'#read';
+      var mine=ls('board-mine')||[];mine.unshift({n:d.n,t:t,at:Date.now()});ls('board-mine',mine.slice(0,30));
+      $('w-form').hidden=true;
+      var box=$('w-done');box.hidden=false;
+      box.innerHTML='<b>'+d.n+'번 글을 남겼습니다.</b><span>운영자가 확인하면 제목이 목록에 올라갑니다. 댓글은 아래 「내 글과 댓글 보기」에서 <b>'+d.n+'번</b>과 비밀번호로 확인할 수 있습니다.</span><span>다시 찾아오기 쉽게 이 주소를 저장해 두세요: <a href="'+esc(link)+'">'+esc(link)+'</a></span>';
+      $('r-n').value=d.n;renderMine();
+    }).catch(function(){$('w-go').disabled=false;m.className='msg err';m.textContent='연결이 끊겼습니다. 잠시 뒤 다시 시도해 주세요.'});
+  });
+
+  /* 내 글 보기 */
+  ['r-n','r-p'].forEach(function(id){$(id).addEventListener('input',function(){this.value=this.value.replace(/\D/g,'')})});
+  $('r-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=$('r-n').value,pw=$('r-p').value,m=$('r-msg'),box=$('r-post');
+    box.hidden=true;m.className='msg err';
+    if(!n){m.textContent='글 번호를 써 주세요.';$('r-n').focus();return}
+    if(!/^\d{4}$/.test(pw)){m.textContent=ERR.pw;$('r-p').focus();return}
+    $('r-go').disabled=true;m.className='msg';m.textContent='여는 중입니다…';
+    post({act:'bread',n:Number(n),pw:pw}).then(function(d){
+      $('r-go').disabled=false;
+      if(!d.ok){m.className='msg err';
+        m.textContent=d.error==='locked'?'비밀번호를 여러 번 틀려 이 글은 1시간 동안 열 수 없습니다.':d.error==='hidden'?'운영자가 숨긴 글입니다.':'글 번호나 비밀번호가 맞지 않습니다.'+(d.left>0?' (남은 기회 '+d.left+'번)':'');return}
+      m.textContent='';box.hidden=false;
+      box.innerHTML='<h3>'+esc(d.t)+'</h3><p class="meta">'+d.n+'번 · '+esc(d.d)+' · '+(d.ap?'목록에 공개됨':'운영자 확인 전(목록에 아직 안 보임)')+'</p><p class="body">'+esc(d.b)+'</p>'+
+        (d.c?'<p class="reply"><b>운영자 댓글</b>'+esc(d.c)+'</p>':'<p class="reply lock">아직 댓글이 없습니다.</p>');
+      $('r-p').value='';
+    }).catch(function(){$('r-go').disabled=false;m.className='msg err';m.textContent='연결이 끊겼습니다. 잠시 뒤 다시 시도해 주세요.'});
+  });
+  function openRead(n){$('r-n').value=n;$('r-p').value='';$('r-post').hidden=true;$('r-msg').textContent='';$('read').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){$('r-p').focus({preventScroll:true})},400)}
+  function renderMine(){
+    var mine=ls('board-mine')||[];$('mine').hidden=!mine.length;
+    $('mine-list').innerHTML=mine.map(function(p){var d=new Date(p.at);return '<li><button type="button" data-n="'+p.n+'"><span class="n">'+p.n+'</span><span class="t">'+esc(p.t)+'</span><span class="d">'+d.getFullYear()+'. '+(d.getMonth()+1)+'. '+d.getDate()+'.</span></button></li>'}).join('');
+  }
+  $('mine-list').addEventListener('click',function(e){var b=e.target.closest('button');if(b)openRead(b.getAttribute('data-n'))});
+  renderMine();
+  var q=location.search.match(/[?&]n=(\d{1,6})/);if(q){$('r-n').value=q[1]}
+
+  /* 목록 */
+  fetch(API+'?act=blist').then(function(r){return r.json()}).then(function(d){
+    $('l-load').hidden=true;var list=(d&&d.list)||[];
+    $('l-empty').hidden=list.length>0;
+    $('l-list').innerHTML=list.map(function(p){return '<li><button type="button" data-n="'+Number(p.n)+'" aria-label="'+Number(p.n)+'번 '+esc(p.t)+' — 글쓴이만 열 수 있음"><span class="n">'+Number(p.n)+'</span><span class="t">'+esc(p.t)+(p.a?'<span class="badge">답변 완료</span>':'')+'</span><span class="d">'+esc(p.d)+'</span></button></li>'}).join('');
+  }).catch(function(){$('l-load').textContent='목록을 불러오지 못했습니다. 잠시 뒤 새로고침해 주세요.'});
+  $('l-list').addEventListener('click',function(e){var b=e.target.closest('button');if(b)openRead(b.getAttribute('data-n'))});
+})();
+</script>
