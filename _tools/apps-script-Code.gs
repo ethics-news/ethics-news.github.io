@@ -287,12 +287,16 @@ function boardSheet_() {
     sh.setFrozenRows(1);
     sh.getRange('B:B').setNumberFormat('yyyy-mm-dd hh:mm');
     sh.getRange('E:G').setNumberFormat('@').setWrap(true).setVerticalAlignment('top');
-    sh.getRange('C2:D2000').insertCheckboxes();
     sh.setColumnWidth(1, 50); sh.setColumnWidth(2, 130); sh.setColumnWidth(3, 50); sh.setColumnWidth(4, 50);
     sh.setColumnWidth(5, 240); sh.setColumnWidth(6, 420); sh.setColumnWidth(7, 320);
     sh.hideColumns(8, 3);
   }
   return sh;
+}
+// 마지막 글이 있는 줄(번호 칸 기준). 체크박스 등 빈 칸 서식은 무시합니다.
+function boardLast_(sh) {
+  var r = sh.getRange(sh.getMaxRows(), 1);
+  return r.getValue() !== '' ? r.getRow() : r.getNextDataCell(SpreadsheetApp.Direction.UP).getRow();
 }
 function clean_(s, max, multi) {
   s = String(s || '').replace(multi ? /[\u0000-\u0009\u000B\u000C\u000E-\u001F\u007F]/g : /[\u0000-\u001F\u007F]/g, ' ');
@@ -319,7 +323,7 @@ function boardPost_(d) {
   var n;
   try {
     var sh = boardSheet_();
-    var last = sh.getLastRow();
+    var last = boardLast_(sh);
     n = last >= 2 ? (Number(sh.getRange(last, 1).getValue()) || last - 1) + 1 : 1;
     var salt = Utilities.getUuid();
     var row = last + 1;
@@ -339,7 +343,7 @@ function boardPost_(d) {
   return out_({ ok: true, n: n });
 }
 function boardRows_() {
-  var sh = boardSheet_(), last = sh.getLastRow();
+  var sh = boardSheet_(), last = boardLast_(sh);
   return last >= 2 ? sh.getRange(2, 1, last - 1, BOARD_HEAD.length).getValues() : [];
 }
 function boardList_() {
