@@ -2,7 +2,7 @@ timezone: Asia/Seoul
 # ── 사이트 기본 정보 (여기만 고치면 전체에 반영됩니다) ──
 title: Ethink
 title_ko: 에씽크
-tagline: 수업에 바로 쓰는 시사 윤리   # 사이트 전체 부제 — 새 이름에 맞게 다시 정할 것
+tagline: 세상을 윤리로 다시 생각하다   # 사이트 전체 부제
 news_title: 윤리로 읽는 뉴스        # 코너 이름
 news_tagline: 수업에 바로 쓰는 시사 윤리
 author: 박재형
