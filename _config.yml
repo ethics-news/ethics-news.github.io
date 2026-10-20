@@ -1,7 +1,10 @@
 timezone: Asia/Seoul
 # ── 사이트 기본 정보 (여기만 고치면 전체에 반영됩니다) ──
-title: 윤리로 읽는 뉴스
-tagline: 수업에 바로 쓰는 시사 윤리
+title: Ethink
+title_ko: 에씽크
+tagline: 수업에 바로 쓰는 시사 윤리   # 사이트 전체 부제 — 새 이름에 맞게 다시 정할 것
+news_title: 윤리로 읽는 뉴스        # 코너 이름
+news_tagline: 수업에 바로 쓰는 시사 윤리
 author: 박재형
 author_role: 윤리 교과서·청소년 인문서 편집자
 email: drumset@nate.com
@@ -13,7 +16,7 @@ feedback_form: https://docs.google.com/forms/d/e/1FAIpQLSdBr9QADsJoWDGdwNvb2YjAb
 description: 최근 뉴스에서 도덕·윤리 수업에 바로 쓸 소재를 골라 교과 연계와 수업 질문까지 정리합니다.
 lang: ko
 baseurl: ""            # 저장소 이름이 아이디.github.io가 아니면 "/저장소이름" 으로
-url: "https://ethics-news.github.io"
+url: "https://ethink-kr.github.io"
 
 collections:
   issues:
