@@ -192,6 +192,7 @@ function setupStats() {
 
   var st = ss.getSheetByName(STATS);
   if (st) st.clear(); else st = ss.insertSheet(STATS, 0);
+  if (st.getMaxColumns() < 40) st.insertColumnsAfter(st.getMaxColumns(), 40 - st.getMaxColumns());
   var L = "'" + LOG + "'!", P = "'" + POSTS + "'!";
   var today = 'TEXT(TODAY(),"yyyy-mm-dd")', wk7 = 'TEXT(TODAY()-6,"yyyy-mm-dd")';
   st.getRange('A1').setValue('Ethink · 방문 통계').setFontSize(14).setFontWeight('bold');
@@ -199,12 +200,12 @@ function setupStats() {
   var cards = [
     ['A4', '오늘 방문자', '=SUMIFS(' + L + 'J:J,' + L + 'B:B,' + today + ')'],
     ['B4', '오늘 조회수', '=COUNTIF(' + L + 'B:B,' + today + ')'],
-    ['D4', '최근 7일 방문자', '=COUNTUNIQUE(IFERROR(FILTER(' + L + 'I2:I,' + L + 'B2:B>=' + wk7 + ')))'],
-    ['E4', '최근 7일 조회수', '=COUNTIF(' + L + 'B2:B,">="&' + wk7 + ')'],
-    ['G4', '이번 달 방문자', '=SUMIFS(' + L + 'L:L,' + L + 'D:D,TEXT(TODAY(),"yyyy-mm"))'],
-    ['H4', '이번 달 조회수', '=COUNTIF(' + L + 'D:D,TEXT(TODAY(),"yyyy-mm"))'],
-    ['J4', '총 방문자', '=SUM(' + L + 'N:N)'],
-    ['K4', '총 조회수', '=MAX(0,COUNTA(' + L + 'B:B)-1)']
+    ['C4', '최근 7일 방문자', '=COUNTUNIQUE(IFERROR(FILTER(' + L + 'I2:I,' + L + 'B2:B>=' + wk7 + ')))'],
+    ['D4', '최근 7일 조회수', '=SUMPRODUCT((' + L + 'B2:B>=' + wk7 + ')*(' + L + 'B2:B<>""))'],
+    ['E4', '이번 달 방문자', '=SUMIFS(' + L + 'L:L,' + L + 'D:D,TEXT(TODAY(),"yyyy-mm"))'],
+    ['G4', '이번 달 조회수', '=COUNTIF(' + L + 'D:D,TEXT(TODAY(),"yyyy-mm"))'],
+    ['H4', '총 방문자', '=SUM(' + L + 'N:N)'],
+    ['I4', '총 조회수', '=MAX(0,COUNTA(' + L + 'B:B)-1)']
   ];
   cards.forEach(function (c) {
     st.getRange(c[0]).setValue(c[1]).setFontWeight('bold');
@@ -225,7 +226,7 @@ function setupStats() {
     st.getRange('B' + r).setFormula('=COUNTUNIQUE(IFERROR(FILTER(' + L + 'I2:I,' + L + 'F2:F=' + a + ')))');
     st.getRange('C' + r).setFormula('=COUNTIF(' + L + 'F2:F,' + a + ')');
     st.getRange('D' + r).setFormula('=COUNTUNIQUE(IFERROR(FILTER(' + L + 'I2:I,' + L + 'F2:F=' + a + ',' + L + 'B2:B>=' + wk7 + ')))');
-    st.getRange('E' + r).setFormula('=COUNTIFS(' + L + 'F2:F,' + a + ',' + L + 'B2:B,">="&' + wk7 + ')');
+    st.getRange('E' + r).setFormula('=SUMPRODUCT((' + L + 'F2:F=' + a + ')*(' + L + 'B2:B>=' + wk7 + '))');
   });
   // 2) 유입 경로: G~I
   title_('G7', '어디서 들어왔나 (유입 경로)');
@@ -245,6 +246,7 @@ function setupStats() {
   // 6) 유입 사이트 원래 주소: AK~AL
   q('AK8', '유입 사이트(원래 주소)', "select O, count(O) where O is not null group by O order by count(O) desc label O '유입 사이트', count(O) '조회수'");
   st.setFrozenRows(5);
+  st.setColumnWidths(1, 40, 110);
   st.setColumnWidth(1, 190); st.setColumnWidth(7, 190); st.setColumnWidth(11, 200); st.setColumnWidth(12, 320); st.setColumnWidth(13, 170);
   st.setColumnWidth(17, 200); st.setColumnWidth(18, 200); st.setColumnWidth(37, 200);
   [6, 10, 16, 20, 24, 28, 32, 36].forEach(function (c) { st.setColumnWidth(c, 24); });
