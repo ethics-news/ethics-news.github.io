@@ -1,6 +1,6 @@
 // Ethink(에씽크) · 좋아요 카운터 + 방문 통계
 // 좋아요: ?id=/weekly/2026-10-16/1/&act=get|like|unlike
-// 방문:   ?act=hit&id=/경로/&t=제목&v=방문자번호&f=dwmyn(첫 방문 표시)&r=유입 사이트&c=코너&fr=from표시&app=앱&pv=사이트 안 이전 페이지
+// 방문:   ?act=hit&id=/경로/&t=제목&v=방문자번호&f=dwmyn(첫 방문 표시)&r=유입 사이트&cn=코너&fr=from표시&app=앱&pv=사이트 안 이전 페이지
 // 개인정보(이름, 이메일, IP)는 받지도 저장하지도 않습니다.
 var ID_RULE = /^\/[a-z0-9\-\/]{0,100}$/;
 var MAX_ROWS = 2000;
@@ -95,7 +95,7 @@ function hit_(p, id) {
   var f = String(p.f || '');
   var title = String(p.t || '').replace(/[\r\n\t]/g, ' ').slice(0, 120);
   var ref = String(p.r || '').replace(/[^a-z0-9.\-]/gi, '').slice(0, 60);
-  var c = String(p.c || ''); if (CORNERS.indexOf(c) < 0) c = section_(id);
+  var c = String(p.cn || ''); if (CORNERS.indexOf(c) < 0) c = section_(id); // 'c'는 Apps Script 예약어라 cn으로 받음
   var fr = String(p.fr || '').replace(/[^a-z0-9\-]/gi, '').toLowerCase().slice(0, 20);
   var app = String(p.app || '').replace(/[^a-z]/g, '').slice(0, 2);
   var pv = String(p.pv || ''); if (!ID_RULE.test(pv)) pv = '';

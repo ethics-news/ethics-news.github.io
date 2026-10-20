@@ -125,7 +125,7 @@
       else if(path.indexOf('/saved/')===0)c='찜한 글';
       var t=document.title.replace(/\s*·\s*[^·]+$/,'')||document.title;
       var u=api+'?act=hit&id='+encodeURIComponent(path)+'&t='+encodeURIComponent(t.trim().slice(0,120))+'&v='+v+'&f='+f+'&r='+encodeURIComponent(r)
-        +'&c='+encodeURIComponent(c)+'&fr='+encodeURIComponent(fr)+'&app='+app+'&pv='+encodeURIComponent(pv.slice(0,100));
+        +'&cn='+encodeURIComponent(c)+'&fr='+encodeURIComponent(fr)+'&app='+app+'&pv='+encodeURIComponent(pv.slice(0,100));
       fetch(u,{mode:'no-cors',keepalive:true}).catch(function(){});
     }catch(e){}
   })();
