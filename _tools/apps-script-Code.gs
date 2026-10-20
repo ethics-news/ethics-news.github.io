@@ -8,7 +8,7 @@ var TZ = 'Asia/Seoul';
 var LOG = '방문기록';
 var STATS = '통계';
 var POSTS = '글목록';
-var CORNERS = ['홈', '윤리로 읽는 뉴스 · 최신호', '윤리로 읽는 뉴스 · 지난 호', '윤리로 읽는 책', '윤리 채널', '소개·만든 책', '찜한 글', '기타'];
+var CORNERS = ['홈', '윤리로 읽는 뉴스 · 최신호', '윤리로 읽는 뉴스 · 지난 호', '윤리로 읽는 책', '나와 닮은 사상가', '윤리 채널', '소개·만든 책', '찜한 글', '기타'];
 
 function doGet(e) {
   var p = (e && e.parameter) || {};
@@ -61,6 +61,7 @@ function section_(id) {
   if (id === '/') return '홈';
   if (id.indexOf('/weekly/') === 0) return '윤리로 읽는 뉴스 · 최신호';
   if (id.indexOf('/reading/') === 0) return '윤리로 읽는 책';
+  if (id.indexOf('/thinker/') === 0) return '나와 닮은 사상가';
   if (id.indexOf('/channel/') === 0) return '윤리 채널';
   if (id.indexOf('/about/') === 0) return '소개·만든 책';
   if (id.indexOf('/saved/') === 0) return '찜한 글';
