@@ -1,6 +1,6 @@
 // Ethink(에씽크) · 좋아요 카운터 + 방문 통계
 // 좋아요: ?id=/weekly/2026-10-16/1/&act=get|like|unlike
-// 남기는 글: 목록 ?act=blist / 쓰기·읽기는 POST(JSON) {act:'bpost'|'bread', ...}
+// 운영자에게 의견 보내기(/board/): 목록 ?act=blist / 쓰기·읽기는 POST(JSON) {act:'bpost'|'bread', ...}
 // 방문:   ?act=hit&id=/경로/&t=제목&v=방문자번호&f=dwmyn(첫 방문 표시)&r=유입 사이트&cn=코너&fr=from표시&app=앱&pv=사이트 안 이전 페이지
 // 개인정보(이름, 이메일, IP)는 받지도 저장하지도 않습니다.
 var ID_RULE = /^\/[a-z0-9\-\/]{0,100}$/;
@@ -9,7 +9,7 @@ var TZ = 'Asia/Seoul';
 var LOG = '방문기록';
 var STATS = '통계';
 var POSTS = '글목록';
-var CORNERS = ['홈', '윤리로 읽는 뉴스 · 최신호', '윤리로 읽는 뉴스 · 지난 호', '윤리로 읽는 책', '나와 닮은 사상가', '윤리 채널', '소개·만든 책', '남기는 글', '찜한 글', '기타'];
+var CORNERS = ['홈', '윤리로 읽는 뉴스 · 최신호', '윤리로 읽는 뉴스 · 지난 호', '윤리로 읽는 책', '나와 닮은 사상가', '윤리 채널', '소개·만든 책', '운영자에게 의견 보내기', '찜한 글', '기타'];
 
 function doGet(e) {
   var p = (e && e.parameter) || {};
@@ -66,7 +66,7 @@ function section_(id) {
   if (id.indexOf('/thinker/') === 0) return '나와 닮은 사상가';
   if (id.indexOf('/channel/') === 0) return '윤리 채널';
   if (id.indexOf('/about/') === 0) return '소개·만든 책';
-  if (id.indexOf('/board/') === 0) return '남기는 글';
+  if (id.indexOf('/board/') === 0) return '운영자에게 의견 보내기';
   if (id.indexOf('/saved/') === 0) return '찜한 글';
   return '기타';
 }
@@ -174,7 +174,7 @@ function setupStats() {
   var n = lg.getLastRow() - 1;
   if (n > 0) {
     var rows = lg.getRange(2, 1, n, 17).getValues();
-    var old = { '윤리로 읽는 뉴스': '윤리로 읽는 뉴스 · 최신호', '길벗 채널': '윤리 채널' };
+    var old = { '윤리로 읽는 뉴스': '윤리로 읽는 뉴스 · 최신호', '길벗 채널': '윤리 채널', '남기는 글': '운영자에게 의견 보내기' };
     rows.forEach(function (r) {
       if (old[r[5]]) r[5] = old[r[5]];
       if (CORNERS.indexOf(r[5]) < 0) r[5] = section_(String(r[6]));
@@ -261,11 +261,12 @@ function out_(o) {
   return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);
 }
 
-// ───────── 남기는 글(비공개 게시판) ─────────
+// ───────── 운영자에게 의견 보내기(비공개 게시판, /board/) ─────────
 // 방문자: 제목·본문·숫자 4자리 비밀번호. 이름·연락처는 받지 않음.
 // 공개: '승인'에 체크하고 '숨김'에 체크하지 않은 글의 제목·날짜·답변 여부만. 본문과 댓글은 비밀번호를 맞힌 글쓴이에게만.
-// 운영: 시트 '남기는 글' 탭에서 승인·숨김 칸 체크, 댓글 칸에 답을 씀. 새 글이 오면 BOARD_MAIL로 알림.
-var BOARD = '남기는 글';
+// 운영: 시트 '운영자 의견' 탭에서 승인·숨김 칸 체크, 댓글 칸에 답을 씀. 새 글이 오면 BOARD_MAIL로 알림.
+var BOARD = '운영자 의견';
+var BOARD_OLD = '남기는 글'; // 예전 탭 이름(있으면 새 이름으로 바꿈)
 var BOARD_MAIL = 'drumset@nate.com';
 var BOARD_HEAD = ['번호', '올린 시각', '승인', '숨김', '제목', '본문', '댓글', '비밀번호(변환값)', '소금', '방문자 번호'];
 var B_TITLE = 40, B_BODY = 2000, B_GAP_SEC = 600, B_PER_DAY = 5, B_ALL_DAY = 60, B_FAIL = 5, B_LOCK_SEC = 3600;
@@ -281,6 +282,7 @@ function doPost(e) {
 function boardSheet_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sh = ss.getSheetByName(BOARD);
+  if (!sh && ss.getSheetByName(BOARD_OLD)) sh = ss.getSheetByName(BOARD_OLD).setName(BOARD);
   if (!sh) {
     sh = ss.insertSheet(BOARD);
     sh.getRange(1, 1, 1, BOARD_HEAD.length).setValues([BOARD_HEAD]).setFontWeight('bold');
@@ -336,7 +338,7 @@ function boardPost_(d) {
   cache.put('bday:' + v + ':' + day, String(mine + 1), 86400);
   cache.put('ball:' + day, String(all + 1), 86400);
   try {
-    MailApp.sendEmail(BOARD_MAIL, '[Ethink 남기는 글] 새 글 ' + n + '번: ' + t,
+    MailApp.sendEmail(BOARD_MAIL, '[Ethink 운영자 의견] 새 글 ' + n + '번: ' + t,
       '새 글이 올라왔습니다. 시트의 「' + BOARD + '」 탭에서 승인·숨김을 정하고 댓글을 달 수 있습니다.\n\n' +
       '번호: ' + n + '\n제목: ' + t + '\n\n' + b + '\n\n시트: ' + SpreadsheetApp.getActiveSpreadsheet().getUrl());
   } catch (err) {}
@@ -377,9 +379,9 @@ function boardRead_(d) {
   cache.put(key, String(fails + 1), B_LOCK_SEC);
   return out_({ ok: false, error: 'pw', left: B_FAIL - fails - 1 });
 }
-// 편집기에서 한 번 실행: '남기는 글' 탭을 만들고, 메일 보내기 권한을 승인받고, 시험 메일을 한 통 보냅니다.
+// 편집기에서 한 번 실행: '운영자 의견' 탭을 만들고, 메일 보내기 권한을 승인받고, 시험 메일을 한 통 보냅니다.
 function setupBoard() {
   boardSheet_();
-  MailApp.sendEmail(BOARD_MAIL, '[Ethink 남기는 글] 알림 설정 완료', '새 글이 올라오면 이 주소로 알림이 옵니다.');
-  return '남기는 글 탭 준비 완료';
+  MailApp.sendEmail(BOARD_MAIL, '[Ethink 운영자 의견] 알림 설정 완료', '새 글이 올라오면 이 주소로 알림이 옵니다.');
+  return '운영자 의견 탭 준비 완료';
 }

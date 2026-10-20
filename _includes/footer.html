@@ -3,7 +3,7 @@
     <div>
       <p class="footer-name">{{ site.title }}</p>
       <p class="footer-role">기획·집필·편집·발행: {{ site.author }}</p>
-      <p><span class="chat-btns">{% if site.openchat %}<a class="openchat" href="{{ site.openchat }}" target="_blank" rel="noopener">오픈채팅방에서 함께 이야기하기</a>{% endif %}{% if site.feedback_form %}<a class="openchat form" href="{{ site.feedback_form }}" target="_blank" rel="noopener">운영자에게 의견 보내기</a>{% endif %}</span></p>
+      <p><span class="chat-btns">{% if site.openchat %}<a class="openchat" href="{{ site.openchat }}" target="_blank" rel="noopener">오픈채팅방에서 함께 이야기하기</a>{% endif %}<a class="openchat form" href="{{ '/board/' | relative_url }}">운영자에게 의견 보내기</a></span></p>
       <p>연락 <a class="mono mail" href="mailto:{{ site.email }}">{{ site.email }}</a></p>
     </div>
     <div class="footer-meta">

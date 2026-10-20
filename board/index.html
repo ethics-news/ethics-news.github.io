@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 남기는 글
-lead: 운영자에게만 보이는 글을 남깁니다. 제목만 공개됩니다.
+title: 운영자에게 의견 보내기
+lead: 운영자만 읽는 의견을 남깁니다. 제목만 공개됩니다.
 ---
 <style>
-/* 남기는 글 — 모든 규칙은 #bd 안에서만 */
+/* 운영자에게 의견 보내기 — 모든 규칙은 #bd 안에서만 */
 #bd{display:flex;flex-direction:column;gap:2.5rem}
 #bd [hidden]{display:none!important}
 #bd h2{font-family:var(--font-display);font-size:var(--step-2);margin:0 0 .75rem}
@@ -48,14 +48,14 @@ lead: 운영자에게만 보이는 글을 남깁니다. 제목만 공개됩니�
 </style>
 
 <section class="issue-hero">
-  <p class="issue-meta mono"><span>남기는 글</span></p>
-  <h1 class="issue-title">남기는 글</h1>
+  <p class="issue-meta mono"><span>의견 보내기</span></p>
+  <h1 class="issue-title">운영자에게 의견 보내기</h1>
   <p class="issue-lead">수업 이야기, 읽은 책, 사이트에 바라는 점까지 무엇이든 남겨 주세요. 본문은 운영자만 읽고, 다른 방문자에게는 운영자가 확인한 글의 제목만 보입니다. 답은 댓글로 드립니다.</p>
 </section>
 
 <div id="bd">
   <section aria-labelledby="w-h">
-    <h2 id="w-h">글 남기기</h2>
+    <h2 id="w-h">의견 남기기</h2>
     <form class="card" id="w-form" novalidate>
       <ul class="rules">
         <li><b>제목은 다른 방문자에게도 보입니다.</b> 제목에 욕설, 광고, 실명, 연락처(전화번호·이메일·SNS 계정)를 쓰지 마세요.</li>
@@ -75,7 +75,7 @@ lead: 운영자에게만 보이는 글을 남깁니다. 제목만 공개됩니�
           <input class="pw" id="w-p" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" required>
         </label>
         <div class="hp" aria-hidden="true"><label>비워 두세요 <input id="w-hp" tabindex="-1" autocomplete="off"></label></div>
-        <button class="go" id="w-go" type="submit">글 남기기</button>
+        <button class="go" id="w-go" type="submit">의견 보내기</button>
       </div>
       <p class="msg" id="w-msg" role="status" aria-live="polite"></p>
     </form>
@@ -101,9 +101,9 @@ lead: 운영자에게만 보이는 글을 남깁니다. 제목만 공개됩니�
   </section>
 
   <section aria-labelledby="l-h">
-    <h2 id="l-h">올라온 글</h2>
+    <h2 id="l-h">올라온 의견</h2>
     <ul class="list" id="l-list"></ul>
-    <p class="empty" id="l-empty" hidden>아직 목록에 올라온 글이 없습니다.</p>
+    <p class="empty" id="l-empty" hidden>아직 목록에 올라온 의견이 없습니다.</p>
     <p class="lock" id="l-load">목록을 불러오는 중입니다…</p>
   </section>
 </div>
