@@ -286,19 +286,17 @@ function show(v){VIEWS.forEach(x=>$(x).hidden=x!==v);var el=document.getElementB
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const jo=(w,a,b)=>{const c=w.charCodeAt(w.length-1)-0xAC00;return w+((c>=0&&c<11172&&c%28)?a:b)};
-// 길벗 교과서 단원(교과서 본문·찾아보기 쪽수 대조). f=그 단원의 고전으로 읽음, c=본문에 나옴, m=짧게 언급
+// 길벗 교과서 단원(교과서 본문·찾아보기 쪽수 대조). f=그 단원의 고전으로 읽음, c=본문·보충 자료에 나옴. 이름만 스치는 곳은 넣지 않음
 const UN={'인문학과 윤리':{'Ⅰ-2':'고통과 쾌락은 어디에서 비롯될까?','Ⅱ-1':'‘관계 속의 나’로 살아간다는 말의 의미는 무엇일까?','Ⅱ-2':'진정한 우정과 참된 사랑에는 어떤 노력이 필요할까?','Ⅲ-1':'우리는 자유롭고 평등한 존재일까?','Ⅲ-2':'능력에 따른 불평등은 정당한 것일까?','Ⅳ-1':'서로 다른 의견을 어떻게 포용할 수 있을까?','Ⅳ-2':'가상 세계와 현실 세계의 구분은 가능할까?','Ⅴ-1':'삶의 방식으로서 소유와 존재란 무엇일까?','Ⅴ-2':'인간과 자연이 어떻게 상생할 수 있을까?'},
  '윤리문제 탐구':{'Ⅰ-1':'윤리문제는 무엇이며, 윤리문제 해결에 필요한 기준은 무엇인가?','Ⅱ-1':'진정한 행복이란 무엇이며, 윤리적으로 살수록 행복한가?','Ⅱ-2':'사생활 보호와 공익 사이의 갈등을 어떻게 해결할 것인가?','Ⅱ-3':'사회적 차별 표현 문제를 어떻게 해결할 것인가?','Ⅱ-4':'난민 문제를 어떻게 해결할 것인가?','Ⅲ-1':'메타버스는 유토피아인가, 디스토피아인가?','Ⅲ-3':'인공지능 관련 윤리문제를 어떻게 해결할 것인가?','Ⅳ-1':'인간과 동물이 조화롭게 살 수 있는 방안은 무엇인가?','Ⅳ-2':'기후변화에 따른 위기에 어떻게 대처할 것인가?'}};
 const GU={
- socrates:{'인문학과 윤리':[['Ⅳ-1','m']]},
  plato:{'인문학과 윤리':[['Ⅳ-1','c']]},
  aristotle:{'인문학과 윤리':[['Ⅱ-2','f','니코마코스 윤리학']],'윤리문제 탐구':[['Ⅰ-1'],['Ⅱ-1'],['Ⅳ-1']]},
  epicurus:{'인문학과 윤리':[['Ⅰ-2','f','쾌락']],'윤리문제 탐구':[['Ⅱ-1']]},
  stoics:{'인문학과 윤리':[['Ⅰ-2','c']]},
- bentham:{'인문학과 윤리':[['Ⅳ-1','m']],'윤리문제 탐구':[['Ⅰ-1'],['Ⅱ-1'],['Ⅱ-2'],['Ⅳ-1']]},
+ bentham:{'윤리문제 탐구':[['Ⅰ-1'],['Ⅱ-1'],['Ⅱ-2'],['Ⅳ-1']]},
  mill:{'인문학과 윤리':[['Ⅳ-1','f','자유론']],'윤리문제 탐구':[['Ⅰ-1'],['Ⅱ-1'],['Ⅱ-3']]},
  kant:{'인문학과 윤리':[['Ⅲ-1','f','윤리형이상학 정초']],'윤리문제 탐구':[['Ⅰ-1'],['Ⅱ-4'],['Ⅳ-1'],['Ⅳ-2']]},
- marx:{'인문학과 윤리':[['Ⅴ-1','m']]},
  rawls:{'인문학과 윤리':[['Ⅱ-1','f','정의론'],['Ⅲ-2','f','정의론']]},
  nozick:{'인문학과 윤리':[['Ⅲ-2','c'],['Ⅳ-2','c']],'윤리문제 탐구':[['Ⅱ-1']]},
  singer:{'윤리문제 탐구':[['Ⅳ-1']]},
@@ -315,10 +313,9 @@ function gbLines(k,name){
   const o=GU[k]||{},out=[];
   Object.keys(o).forEach(bk=>{
     const us=o[bk],u=x=>`${x[0]} 「${UN[bk][x[0]]}」`;
-    const f=us.filter(x=>x[1]==='f'),c=us.filter(x=>x[1]!=='f'&&x[1]!=='m'),m=us.filter(x=>x[1]==='m');
+    const f=us.filter(x=>x[1]==='f'),c=us.filter(x=>x[1]!=='f');
     [...new Set(f.map(x=>x[2]))].forEach(t=>out.push(`<span>『${bk}』 ${f.filter(x=>x[2]===t).map(u).join(', ')}에서 『${t}』${jo(t,'을','를').slice(t.length)} 고전으로 읽습니다.</span>`));
     if(c.length)out.push(`<span>『${bk}』 ${c.map(u).join(', ')}에서 ${jo(name,'을','를')} 만날 수 있습니다.</span>`);
-    if(m.length)out.push(`<span>『${bk}』 ${m.map(u).join(', ')}에 ${jo(name,'이','가')} 짧게 언급됩니다.</span>`);
   });
   return out;
 }
@@ -416,8 +413,12 @@ function result(){
   $('x-cov').innerHTML=SUB.map((s,i)=>`<tr><td>${s}</td><td><span class="dots" aria-hidden="true">${Array.from({length:TOT[i]},(_,j)=>`<i class="${j<th.cov[i]?'fill':''}"></i>`).join('')}</span>${TOT[i]}종 중 ${th.cov[i]}종</td></tr>`).join('');
   const g=[];
   g.push(...gbLines(champ,th.n));
+  const gbHas=g.length;
+  if(!gbHas){const o=[1,2].filter(i=>th.cov[i]/TOT[i]>=.75);
+    if(o.length)g.push(`<span>${o.map(i=>`『${SUB[i]}』 교과서 ${th.cov[i]===TOT[i]?TOT[i]+'종 모두':TOT[i]+'종 중 '+th.cov[i]+'종'}`).join(', ')}에서 ${jo(th.n,'을','를')} 다룹니다.</span>`);}
   if(th.bk.length)g.push(`<span>『윤리 사상가로 읽는 통합사회』 ${th.bk.map(n=>n+'장 「'+CH[n]+'」').join(', ')}에서 ${th.n}의 원전을 더 읽을 수 있습니다.</span>`);
-  if(!g.length)g.push(`<span>길벗 『인문학과 윤리』·『윤리문제 탐구』 교과서에서 결이 닿는 사상가 ${jo(near.map(k=>T[k].n).join('·'),'을','를')} 함께 읽어 보세요.</span>`);
+  if(!gbHas){const ng=Object.keys(T).filter(k=>k!==champ&&GU[k]).map(k=>({k,d:(T[k].x-p.x)**2+(T[k].y-p.y)**2+(T[k].z-p.z)**2})).sort((a,b)=>a.d-b.d).slice(0,2).map(o=>T[o.k].n);
+    g.push(`<span>길벗 『인문학과 윤리』·『윤리문제 탐구』 교과서에서는 결이 닿는 사상가 ${jo(ng.join('·'),'을','를')} 함께 읽어 보세요.</span>`);}
   $('x-gilbut').innerHTML='<b>길벗에서 이어 읽기</b>'+g.join('');
   const order=Object.keys(G.reach).map(Number).sort((a,b)=>G.reach[a]-G.reach[b]);
   $('x-list').innerHTML=order.map(id=>{const r=G.reach[id];const lab=r===1?'우승':r===2?'결승':r===4?'준결승':r===8?'8강':'16강';
