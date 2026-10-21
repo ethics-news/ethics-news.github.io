@@ -115,6 +115,7 @@
       var r='',pv='';
       try{if(document.referrer){var ref=new URL(document.referrer);if(ref.hostname!==location.hostname)r=ref.hostname;else pv=ref.pathname.toLowerCase();}}catch(e){}
       var path=location.pathname.toLowerCase();
+      if(pv===path)pv=''; /* 새로고침은 사이트 안 이동으로 세지 않음 */
       {% assign pa_iss = site.issues | where_exp: "i", "i.date <= site.time" | sort: "date" %}{% assign pa_latest = pa_iss | last %}var LATEST={{ pa_latest.url | default: "" | jsonify }};
       var c='기타';
       if(path==='/')c='홈';

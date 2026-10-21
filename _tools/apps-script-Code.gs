@@ -156,7 +156,10 @@ function post_(id, title, c, day) {
   if (last >= 2) {
     var ids = sh.getRange(2, 1, last - 1, 1).getValues();
     for (var i = 0; i < ids.length; i++) {
-      if (ids[i][0] === id) { sh.getRange(i + 2, 2, 1, 2).setValues([[title, c]]); return; }
+      if (ids[i][0] === id) { // 제목이 빈 기록은 기존 제목을 지우지 않음
+        if (title) sh.getRange(i + 2, 2, 1, 2).setValues([[title, c]]); else sh.getRange(i + 2, 3).setValue(c);
+        return;
+      }
     }
   }
   sh.appendRow([id, title, c, "'" + day]);
