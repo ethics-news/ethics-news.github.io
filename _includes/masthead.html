@@ -9,6 +9,7 @@
       <a href="{{ '/channel/' | relative_url }}">윤리 채널</a>
       <a href="{{ '/about/' | relative_url }}">소개·만든 책</a>
       <a href="{{ '/saved/' | relative_url }}">찜한 글<span class="nav-count js-saved-count"></span></a>
+      {% if site.newsletter %}<a class="nav-sub" href="{{ site.newsletter }}" target="_blank" rel="noopener">구독하기</a>{% endif %}
     </nav>
   </div>
 </header>

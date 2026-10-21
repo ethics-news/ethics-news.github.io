@@ -325,3 +325,14 @@ html { scroll-behavior: smooth; }
 .ch-more[open] .sum-open { display: none; }
 .ch-more[open] .sum-close { display: inline; }
 .ch-note { color: var(--muted); font-size: var(--step--1); border-top: 1px solid var(--rule); padding-top: 1rem; margin: 0; text-align: left; }
+
+/* 뉴스레터 구독 */
+.nav-sub { color: #fff !important; background: var(--accent); padding: 0.15rem 0.7rem; border-radius: 999px; font-weight: 600; }
+.nav-sub:hover { filter: brightness(1.1); }
+.sub-box { margin: 2rem 0 0; padding: 1.1rem 1.25rem; border: 1px solid var(--rule); border-left: 4px solid var(--accent); border-radius: 8px; background: var(--accent-soft); }
+.sub-title { font-weight: 700; margin: 0 0 0.3rem; }
+.sub-text { margin: 0 0 0.8rem; font-size: var(--step--1); color: var(--muted); }
+.sub-btn { display: inline-block; background: var(--accent); color: #fff !important; text-decoration: none; font-weight: 600; font-size: var(--step--1); padding: 0.5rem 1rem; border-radius: 6px; }
+.sub-btn:hover { filter: brightness(1.1); }
+.sub-btn.sm { padding: 0.45rem 0.9rem; }
+@media (prefers-color-scheme: dark) { .nav-sub, .sub-btn { color: #0f1513 !important; } }
