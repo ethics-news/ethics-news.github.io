@@ -452,12 +452,12 @@ async function drawCard(){
   x.fillStyle=pen;x.fillRect(80,1010,8,130);
   x.fillStyle=muted;x.font='500 28px "IBM Plex Sans KR", sans-serif';x.fillText('추천 책',112,1046);
   x.fillStyle=ink;x.font='700 46px "Gowun Batang", serif';wrap(x,th.book,112,1110,880,56,2);
-  x.fillStyle=muted;x.font='400 24px "IBM Plex Sans KR", sans-serif';x.fillText('Ethink · ethink-kr.github.io/thinker · (주)도서출판 길벗',80,1280);
+  x.fillStyle=muted;x.font='400 24px "IBM Plex Sans KR", sans-serif';x.fillText('Ethink · ethink.kr/thinker · (주)도서출판 길벗',80,1280);
   $('x-shot').src=cv.toDataURL('image/png');
 }
 $('x-copy').onclick=()=>{
   const {champ,p}=G.res,th=T[champ];
-  const t=`[나와 닮은 사상가는?] 나와 결이 닮은 사상가는 ${th.n}. 나의 결은 '${typeName(p)}'. 추천 책: ${th.book}\n나도 해 보기: https://ethink-kr.github.io/thinker/?from=link`;
+  const t=`[나와 닮은 사상가는?] 나와 결이 닮은 사상가는 ${th.n}. 나의 결은 '${typeName(p)}'. 추천 책: ${th.book}\n나도 해 보기: https://ethink.kr/thinker/?from=link`;
   const done=()=>$('x-toast').textContent='결과 문구를 복사했습니다.';
   try{navigator.clipboard.writeText(t).then(done,()=>{$('x-toast').textContent=t})}catch(e){$('x-toast').textContent=t}
 };

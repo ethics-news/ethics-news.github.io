@@ -85,6 +85,13 @@ downloads:
 - 코너: 홈 / 윤리로 읽는 뉴스 · 최신호 / 윤리로 읽는 뉴스 · 지난 호 / 윤리로 읽는 책 / 나와 닮은 사상가 / 윤리 채널 / 소개·만든 책 / 운영자에게 의견 보내기 / 찜한 글. 최신호·지난 호는 방문한 시점의 최신호 기준입니다.
 - 유입 경로는 ① 주소 끝의 `?from=표시` ② 카카오톡·인스타그램 같은 앱 안 브라우저 ③ 이전 사이트 주소 순서로 정합니다. 사이트의 공유 버튼과 링크 복사에는 `?from=kakao`, `?from=link` 등이 자동으로 붙고, 읽은 뒤 주소창에서는 지워집니다.
 - 직접 링크를 걸 때 표시를 붙이면 경로가 구분됩니다: `?from=brunch`(브런치), `?from=blog`(네이버 블로그), `?from=insta`(인스타그램), `?from=channel`(길벗 카카오 채널), `?from=email`, `?from=qr`. 목록에 없는 표시는 '표시: 이름'으로 잡힙니다.
-- 내 브라우저를 집계에서 빼려면 그 브라우저로 `https://ethink-kr.github.io/?nostats=1`을 한 번 엽니다(`?nostats=0`이면 다시 셉니다).
+- 내 브라우저를 집계에서 빼려면 그 브라우저로 `https://ethink.kr/?nostats=1`을 한 번 엽니다(`?nostats=0`이면 다시 셉니다).
 - Apps Script 코드 사본: `_tools/apps-script-Code.gs`. 코드를 바꾸면 편집기에 붙여 넣고 저장한 뒤, 기록 방식(`hit_`)을 바꿨을 때는 **배포 → 배포 관리 → 편집 → 새 버전 → 배포**로 같은 주소에 다시 배포합니다. 통계 탭을 다시 그리려면 편집기에서 `setupStats`를 실행합니다.
 - Apps Script 웹 앱은 `c`, `sid`라는 이름의 항목을 받지 않습니다(예약어). 새 항목을 보낼 때 피해야 합니다.
+
+
+## 도메인
+
+- 주소는 https://ethink.kr (가비아 등록, 2026-10-21). 옛 주소 ethink-kr.github.io는 GitHub가 새 주소로 넘겨 줍니다.
+- 가비아 DNS: A @ → 185.199.108~111.153 (4줄), CNAME www → ethink-kr.github.io., TXT _github-pages-challenge-ethink-kr (GitHub 조직 도메인 인증)
+- 저장소 루트의 CNAME 파일이 사용자 도메인 설정입니다. 지우면 github.io 주소로 돌아갑니다.

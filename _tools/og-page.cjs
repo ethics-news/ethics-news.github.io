@@ -21,7 +21,7 @@ body{width:1200px;height:630px;background:#f5f6f3;font-family:"IBM Plex Sans KR"
 const esc = s => String(s||'').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const tt = esc(title).replace(/\\n/g,"<br>"); const t = mark ? `<span class="mark">${tt}</span>` : tt;
 const subHtml = sub ? `<p class="sub">${esc(sub).replace(/\\n/g,'<br>')}</p>` : '';
-const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>${css}</style></head><body><div class="bar"></div><div class="wrap"><div><p class="kicker">${esc(kicker)}</p><h1 class="title">${t}</h1>${subHtml}</div><div class="foot"><b>Ethink</b><span class="url">ethink-kr.github.io${esc(urlpath||'')}</span></div></div></body></html>`;
+const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>${css}</style></head><body><div class="bar"></div><div class="wrap"><div><p class="kicker">${esc(kicker)}</p><h1 class="title">${t}</h1>${subHtml}</div><div class="foot"><b>Ethink</b><span class="url">ethink.kr${esc(urlpath||'')}</span></div></div></body></html>`;
 (async () => {
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
   await p.setContent(html); await p.waitForTimeout(2500);

@@ -19,7 +19,7 @@ body{width:1200px;height:630px;background:#f5f6f3;font-family:"IBM Plex Sans KR"
 .foot b{font-family:"Gowun Batang",serif;color:#1c2421;font-weight:700;font-size:30px}
 .foot .url{font-family:"IBM Plex Mono",monospace;color:#23614f}`;
 const esc = s => String(s||'').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>${css}</style></head><body><div class="bar"></div><div class="wrap"><div><p class="kicker">윤리로 읽는 뉴스 ${num}호 · ${d[0]}. ${d[1]}. ${d[2]}.${count ? ' · ' + count + '건' : ''}</p><h1 class="title"><span class="mark">${esc(title)}</span></h1>${sub ? `<p class="sub">${esc(sub)}</p>` : ''}</div><div class="foot"><b>Ethink</b><span class="url">ethink-kr.github.io</span></div></div></body></html>`;
+const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>${css}</style></head><body><div class="bar"></div><div class="wrap"><div><p class="kicker">윤리로 읽는 뉴스 ${num}호 · ${d[0]}. ${d[1]}. ${d[2]}.${count ? ' · ' + count + '건' : ''}</p><h1 class="title"><span class="mark">${esc(title)}</span></h1>${sub ? `<p class="sub">${esc(sub)}</p>` : ''}</div><div class="foot"><b>Ethink</b><span class="url">ethink.kr</span></div></div></body></html>`;
 (async () => {
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
   await p.setContent(html); await p.waitForTimeout(1500);
