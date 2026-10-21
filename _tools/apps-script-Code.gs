@@ -267,7 +267,7 @@ function out_(o) {
 // 운영: 시트 '운영자 의견' 탭에서 승인·숨김 칸 체크, 댓글 칸에 답을 씀. 새 글이 오면 BOARD_MAIL로 알림.
 var BOARD = '운영자 의견';
 var BOARD_OLD = '남기는 글'; // 예전 탭 이름(있으면 새 이름으로 바꿈)
-var BOARD_MAIL = 'drumset@nate.com';
+var BOARD_MAIL = 'hello@ethink.kr';
 var BOARD_HEAD = ['번호', '올린 시각', '승인', '숨김', '제목', '본문', '댓글', '비밀번호(변환값)', '소금', '방문자 번호'];
 var B_TITLE = 40, B_BODY = 2000, B_GAP_SEC = 600, B_PER_DAY = 5, B_ALL_DAY = 60, B_FAIL = 5, B_LOCK_SEC = 3600;
 
