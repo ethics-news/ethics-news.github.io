@@ -32,6 +32,8 @@
 - 사상가가 나오면 원문을 함께 싣는다: `<figure class="src"><blockquote><p>원문</p></blockquote><figcaption>사상가, 『책』(옮긴이 옮김, 출판사, 연도) · 교과서/단행본 수록 위치</figcaption></figure>`. 두 입장 비교는 `<div class="vs">` 안에 figure 두 개, 각 figure에 `<p class="vs-head">입장 · 사상가</p>`.
 - 원문은 반드시 실제 텍스트에서 가져온다: 재형 님 옵시디언 볼트 `Vault/_library/`(책 OCR 원문, 읽기 전용)와 `Vault/textbook/`, 또는 확인 가능한 공개 원문. 기억으로 쓰거나 다듬어 만든 문장을 원문처럼 싣지 않는다. 찾지 못하면 그 자리에 `[원문 확인 필요: 사상가, 책, 찾을 대목]`을 남기고 보고한다.
 - 교과서 수록 원문이면 교과서와 사상가 책을 모두 출처로 적는다(길벗 『윤리 사상가로 읽는 통합사회』, 「인문학과 윤리」, 「윤리문제 탐구」 등). 아니면 사상가의 어느 책인지 밝힌다.
+- 원문을 찾는 순서: ① 볼트 `Vault/_library/`(재형 님 도서관 라이브러리)와 기출 문제 원문 자료집 → ② 실제 한국어 번역서에 실린 문장 → ③ 원어 원문을 검색해 직접 번역(번역했음을 출처에 밝힌다).
+- 출처에 타사 교과서 출판사 이름을 쓰지 않는다. 타사 교과서를 써야 하면 출판사 이름은 빼고 과목과 단원만 밝힌다(예: 「현대사회와 윤리」 교과서 '직업 생활과 윤리' 단원 수록).
 
 ## 5. 수업에서 쓰는 법
 - 설명과 함께 도식을 넣는다: `<figure class="fig"><p class="fig-title">수업 흐름</p><ol class="flow"><li><span class="flow-step">단계</span><span class="flow-desc">설명</span></li>…</ol></figure>`. 개념 대비는 `<div class="scale">`(scale-cell, scale-arrow, scale-cell-strong), 표는 `<table class="tbl">`. 기존 `_items/2026-10-16/*.md`를 본보기로 삼는다.
