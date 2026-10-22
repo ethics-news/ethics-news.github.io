@@ -1,0 +1,14 @@
+{%- assign p = include.post -%}
+{%- if p.collection == "reads" -%}{%- assign corner = "윤리로 읽는 책" -%}{%- assign kind = "read" -%}{%- assign sec = p.book | prepend: "『" | append: "』" -%}
+{%- else -%}{%- assign corner = site.news_title -%}{%- assign kind = "news" -%}{%- assign sec = p.section -%}{%- endif -%}
+<a class="pcard pcard-{{ kind }}" href="{{ p.url | relative_url }}">
+  <span class="pcard-cover">
+    <span class="pcard-corner">{{ corner }}</span>
+    <span class="pcard-sec">{{ sec }}</span>
+  </span>
+  <span class="pcard-body">
+    <span class="pcard-title">{{ p.title }}</span>
+    {% if p.question %}<span class="pcard-q">{{ p.question }}</span>{% endif %}
+    <span class="pcard-meta mono">{{ p.date | date: "%Y. %-m. %-d." }}{% if p.issue %}{% assign pi = site.issues | where: "issue_id", p.issue | first %}{% if pi %} · {{ pi.num }}호{% endif %}{% endif %}</span>
+  </span>
+</a>

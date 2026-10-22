@@ -46,6 +46,7 @@ layout: default
   </dl>
 
   <div class="item-body prose">{{ content }}</div>
+  <p class="byline">글 {{ site.author }}</p>
 
   <div class="talk no-print"><p>이 글에 대한 의견이나 수업에 써 본 후기를 들려주세요.</p><span class="chat-btns">{% include like-btn.html id=page.url %}{% include save-btn.html url=page.url title=page.title %}{% include share-btn.html url=page.url title=page.title %}{% if site.openchat %}<a class="openchat" href="{{ site.openchat }}" target="_blank" rel="noopener">오픈채팅방에서 함께 이야기하기</a>{% endif %}<a class="openchat form" href="{{ '/board/' | relative_url }}">운영자에게 의견 보내기</a></span></div>
 </article>

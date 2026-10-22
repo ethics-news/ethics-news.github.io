@@ -23,6 +23,7 @@
   </dl>
   {% if include.full %}
     <div class="item-body prose">{{ it.content }}</div>
+    <p class="byline">글 {{ site.author }}</p>
   {% else %}
     <details class="item-more">
       <summary><span class="sum-open">본문 펼치기</span><span class="sum-close">본문 접기</span> <span class="mono">약 {{ mins }}분</span></summary>

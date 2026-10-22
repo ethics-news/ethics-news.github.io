@@ -1,0 +1,40 @@
+# 사이트 빌드·배포. 글을 올릴 때(push)와 화·목·토 아침 9시(예약 발행)에 돌아갑니다.
+# 예약 발행: 글 앞머리 date가 아직 오지 않은 글은 빌드에서 빠지고(_config.yml의 future: false),
+# 정해진 시각에 다시 빌드되면서 그때 사이트에 나타납니다.
+name: 사이트 빌드·배포
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * 2,4,6'    # 화·목·토 09:00 KST (UTC 00:00)
+    - cron: '30 0 * * 2,4,6'   # 09:30 KST 한 번 더 (GitHub 예약 실행이 늦어질 때 대비)
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - uses: actions/upload-pages-artifact@v3
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
