@@ -236,6 +236,10 @@ html { scroll-behavior: smooth; }
 .tbl { min-width: 0; table-layout: fixed; }
 .tbl th:first-child, .tbl td:first-child { width: 6.5rem; }
 .tbl td:first-child { white-space: normal; }
+.tbl-cols th:first-child, .tbl-cols td:first-child { width: auto; }   /* <colgroup>으로 칸 비율을 정한 표 */
+@media (max-width: 40rem) { .tbl-cols { table-layout: auto; } .tbl-cols col { width: auto !important; } .tbl-cols th, .tbl-cols td { overflow-wrap: normal; } }   /* 휴대폰: 칸 너비를 내용에 맞춤 */
+.prose > .tbl { margin: 0 0 1.75rem; }                               /* 표 아래 글과 띄우기 */
+.read .prose > h5:first-child { margin-top: 2.25rem; }               /* 「윤리로 읽는 책」 첫 소제목을 교과 연계와 띄우기 */
 /* 항목 페이지 도구 */
 .item-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; }
 .btn-print { font: inherit; font-size: var(--step--1); font-weight: 600; color: var(--accent); background: transparent; border: 1px solid var(--accent); border-radius: 4px; padding: 0.35rem 0.8rem; cursor: pointer; }
