@@ -89,6 +89,8 @@
 #tk .teach h3{font-size:var(--step-0);margin:0 0 .35rem}
 #tk .teach p{font-size:.9375rem;color:var(--muted)}
 #tk .credit{font-size:var(--step--1);color:var(--muted);display:grid;gap:.25rem}
+#tk .credit-gap{margin-top:.75rem}
+#tk .credit a{color:var(--accent)}
 @media (max-width:720px){#tk .duel{grid-template-columns:1fr}#tk .pvs{justify-self:center}#tk .teach{grid-template-columns:1fr}#tk .near{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){#tk *{animation:none!important;transition:none!important}}
 </style>
@@ -190,9 +192,11 @@
 
   <div class="credit">
     <span>문장은 2022~2026학년도 시행 수능·평가원·교육청 전국연합 학력평가 생활과 윤리·윤리와 사상 제시문, 교과서 본문에서 가져왔습니다. 긴 제시문은 일부만 실었습니다.</span>
-    <span>기획·제작 박재형</span>
+{% if include.standalone %}    <span class="credit-gap">최신 판과 다른 코너는 <a href="https://ethink.kr/thinker/?from=download">ethink.kr/thinker</a>에서 볼 수 있습니다.</span>
+    <span>기획·제작 박재형 · (주)도서출판 길벗</span>
+{% else %}    <span>기획·제작 박재형</span>
     <span>(주)도서출판 길벗</span>
-  </div>
+{% endif %}  </div>
 </div>
 
 <script>
