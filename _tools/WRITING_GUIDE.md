@@ -45,3 +45,8 @@
 
 ## 7. 볼트 사본
 - 재형 님 옵시디언 볼트 `Vault/윤리로 읽는 뉴스/`에 항목마다 `nw_YYYY-MM-DD-N 제목.md`(앞머리: series, corner, issue, num, section, kicker, title, status(초안/확정/발행), published, url, question, caution, subjects, lenses, sources)와 `00 홈.md`의 호 목록을 갱신한다. 기존 파일 형식을 그대로 따른다.
+
+## 8. 「윤리로 읽는 책」
+- 정기 발행이 아니다. 재형 님이 읽은 책 가운데 골라 쓸 때마다 `_reads/YYYY-MM-DD-영문.md`로 올린다(양식 `_templates/새-책-글.md`).
+- 본문 소제목 세 개: `##### 이 책은 무엇을 묻나` / `##### 윤리 수업과 이어지는 지점` / `##### 수업에서 쓰는 법`.
+- 교과서 단원 연계표에서 「인문학과 윤리」·「윤리문제 탐구」가 나오면 단원명 뒤에 `(길벗 교과서 ○○~○○쪽)`을 붙인다. 쪽수는 Dropbox `AI 작업실/교과서 pdf로 콘텐츠 제작/인문학과 윤리 소단원별` 등 길벗 교과서 PDF에서 확인한다.
