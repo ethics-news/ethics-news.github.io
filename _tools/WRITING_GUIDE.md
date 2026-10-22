@@ -37,7 +37,8 @@
 - 설명과 함께 도식을 넣는다: `<figure class="fig"><p class="fig-title">수업 흐름</p><ol class="flow"><li><span class="flow-step">단계</span><span class="flow-desc">설명</span></li>…</ol></figure>`. 개념 대비는 `<div class="scale">`(scale-cell, scale-arrow, scale-cell-strong), 표는 `<table class="tbl">`. 기존 `_items/2026-10-16/*.md`를 본보기로 삼는다.
 - 활동지 파일은 만들지 않는다(사이트는 파일 배포를 하지 않음).
 
-## 6. 썸네일
+## 6. 썸네일(공유 이미지)
+- 글마다 `assets/og/YYYY-MM-DD-N.jpg`: `NODE_PATH=$(npm root -g) node _tools/og-page.cjs YYYY-MM-DD-N "윤리로 읽는 뉴스 · 묶음 이름" "글 제목" "수업 질문" /weekly/YYYY-MM-DD/N/` 로 만들고, 글 앞머리에 `og_image: /assets/og/YYYY-MM-DD-N.jpg`를 적는다. 없으면 호 이미지(호가 있을 때)나 사이트 기본 이미지가 쓰인다.
 - 호마다 `assets/og/YYYY-MM-DD.jpg`: `NODE_PATH=$(npm root -g) node _tools/og-issue.cjs YYYY-MM-DD 호수 "호 제목" "소재1 · 소재2 · 소재3" 건수`.
 
 ## 7. 볼트 사본

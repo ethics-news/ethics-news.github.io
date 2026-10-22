@@ -9,7 +9,7 @@
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:locale" content="ko_KR">
 {% assign og_img = "/assets/og/site.jpg" %}
-{% if page.og_image %}{% assign og_img = page.og_image %}{% elsif page.layout == "issue" %}{% assign og_img = "/assets/og/" | append: page.issue_id | append: ".jpg" %}{% elsif page.layout == "item" %}{% assign og_img = "/assets/og/" | append: page.issue | append: ".jpg" %}{% elsif page.url == "/about/" %}{% assign og_img = "/assets/og/about.jpg" %}{% elsif page.url == "/channel/" %}{% assign og_img = "/assets/og/channel.jpg" %}{% elsif page.url == "/reading/" or page.layout == "read" %}{% assign og_img = "/assets/og/reading.jpg" %}{% endif %}
+{% if page.og_image %}{% assign og_img = page.og_image %}{% elsif page.layout == "issue" %}{% assign og_img = "/assets/og/" | append: page.issue_id | append: ".jpg" %}{% elsif page.layout == "item" and page.issue %}{% assign og_img = "/assets/og/" | append: page.issue | append: ".jpg" %}{% elsif page.url == "/about/" %}{% assign og_img = "/assets/og/about.jpg" %}{% elsif page.url == "/channel/" %}{% assign og_img = "/assets/og/channel.jpg" %}{% elsif page.url == "/reading/" or page.layout == "read" %}{% assign og_img = "/assets/og/reading.jpg" %}{% endif %}
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:image" content="{{ og_img | absolute_url }}">
 <meta property="og:image:width" content="1200">
