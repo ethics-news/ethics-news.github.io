@@ -24,6 +24,11 @@ Ethink(에씽크) 사이트입니다. 대표 코너는 「윤리로 읽는 뉴�
 2. 앞머리 `date`를 `2026-10-24 09:00:00 +0900`처럼 발행 시각으로 적습니다. 미리 올려 두어도 그 시각 전에는 사이트에 보이지 않습니다.
 3. 올리면(Commit·Push) GitHub Actions가 사이트를 다시 만듭니다. 화·목·토 09:00과 09:30에도 자동으로 다시 만들어서, 예약한 글이 그때 나타납니다. (저장소 Settings → Pages의 Source가 「GitHub Actions」여야 합니다.)
 4. 홈 「최신 글」에 카드로 보입니다. `question`이 카드의 두 번째 줄에 나오니 꼭 채웁니다.
+5. 인스타그램(@ethink.kr)에 올릴 세로 카드는 `_tools/ig-card.cjs`로 만듭니다(`assets/ig/`). 캡션 규칙은 `_tools/WRITING_GUIDE.md` 6절에 있습니다.
+
+## 검색 등록
+
+- `/sitemap.xml`(자동 생성)과 `/robots.txt`가 있습니다. 구글 서치콘솔에 https://ethink.kr/ 을 등록하고 사이트맵 주소 `https://ethink.kr/sitemap.xml`을 냈습니다. 네이버 서치어드바이저도 같은 방식으로 등록합니다.
 
 ## 호로 묶기 (2주에 한 번)
 

@@ -74,7 +74,7 @@ function section_(id) {
 // 유입 경로 이름: ?from= 표시 > 앱 안 브라우저 > 이전 사이트 주소 > 직접
 var FROM = { kakao: '카카오톡(공유 버튼)', link: '링크 복사', facebook: '페이스북(공유 버튼)', x: 'X(공유 버튼)',
   threads: '스레드(공유 버튼)', share: '휴대폰 공유', brunch: '브런치', blog: '네이버 블로그', insta: '인스타그램',
-  channel: '길벗 카카오 채널', openchat: '카카오 오픈채팅', email: '이메일', qr: 'QR 코드' };
+  channel: '길벗 카카오 채널', openchat: '카카오 오픈채팅', email: '이메일', qr: 'QR 코드', newsletter: '뉴스레터', download: '내려받은 파일' };
 var APP = { k: '카카오톡', i: '인스타그램', f: '페이스북', n: '네이버 앱', t: '스레드', d: '다음 앱', l: '라인' };
 function source_(fr, app, ref) {
   if (fr) return FROM[fr] || ('표시: ' + fr);

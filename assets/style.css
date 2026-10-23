@@ -119,6 +119,9 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outli
 .hero-btns { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
 .btn { align-self: flex-start; background: var(--ink); color: var(--paper); text-decoration: none; padding: 0.55rem 1.1rem; border-radius: 4px; font-weight: 600; font-size: 0.9375rem; }
 .btn:hover { background: var(--accent); }
+.btn-sub { background: var(--accent); color: #fff; }
+.btn-sub:hover { background: var(--accent); filter: brightness(1.1); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn-sub { color: #0f1513; } }
 .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
 .btn-ghost:hover { background: var(--accent-soft); color: var(--ink); border-color: var(--accent); }
 /* 홈 — 글 카드 */

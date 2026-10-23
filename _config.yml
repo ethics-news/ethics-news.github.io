@@ -42,4 +42,5 @@ defaults:
     values: { layout: read }
 
 markdown: kramdown
+plugins: [jekyll-sitemap]   # /sitemap.xml 자동 생성(검색 등록용)
 exclude: [README.md, _templates, _tools, Gemfile, Gemfile.lock]
