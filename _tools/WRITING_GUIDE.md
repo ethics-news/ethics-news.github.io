@@ -41,7 +41,7 @@
 
 ## 6. 썸네일(공유 이미지)
 - 글마다 `assets/og/YYYY-MM-DD-N.jpg`: `NODE_PATH=$(npm root -g) node _tools/og-page.cjs YYYY-MM-DD-N "윤리로 읽는 뉴스 · 묶음 이름" "글 제목" "수업 질문" /weekly/YYYY-MM-DD/N/` 로 만들고, 글 앞머리에 `og_image: /assets/og/YYYY-MM-DD-N.jpg`를 적는다. 없으면 호 이미지(호가 있을 때)나 사이트 기본 이미지가 쓰인다.
-- 인스타그램(@ethink.kr) 안내 카드: `NODE_PATH=$(npm root -g) node _tools/ig-card.cjs YYYY-MM-DD-N "윤리로 읽는 뉴스 · 묶음 이름" "글 제목" "수업 질문"` → `assets/ig/YYYY-MM-DD-N.jpg`(1080×1350). 글과 함께 올릴 캡션은 첫 줄에 질문, 2~3문장 요지, "전문은 프로필 링크(ethink.kr)에서", 해시태그 5~8개(#윤리수업 #통합사회 #현대사회와윤리 #도덕수업 #시사윤리 + 소재 태그)로 쓴다. 인스타그램 프로필 링크는 https://ethink.kr/?from=insta 로 둔다.
+- 인스타그램(@ethink.kr) 안내 카드: `NODE_PATH=$(npm root -g) node _tools/ig-card.cjs YYYY-MM-DD-N "윤리로 읽는 뉴스 · 묶음 이름" "글 제목" "수업 질문"` → `assets/ig/YYYY-MM-DD-N.jpg`(1080×1350). 글과 함께 올릴 캡션은 첫 줄에 질문, 2~3문장 요지, "전문은 프로필 링크(ethink.kr)에서", 해시태그 5~8개(#윤리수업 #통합사회 #현대사회와윤리 #도덕수업 #시사윤리 + 소재 태그)로 쓴다. 인스타그램 프로필 링크는 https://ethink.kr/?from=insta 로 둔다. 캡션은 `_items/YYYY-MM-DD/ig.txt`로 저장한다(글이 둘 이상이면 `ig-N.txt`). 화·목·토 9시 빌드 뒤 GitHub Actions가 이 캡션과 카드로 @ethink.kr에 자동 게시한다(`_tools/ig-post.cjs`). 캡션 첫 줄(질문)이 같으면 두 번 올리지 않는다.
 - 호마다 `assets/og/YYYY-MM-DD.jpg`: `NODE_PATH=$(npm root -g) node _tools/og-issue.cjs YYYY-MM-DD 호수 "호 제목" "소재1 · 소재2 · 소재3" 건수`.
 
 ## 7. 볼트 사본
