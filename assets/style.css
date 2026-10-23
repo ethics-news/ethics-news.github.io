@@ -366,3 +366,10 @@ html { scroll-behavior: smooth; }
 .sub-btn:hover { filter: brightness(1.1); }
 .sub-btn.sm { padding: 0.45rem 0.9rem; }
 @media (prefers-color-scheme: dark) { .sub-btn { color: #0f1513 !important; } :root:not([data-theme="light"]) .pcard-cover { background-color: #2f6b58; } :root:not([data-theme="light"]) .pcard-read .pcard-cover { background-color: #7a4f24; } }
+
+/* 인용문 출처 앞 사상가 작은 초상(_data/faces.yml) */
+.src figcaption .face { display: inline-block; width: 28px; height: 28px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin: -3px 0.5rem 0 0; border: 1px solid var(--rule); filter: saturate(0.85); }
+.src figcaption:has(.face)::before { content: none; }
+.cover-from { margin: 0.35rem 0 0; font-size: 0.75rem; color: var(--muted); }
+.credits { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: 0.4rem 1.25rem; font-size: var(--step--1); color: var(--muted); }
+.credits .face { display: inline-block; width: 28px; height: 28px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-right: 0.4rem; border: 1px solid var(--rule); }

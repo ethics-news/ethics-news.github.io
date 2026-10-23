@@ -1,0 +1,8 @@
+{%- comment -%}인용문 출처(figcaption)가 사상가 이름으로 시작하면 그 앞에 작은 초상을 붙입니다. 목록은 _data/faces.yml.{%- endcomment -%}
+{%- assign h = include.html -%}
+{%- for f in site.data.faces -%}{%- for m in f.match -%}
+{%- capture from -%}<figcaption>{{ m }}{%- endcapture -%}
+{%- capture to -%}<figcaption><img class="face" src="{{ f.img | relative_url }}" alt="" width="28" height="28" loading="lazy" title="{{ f.name }} · 이미지: {{ f.credit }} ({{ f.license }})">{{ m }}{%- endcapture -%}
+{%- assign h = h | replace: from, to -%}
+{%- endfor -%}{%- endfor -%}
+{{- h -}}
