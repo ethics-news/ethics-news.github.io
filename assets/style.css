@@ -361,7 +361,7 @@ html { scroll-behavior: smooth; }
 /* 뉴스레터 구독 */
 .sub-box { margin: 2rem 0 0; padding: 1.1rem 1.25rem; border: 1px solid var(--rule); border-left: 4px solid var(--accent); border-radius: 8px; background: var(--accent-soft); }
 .sub-title { font-weight: 700; margin: 0 0 0.3rem; }
-.sub-text { margin: 0 0 0.8rem; font-size: var(--step--1); color: var(--muted); }
+.sub-text { margin: 0; font-size: var(--step--1); color: var(--muted); }
 .sub-btn { display: inline-block; background: var(--accent); color: #fff !important; text-decoration: none; font-weight: 600; font-size: var(--step--1); padding: 0.5rem 1rem; border-radius: 6px; }
 .sub-btn:hover { filter: brightness(1.1); }
 .sub-btn.sm { padding: 0.45rem 0.9rem; }
@@ -374,3 +374,5 @@ html { scroll-behavior: smooth; }
 .credits { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: 0.4rem 1.25rem; font-size: var(--step--1); color: var(--muted); }
 .credits .face { display: inline-block; width: 28px; height: 28px; border-radius: 50%; object-fit: cover; vertical-align: middle; margin-right: 0.4rem; border: 1px solid var(--rule); }
 .face-initial { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 0.8rem; vertical-align: middle; margin: -3px 0.5rem 0 0; }
+.sub-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin: 0.9rem 0 0; }
+.sub-actions .openchat.form { border-color: var(--accent); }
