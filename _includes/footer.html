@@ -2,7 +2,7 @@
   <div class="wrap footer-row">
     <div>
       <p class="footer-name">{{ site.title }}</p>
-      <p><span class="chat-btns">{% if site.newsletter %}<a class="sub-btn sm" href="{{ site.newsletter }}" target="_blank" rel="noopener">뉴스레터 구독하기</a>{% endif %}{% if site.openchat %}<a class="openchat" href="{{ site.openchat }}" target="_blank" rel="noopener">오픈채팅방에서 함께 이야기하기</a>{% endif %}<a class="openchat form" href="{{ '/board/' | relative_url }}">운영자에게 의견 보내기</a></span></p>
+      <p><span class="chat-btns">{% if site.newsletter %}<a class="sub-btn sm" href="{{ site.newsletter }}" target="_blank" rel="noopener">뉴스레터 구독하기</a>{% endif %}{% if site.openchat %}<a class="openchat" href="{{ site.openchat }}" target="_blank" rel="noopener">오픈채팅 참여</a>{% endif %}<a class="openchat form" href="{{ '/board/' | relative_url }}">운영자에게 의견 보내기</a></span></p>
       <p>연락 <a class="mono mail" href="mailto:{{ site.email }}">{{ site.email }}</a></p>
     </div>
     <div class="footer-meta">
