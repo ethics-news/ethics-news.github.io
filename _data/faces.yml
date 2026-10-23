@@ -64,3 +64,7 @@
   license: CC BY-SA 3.0
   license_url: https://creativecommons.org/licenses/by-sa/3.0/
   url: https://commons.wikimedia.org/wiki/File:Johan_Galtung_-_Trento.JPG
+# 생존 인물은 자유 이용 사진이 드물다. 사진이 없으면 img 대신 initial(머리글자)을 적으면 같은 자리에 글자 원이 붙는다. 사진을 쓰려면 저작권자(출판사·본인)의 허락을 받은 뒤 img로 바꾼다.
+- name: 송길영
+  match: ["송길영,", "송길영 ·"]
+  initial: 송
