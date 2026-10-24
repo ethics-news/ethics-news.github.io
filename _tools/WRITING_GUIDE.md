@@ -41,7 +41,14 @@
 
 ## 6. 썸네일(공유 이미지)
 - 글마다 `assets/og/YYYY-MM-DD-N.jpg`: `NODE_PATH=$(npm root -g) node _tools/og-page.cjs YYYY-MM-DD-N "윤리로 읽는 뉴스 · 묶음 이름" "글 제목" "수업 질문" /weekly/YYYY-MM-DD/N/` 로 만들고, 글 앞머리에 `og_image: /assets/og/YYYY-MM-DD-N.jpg`를 적는다. 없으면 호 이미지(호가 있을 때)나 사이트 기본 이미지가 쓰인다.
-- 인스타그램(@ethink.kr) 안내 카드: `NODE_PATH=$(npm root -g) node _tools/ig-card.cjs YYYY-MM-DD-N "윤리로 읽는 뉴스 · 묶음 이름" "글 제목" "수업 질문"` → `assets/ig/YYYY-MM-DD-N.jpg`(1080×1350). 글과 함께 올릴 캡션은 첫 줄에 질문, 2~3문장 요지, "전문은 프로필 링크(ethink.kr)에서", 해시태그 5~8개(#윤리수업 #통합사회 #현대사회와윤리 #도덕수업 #시사윤리 + 소재 태그)로 쓴다. 인스타그램 프로필 링크는 https://ethink.kr/?from=insta 로 둔다. 캡션은 `_items/YYYY-MM-DD/ig.txt`로 저장한다(글이 둘 이상이면 `ig-N.txt`). 화·목·토 9시 빌드 뒤 GitHub Actions가 이 캡션과 카드로 @ethink.kr에 자동 게시한다(`_tools/ig-post.cjs`). 캡션 첫 줄(질문)이 같으면 두 번 올리지 않는다.
+- 인스타그램(@ethink.kr) 카드 뉴스(2026-10-27 글부터): 글마다 여러 장(6~7장, 최대 10장)의 세로 카드(1080×1350)를 만든다.
+  - 카드 문안 `_items/YYYY-MM-DD/ig-cards-N.yml`을 쓴다(본보기 `_items/2026-10-24/ig-cards-1.yml`, 형식은 `_tools/ig-cards.cjs` 머리말). 기본 구성: ① cover(코너·제목·질문, 앞머리에서 자동) ② text '무슨 일이 있었나'(big에 숫자 하나 + 사실 2줄) ③ text '왜 윤리 문제인가'(물음 두 가지) ④ quote(사상가 한 문장, who는 faces.yml 이름 — 초상 자동, source는 출처) ⑤ compare 또는 flow(본문 도식을 그대로) ⑥ (선택) flow ⑦ end(질문 다시, ethink.kr 안내). 카드 한 장에 3~4줄을 넘기지 않는다. 문장은 본문에 있는 사실·인용만 줄여 쓰고, 인용문은 원문 그대로 두고 생략은 (…)로 표시한다.
+  - 이미지: `NODE_PATH=$(npm root -g) node _tools/ig-cards.cjs _items/YYYY-MM-DD/N.md` → `assets/ig/YYYY-MM-DD-N-01.jpg` …(playwright, js-yaml 필요: `npm i -g playwright js-yaml`).
+  - 「윤리로 읽는 책」은 문안을 `_reads/ig/<글 파일이름>.yml`에 두고 ② 대신 book(표지 작게, "표지 이미지: 알라딘" 자동)과 underline(밑줄 1~2개) 카드를 쓴다. 책 글 카드는 자동 게시하지 않는다(재형 님이 따로 올림).
+  - 생존 인물은 사이트와 같이 머리글자 원으로 둔다(faces.yml).
+  - **승인**: 문안 파일 첫 줄 근처 `approved: false`로 만든다. 재형 님께 카드 이미지 전부와 캡션을 보여 드리고 승인을 받은 뒤에만 `approved: true`로 바꿔 main에 넣는다. `approved: true`가 아니면 자동 게시 도구가 올리지 않는다.
+  - 캡션(`_items/YYYY-MM-DD/ig.txt`, 글이 둘 이상이면 `ig-N.txt`)은 첫 줄에 질문, 2~3문장 요지, "전문은 프로필 링크(ethink.kr)에서", 해시태그 5~8개(#윤리수업 #통합사회 #현대사회와윤리 #도덕수업 #시사윤리 + 소재 태그). 인스타그램 프로필 링크는 https://ethink.kr/?from=insta.
+  - 화·목·토 9시 빌드 뒤 GitHub Actions가 승인된 카드를 캐러셀로 @ethink.kr에 올린다(`_tools/ig-post.cjs`). 캡션 첫 줄(질문)이 같으면 두 번 올리지 않는다. 예전 한 장짜리 카드 도구 `_tools/ig-card.cjs`는 더 쓰지 않는다.
 - 호마다 `assets/og/YYYY-MM-DD.jpg`: `NODE_PATH=$(npm root -g) node _tools/og-issue.cjs YYYY-MM-DD 호수 "호 제목" "소재1 · 소재2 · 소재3" 건수`.
 
 ## 7. 볼트 사본

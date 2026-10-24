@@ -1,6 +1,7 @@
 // 오늘(한국 시간) 발행된 글을 인스타그램(@ethink.kr)에 올립니다. GitHub Actions의 예약 빌드 뒤에 돌아갑니다.
 // 필요한 환경 변수: IG_USER_ID(인스타그램 전문가 계정 ID), IG_ACCESS_TOKEN(장기 토큰, 60일).
-// 글 폴더 _items/YYYY-MM-DD/N.md 옆에 ig.txt(캡션)가 있고, assets/ig/YYYY-MM-DD-N.jpg(세로 카드)가 있어야 합니다.
+// 글 폴더 _items/YYYY-MM-DD/N.md 옆에 ig.txt(캡션)와 ig-cards-N.yml(카드 문안, approved: true)이 있고,
+// assets/ig/YYYY-MM-DD-N-01.jpg … (카드 뉴스, _tools/ig-cards.cjs로 만듦)이 있어야 합니다. 여러 장이면 캐러셀로 올립니다.
 // 같은 글을 두 번 올리지 않도록, 최근 올린 게시물의 캡션 첫 줄과 비교합니다.
 // 사용: node _tools/ig-post.cjs [YYYY-MM-DD]   (날짜를 주지 않으면 오늘, Asia/Seoul)
 const fs = require('fs'); const path = require('path');
@@ -41,17 +42,37 @@ function firstLine(s) { return String(s || '').split('\n').map(x => x.trim()).fi
     if (!fs.existsSync(capPath)) { console.log(`${day}/${n}: 캡션 파일(ig.txt)이 없어 건너뜁니다.`); continue; }
     const caption = fs.readFileSync(capPath, 'utf8').trim();
     if (done.has(firstLine(caption))) { console.log(`${day}/${n}: 이미 올라간 글입니다.`); continue; }
-    const img = `${SITE}/assets/ig/${day}-${n}.jpg`;
+    // 카드 뉴스 문안(ig-cards-N.yml)에 approved: true가 있어야 올린다(재형 님 승인).
+    const cardsPath = path.join(dir, `ig-cards-${n}.yml`);
+    if (!fs.existsSync(cardsPath)) { console.log(`${day}/${n}: 카드 문안(ig-cards-${n}.yml)이 없어 건너뜁니다(승인 전).`); continue; }
+    const cardsSrc = fs.readFileSync(cardsPath, 'utf8');
+    if (!/^approved:\s*true\s*$/m.test(cardsSrc)) { console.log(`${day}/${n}: 카드 뉴스가 아직 승인되지 않아(approved: false) 건너뜁니다.`); continue; }
+    const count = (cardsSrc.match(/^\s*-\s*type:/gm) || []).length;
+    if (!count || count > 10) { console.log(`${day}/${n}: 카드 수(${count})가 1~10장이 아니어서 건너뜁니다.`); continue; }
+    const imgs = Array.from({ length: count }, (_, i) => `${SITE}/assets/ig/${day}-${n}-${String(i + 1).padStart(2, '0')}.jpg`);
     let ok = false;
-    for (let i = 0; i < 10; i++) { const r = await fetch(img, { method: 'HEAD' }); if (r.ok) { ok = true; break; } await sleep(30000); }
-    if (!ok) { console.log(`${day}/${n}: 카드 이미지(${img})를 아직 받을 수 없습니다. 다음 실행에서 다시 시도합니다.`); continue; }
-    const c = await api(`/${USER}/media`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ image_url: img, caption }) });
-    for (let i = 0; i < 20; i++) {
-      const s = await api(`/${c.id}?fields=status_code`);
-      if (s.status_code === 'FINISHED') break;
-      if (s.status_code === 'ERROR') throw new Error(`${day}/${n}: 컨테이너 오류`);
-      await sleep(5000);
+    for (let i = 0; i < 10; i++) {
+      const rs = await Promise.all(imgs.map(u => fetch(u, { method: 'HEAD' }).then(r => r.ok).catch(() => false)));
+      if (rs.every(Boolean)) { ok = true; break; } await sleep(30000);
     }
+    if (!ok) { console.log(`${day}/${n}: 카드 이미지를 아직 받을 수 없습니다. 다음 실행에서 다시 시도합니다.`); continue; }
+    const post = async body => api(`/${USER}/media`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const waitReady = async id => {
+      for (let i = 0; i < 24; i++) {
+        const st = await api(`/${id}?fields=status_code`);
+        if (st.status_code === 'FINISHED') return;
+        if (st.status_code === 'ERROR') throw new Error(`${day}/${n}: 컨테이너 오류`);
+        await sleep(5000);
+      }
+    };
+    let c;
+    if (count === 1) { c = await post({ image_url: imgs[0], caption }); }
+    else {
+      const kids = [];
+      for (const u of imgs) { const k = await post({ image_url: u, is_carousel_item: true }); await waitReady(k.id); kids.push(k.id); }
+      c = await post({ media_type: 'CAROUSEL', children: kids.join(','), caption });
+    }
+    await waitReady(c.id);
     const pub = await api(`/${USER}/media_publish`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ creation_id: c.id }) });
     console.log(`${day}/${n}: 인스타그램에 올렸습니다. 게시물 ID ${pub.id} — ${title}`);
     posted++;
