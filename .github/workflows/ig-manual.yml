@@ -1,0 +1,43 @@
+# 인스타그램 수동 작업: 게시물을 지우거나(선택) 특정 날짜의 승인된 카드 뉴스를 올립니다.
+# Actions → 「인스타그램 수동 작업」 → Run workflow 에서 입력을 넣어 실행합니다.
+name: 인스타그램 수동 작업
+on:
+  workflow_dispatch:
+    inputs:
+      delete_id:
+        description: 지울 게시물 ID(없으면 비워 둠)
+        required: false
+        default: ''
+      post_day:
+        description: 올릴 글 날짜 YYYY-MM-DD(없으면 비워 둠)
+        required: false
+        default: ''
+permissions:
+  contents: read
+jobs:
+  instagram:
+    runs-on: ubuntu-latest
+    env:
+      HAS_PAT: ${{ secrets.GH_PAT != '' }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 게시물 지우기
+        if: inputs.delete_id != ''
+        run: node _tools/ig-delete.cjs "${{ inputs.delete_id }}"
+      - name: 카드 뉴스 올리기
+        if: inputs.post_day != ''
+        run: |
+          [ -n "${{ inputs.delete_id }}" ] && sleep 20
+          node _tools/ig-post.cjs "${{ inputs.post_day }}"
+      - name: 갱신된 토큰 저장(GH_PAT가 있을 때만)
+        if: env.HAS_PAT == 'true' && inputs.post_day != ''
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          f="$RUNNER_TEMP/ig_token_new"
+          if [ -s "$f" ]; then gh secret set IG_ACCESS_TOKEN --repo "$GITHUB_REPOSITORY" < "$f" && echo "IG_ACCESS_TOKEN 비밀을 새 토큰으로 바꿨습니다."; fi
